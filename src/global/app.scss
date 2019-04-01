@@ -508,6 +508,7 @@ pre.fk-highlight-code-container {
   padding: 0;
 
   overflow-x:auto;
+  overflow-y:hidden;
   font-family: var(--fk-highlight-code-font-family, 'Source Code Pro', sans-serif, monospace);
   font-size: var(--fk-highlight-code-font-size, 1.01rem);
   color: var(--fk-highlight-code-color, #eaeae9);
@@ -524,11 +525,15 @@ pre.fk-highlight-code-container {
 
   code.theCodeTag {
     max-width: 100%;
+    min-height: 1rem;
+    overflow-x: hidden;
+    overflow-y: hidden;
     font-family: var(--fk-highlight-code-font-family);
     font-size: var(--fk-highlight-code-font-size);
     line-height: var(--fk-highlight-code-line-height, 1.45rem);
     color: #edede7;
     tab-size: 2;
+    background: var(--fk-highlight-code-background, #282c34);
     div:empty {
       min-height: 1rem;
     }
