@@ -1,5 +1,5 @@
 import { Component, Prop, Element, Event, EventEmitter, Method, State, Watch } from '@stencil/core';
-
+// next up https://itnext.io/creating-a-side-menu-component-with-stencil-using-events-listen-and-slot-ed06c612bc6
 @Component({
   tag: 'fk-tabs',
   styleUrl: '../../global/app.scss',
