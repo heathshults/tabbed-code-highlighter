@@ -1,4 +1,5 @@
 import { Component, Prop, Element, Event, EventEmitter, Method, State, Watch } from '@stencil/core';
+import {FkTab} from './tab'
 
 @Component({
   tag: 'fk-tabs',
@@ -22,18 +23,23 @@ export class FkTabs {
 
   @Method()
     async getNewHeight() {
-      return this.height
+      return this.height;
     }
 
   @Method()
   async currentTab() {
-    return this.tabs.findIndex((tab) => tab.open);
+    let curtab: number = this.tabs.findIndex((tab) => tab.open);
+    let curtabel: HTMLElement = this.tabs[curtab].tab
+    let curtabheight: number = curtabel.clientHeight
+    alert(`curtab: ${curtab}, ${curtabheight}`)
+    return curtab
+
   }
 
   @Method()
   getMeasuredHeight() {
-    const cTab = this.currentTab().toString()
-    const tabster = this.elem.shadowRoot.querySelector(cTab).clientHeight
+    const cTab = this.currentTab()
+    const tabster = this.elem.shadowRoot.querySelector(cTab.toString()).clientHeight
     return tabster.toString()
   }
 
@@ -48,14 +54,19 @@ export class FkTabs {
   protected valueChanged() {
     let newHeightValue = this.getNewHeight();
     this.elem.style.setProperty('height', newHeightValue.toString())
-    // let thoseTabs = this.elem.shadowRoot.querySelectorAll('div.fk-tab')
+
+    let thisTab: any = this.tabs.forEach( tab => tab.height = FkTab.call(this, outerWidth, outerHeight) );
+    thisTab.setAttribute('height', this.height)
+    thisTab.setAttribute('width', this.width)
+      return thisTab;
+    };
+
+// let thoseTabs = this.elem.shadowRoot.querySelectorAll('div.fk-tab')
 
     // for (var i = 0; thoseTabs[i]; i++) {
     //   let nodes = thoseTabs[i];
     //   this.convToHTMLElement = (nodes as HTMLElement).style.setProperty('height', newHeightValue.toString());
     // }
-  }
-
   @Method()
   openTab(tabIndex: number) {
     if (!this.tabs[tabIndex].disabled) {
@@ -77,26 +88,33 @@ export class FkTabs {
       })
     }
   }
-
-  hostData() {
-
+  @Method()
+  sizer() {
     let styleTag = document.createElement('style');
     let textContent = `
     .c-tabs__expander {
-      width: 100%;
+      width: ${this.width};
       height: ${this.height} }`;
     styleTag.innerHTML = textContent;
     this.elem.shadowRoot.appendChild(styleTag);
   }
 
   @Method()
-    expand() {
-      const measuredHeight = this.getMeasuredHeight().toString();
-      this.height = measuredHeight;
+  expand(tabIndex: number) {
+    if (!this.tabs[tabIndex].disabled) {
+      this.tabs = this.tabs.map((tab) => {
+        tab.open = false;
+        return tab;
+      });
+      let openTab: HTMLDivElement = this.tabs[tabIndex]
+      let tabHeight = openTab.offsetHeight;
+      this.height = tabHeight.toString();
+      this.onChange.emit({ idx: tabIndex });
     }
+  }
 
   render() {
-
+    this.sizer();
     return (
       <div id="theTabContainer" class="c-tabs">
         <div role="tablist" class="c-tabs c-tabs__expander">
@@ -122,11 +140,21 @@ export class FkTabs {
           <slot />
         </div>
         <div class="c-button-container">
-        <button class="c-button--showMore"
-        onClick={() => this.expand()}>
-          Show More
-          <span class="showMoreLines"></span>
-        </button>
+        {this.tabs.map((tab, i: number) => {
+          console.log('did it!')
+          if (!tab.open) {
+          return (
+            <button
+              id="st"
+              disabled={tab.disabled}
+              class={`c-button c-button--showMore`}
+              onClick={() => this.expand(i)}
+              onMouseOut={() => this.removeFocus(i)} >
+              {tab.header}
+            </button>
+          );
+          }
+        })}
       </div>
     </div>
     );

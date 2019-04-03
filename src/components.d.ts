@@ -60,12 +60,13 @@ export namespace Components {
     'convToHTMLElement': any;
     'cssClass'?: string;
     'currentTab': () => Promise<number>;
-    'expand': () => void;
+    'expand': (tabIndex: number) => void;
     'getMeasuredHeight': () => string;
     'getNewHeight': () => Promise<string>;
     'height'?: string;
     'openTab': (tabIndex: number) => void;
     'removeFocus': (tabIndex: number) => void;
+    'sizer': () => void;
     'tabContainerHeight': any;
     'value': string;
     'width'?: string;

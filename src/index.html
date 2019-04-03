@@ -14,12 +14,13 @@
   <script src="/build/framekit-highlight-code.js"></script>
 </head>
 <body>
-    <select id="heightChanger">
-      <option value="250px">250px</option>
-      <option value="400px">400px</option>
-      <option value="600px">600px</option>
-      <option value="100vh">100vh</option>
-    </select>
+  <select id="heightChanger">
+    <option value="250px">250px</option>
+    <option value="400px">400px</option>
+    <option value="600px">600px</option>
+    <option value="100vh">100vh</option>
+    <option value="100%">100%</option>
+  </select>
   <fk-tabs id="tabs" class="c-tabs-container c-tabs__expander" height="400px" width="100%">
     <fk-tab language="html" type="brand" header="HTML" open>
       <fk-highlight-code language="markup"><code slot="code">
@@ -45,13 +46,18 @@
   <fk-tab language="typescript" type="brand" header="Typescript" >
 
 
+
 <fk-highlight-code language="typescript">
-  <code slot="code">@Method()
-isMobile(): Promise<boolean> {
-  return new Promise<boolean>((resolve) => {
-    resolve(FramekitUtils.isMobile());
-  });
-}</code>
+  <code slot="code">
+      function jscode() {
+        const codie =
+      `isMobile(): Promise<boolean> {
+        return new Promise<boolean>((resolve) {
+          resolve(FramekitUtils.isMobile());
+        });
+      }`
+    return codie}
+  </code>
 </fk-highlight-code>
 </fk-tab>
 <fk-tab language="java" type="brand" header="Java" >
@@ -101,6 +107,21 @@ isMobile(): Promise<boolean> {
 
       $("#tabs").attr('height', this.value);
     })
+
+    let setProps = () => {
+      let fkTabby  = document.getElementById('tabs')
+      if (fkTabby) {
+      let allTabs = [].slice.prototype(fkTabby.querySelectorAll('fk-tabs'))
+      for (let i = 0; i < allTabs.length; ++i) {
+        if (allTabs[i].open) {
+          let tabNode = allTabs[i].name
+          let tabHeight = tabNode.getBoundingRect();
+          console.log(tabHeight)
+        }
+      }
+      }
+    }
+
 </script>
 </body>
 </html>
