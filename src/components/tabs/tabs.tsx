@@ -1,6 +1,7 @@
 import { Component, Prop, Element, Event, EventEmitter, Method, State, Watch } from '@stencil/core';
 import {FkTab} from './tab'
 
+// next up https://itnext.io/creating-a-side-menu-component-with-stencil-using-events-listen-and-slot-ed06c612bc6
 @Component({
   tag: 'fk-tabs',
   styleUrl: '../../global/app.scss',
@@ -29,10 +30,10 @@ export class FkTabs {
   @Method()
   async currentTab() {
     let curtab: number = this.tabs.findIndex((tab) => tab.open);
-    let curtabel: HTMLElement = this.tabs[curtab].tab
+    let curtabel: HTMLElement = this.tabs[curtab]
     let curtabheight: number = curtabel.clientHeight
-    alert(`curtab: ${curtab}, ${curtabheight}`)
-    return curtab
+    // alert(`curtab: ${curtab}, ${curtabheight}`)
+    return curtabheight;
 
   }
 
@@ -101,17 +102,21 @@ export class FkTabs {
 
   @Method()
   expand(tabIndex: number) {
+
     if (!this.tabs[tabIndex].disabled) {
       this.tabs = this.tabs.map((tab) => {
         tab.open = false;
         return tab;
       });
       let openTab: HTMLDivElement = this.tabs[tabIndex]
-      let tabHeight = openTab.offsetHeight;
+      let tabHeight = openTab.getBoundingClientRect().height;
+      console.log(tabHeight)
       this.height = tabHeight.toString();
       this.onChange.emit({ idx: tabIndex });
     }
   }
+
+
 
   render() {
     this.sizer();
@@ -142,7 +147,7 @@ export class FkTabs {
         <div class="c-button-container">
         {this.tabs.map((tab, i: number) => {
           console.log('did it!')
-          if (!tab.open) {
+          if (tab.open) {
           return (
             <button
               id="st"
@@ -150,7 +155,7 @@ export class FkTabs {
               class={`c-button c-button--showMore`}
               onClick={() => this.expand(i)}
               onMouseOut={() => this.removeFocus(i)} >
-              {tab.header}
+              Show More
             </button>
           );
           }
