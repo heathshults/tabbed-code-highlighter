@@ -67,7 +67,7 @@ export class FkTabs {
   expand(tabIndex: number) {
     if (!this.tabs[tabIndex].disabled) {
       let openTabPanel: HTMLDivElement = this.tabs[tabIndex]
-      openTabPanel.classList.toggle('c-tabs__expander')
+      // openTabPanel.classList.toggle('c-tabs__expander')
       let divTabPanel: HTMLDivElement=  openTabPanel.shadowRoot.querySelector('div[role="tabpanel"]')
       divTabPanel.classList.toggle('c-tabs__expander')
       return;
