@@ -32,12 +32,17 @@ $bp-color-core-red-40: #cc3535 !default;
   right:0;
   left:0;
   flex: auto;
+  width: 100%;
+}
+.c-tabs.c-tabs__expander {
+  height: 100%;
+  max-height: unset;
 }
 .c-tabs[role='tablist'] {
   box-sizing: border-box;
   display: block;
   width: 100%;
-  overflow:visible;
+  overflow:hidden;
   line-height: normal;
   background: $bp-color-border-lightest;
   &::before {
@@ -56,13 +61,13 @@ $bp-color-core-red-40: #cc3535 !default;
   padding-top: 20px;
   padding-left: 20px;
   margin: -10px -20px 0 -20px;
-  overflow: visible;
+  overflow: hidden;
   background: $bp-color-background-light-layer0-base;
   .c-tabs__headings {
     padding-bottom: 1em;
     margin-bottom: -1em;
-    overflow-x: visible;
-    overflow-y: visible;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
   .c-tabs__headings:first-child {
     margin-left: 10px;
@@ -413,18 +418,26 @@ $bp-color-core-red-40: #cc3535 !default;
 .c-tab-heading[role='tab'].c-tab-heading--error.c-tab-heading--active {
   border-bottom-color: $bp-color-core-red-40;
 }
+/* scroller */
 .c-tabs__tab[role='tabpanel'] {
+  position: relative;
   width: 100%;
+  overflow-x: auto;
+  background: #282c34;
+  border-top: solid 10px #dedede;
+
+
   // padding: 1em;
 }
 .c-button-container {
   text-align: center;
+  background: #dedede;
 }
 .c-button--showMore {
-  color: #999;
   display: inline-block;
   padding: 6px 6px 0 6px;
   margin: 0 auto;
+  color: #999;
   background-color: #f8f8f8;
   border: 2px solid #ddd;
   border-bottom: 4px solid #ededed;

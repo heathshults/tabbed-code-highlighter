@@ -1,7 +1,4 @@
 import { Component, Prop, Element, Event, EventEmitter, Method, State, Watch } from '@stencil/core';
-import {FkTab} from './tab'
-
-// next up https://itnext.io/creating-a-side-menu-component-with-stencil-using-events-listen-and-slot-ed06c612bc6
 @Component({
   tag: 'fk-tabs',
   styleUrl: '../../global/app.scss',
@@ -9,44 +6,30 @@ import {FkTab} from './tab'
 })
 export class FkTabs {
   @Element() elem: HTMLElement;
-
   @State() tabs: any[];
-
   @Event({ eventName: 'change' }) onChange: EventEmitter;
 
-  @Prop({ reflectToAttr: true, mutable: true }) width?: string = '100%';
-  @Prop({ reflectToAttr: true, mutable: true }) height?: string = '400px';
-  @Prop({ reflectToAttr: true, mutable: true }) class?: string = 'c-tabs__expander';
+  @Prop({ reflectToAttr: true, mutable: true}) width?: string = '100%';
+  @Prop({ reflectToAttr: true, mutable: true }) height?: string = '400';
   @Prop() cssClass?: string;
-  @Prop({ mutable: true}) tabContainerHeight: any;
+  @Prop({mutable: true}) tabContainerHeight: any;
   @Prop() convToHTMLElement: any;
-  @Prop({ mutable: true }) value = ''; // @Watch(this.tabContainer.style)
 
-  @Method()
-    async getNewHeight() {
-      return this.height;
+  hostData(){
+    this.tabContainerHeight = this.elem.style.setProperty('height', this.height)
+    return this.tabContainerHeight
+    };
+
+@Method()
+  async getNewHeight() {
+    return this.height
+  }
+    // @Watch(this.tabContainer.style)
+    @Prop({ mutable: true }) value = '';
+
+    componentWillLoad() {
+      this.tabs = Array.from(this.elem.querySelectorAll('fk-tab'));
     }
-
-  @Method()
-  async currentTab() {
-    let curtab: number = this.tabs.findIndex((tab) => tab.open);
-    let curtabel: HTMLElement = this.tabs[curtab]
-    let curtabheight: number = curtabel.clientHeight
-    // alert(`curtab: ${curtab}, ${curtabheight}`)
-    return curtabheight;
-
-  }
-
-  @Method()
-  getMeasuredHeight() {
-    const cTab = this.currentTab()
-    const tabster = this.elem.shadowRoot.querySelector(cTab.toString()).clientHeight
-    return tabster.toString()
-  }
-
-  componentWillLoad() {
-    this.tabs = Array.from(this.elem.querySelectorAll('fk-tab'));
-  }
 
   /**
    * Update the native input element when the value changes
@@ -54,20 +37,20 @@ export class FkTabs {
   @Watch('value')
   protected valueChanged() {
     let newHeightValue = this.getNewHeight();
-    this.elem.style.setProperty('height', newHeightValue.toString())
+        this.elem.style.setProperty('height', newHeightValue.toString())
+    let thoseTabs = this.elem.shadowRoot.querySelectorAll('div.fk-tab')
 
-    let thisTab: any = this.tabs.forEach( tab => tab.height = FkTab.call(this, outerWidth, outerHeight) );
-    thisTab.setAttribute('height', this.height)
-    thisTab.setAttribute('width', this.width)
-      return thisTab;
-    };
+    for (var i = 0; thoseTabs[i]; i++) {
+      let nodes = thoseTabs[i];
+      this.convToHTMLElement = (nodes as HTMLElement).style.setProperty('height', newHeightValue.toString());
+    }
+  }
 
-// let thoseTabs = this.elem.shadowRoot.querySelectorAll('div.fk-tab')
+  @Method()
+  async currentTab() {
+    return this.tabs.findIndex((tab) => tab.open);
+  }
 
-    // for (var i = 0; thoseTabs[i]; i++) {
-    //   let nodes = thoseTabs[i];
-    //   this.convToHTMLElement = (nodes as HTMLElement).style.setProperty('height', newHeightValue.toString());
-    // }
   @Method()
   openTab(tabIndex: number) {
     if (!this.tabs[tabIndex].disabled) {
@@ -81,6 +64,25 @@ export class FkTabs {
   }
 
   @Method()
+  expand(tabIndex: number) {
+    if (!this.tabs[tabIndex].disabled) {
+      let openTabPanel: HTMLDivElement = this.tabs[tabIndex]
+      openTabPanel.classList.toggle('c-tabs__expander')
+      let divTabPanel: HTMLDivElement=  openTabPanel.shadowRoot.querySelector('div[role="tabpanel"]')
+      divTabPanel.classList.toggle('c-tabs__expander')
+      return;
+    }
+  };
+
+      // let openTab: HTMLDivElement = this.tabs[tabIndex]
+      // let tabHeight = openTab.getBoundingClientRect().height;
+      // console.log('Tab: ' + tabHeight)
+      // this.height = tabHeight.toString();
+      // this.onChange.emit({ idx: tabIndex });
+
+
+
+  @Method()
   removeFocus(tabIndex: number) {
     if (!this.tabs[tabIndex].disabled) {
       this.tabs = this.tabs.map((tab) => {
@@ -89,46 +91,17 @@ export class FkTabs {
       })
     }
   }
-  @Method()
-  sizer() {
-    let styleTag = document.createElement('style');
-    let textContent = `
-    .c-tabs__expander {
-      width: ${this.width};
-      height: ${this.height} }`;
-    styleTag.innerHTML = textContent;
-    this.elem.shadowRoot.appendChild(styleTag);
-  }
-
-  @Method()
-  expand(tabIndex: number) {
-
-    if (!this.tabs[tabIndex].disabled) {
-      this.tabs = this.tabs.map((tab) => {
-        tab.open = false;
-        return tab;
-      });
-      let openTab: HTMLDivElement = this.tabs[tabIndex]
-      let tabHeight = openTab.getBoundingClientRect().height;
-      console.log(tabHeight)
-      this.height = tabHeight.toString();
-      this.onChange.emit({ idx: tabIndex });
-    }
-  }
-
-
 
   render() {
-    this.sizer();
+
     return (
       <div id="theTabContainer" class="c-tabs">
-        <div role="tablist" class="c-tabs c-tabs__expander">
+        <div role="tablist" class="c-tabs">
           <div class="c-tabs__nav">
             <div class="c-tabs__headings">
               {this.tabs.map((tab, i: number) => {
                 const openClass = tab.open ? 'c-tab-heading--active' : '';
                 const typeClass = tab.type ? `c-tab-heading--${tab.type}` : '';
-
                 return (
                   <button
                     role="tab"
@@ -146,11 +119,9 @@ export class FkTabs {
         </div>
         <div class="c-button-container">
         {this.tabs.map((tab, i: number) => {
-          console.log('did it!')
           if (tab.open) {
           return (
             <button
-              id="st"
               disabled={tab.disabled}
               class={`c-button c-button--showMore`}
               onClick={() => this.expand(i)}

@@ -37,42 +37,32 @@ export namespace Components {
   }
 
   interface FkTab {
-    'class'?: string;
     'disabled': boolean;
     'header': string;
-    'height'?: string;
     'open': boolean;
     'type': string;
-    'width'?: string;
   }
   interface FkTabAttributes extends StencilHTMLAttributes {
-    'class'?: string;
     'disabled'?: boolean;
     'header'?: string;
-    'height'?: string;
     'open'?: boolean;
     'type'?: string;
-    'width'?: string;
   }
 
   interface FkTabs {
-    'class'?: string;
     'convToHTMLElement': any;
     'cssClass'?: string;
     'currentTab': () => Promise<number>;
     'expand': (tabIndex: number) => void;
-    'getMeasuredHeight': () => string;
     'getNewHeight': () => Promise<string>;
     'height'?: string;
     'openTab': (tabIndex: number) => void;
     'removeFocus': (tabIndex: number) => void;
-    'sizer': () => void;
     'tabContainerHeight': any;
     'value': string;
     'width'?: string;
   }
   interface FkTabsAttributes extends StencilHTMLAttributes {
-    'class'?: string;
     'convToHTMLElement'?: any;
     'cssClass'?: string;
     'height'?: string;

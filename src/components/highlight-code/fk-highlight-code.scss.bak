@@ -22,36 +22,29 @@
 
 .fk-highlight-code-container,
 pre.fk-highlight-code-container {
-  position: absolute;
-  top: 56px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 500;
   width: 100%;
-  max-width: 100%;
-  padding: 0;
-
-  overflow-x:visible;
+  // max-height: 800px;
+  padding: 10px 20px 0 20px;
+  overflow-: visible;
   font-family: var(--fk-highlight-code-font-family, 'Source Code Pro', sans-serif, monospace);
   font-size: var(--fk-highlight-code-font-size, 1.01rem);
   color: var(--fk-highlight-code-color, #eaeae9);
   text-align: var(--fk-highlight-code-text-align, start);
   tab-size: 2;
   background: var(--fk-highlight-code-background, #282c34);
-  border: 15px solid #22262d;
+  // border: 15px solid #282c34;
+  border-bottom: 10px solid #282c34;
   border-radius: var(--fk-highlight-code-border-radius, 0);
   transition: all .2s ease-in-out;
   transform: scale(var(--fk-highlight-code-zoom, 1));
   transform-origin: bottom left;
   direction: var(--fk-highlight-code-direction, ltr);
 
-
   code.theCodeTag {
-    max-width: 100%;
+    width: 100%;
     font-family: var(--fk-highlight-code-font-family);
     font-size: var(--fk-highlight-code-font-size);
-    line-height: var(--fk-highlight-code-line-height, 1.45rem);
+    line-height: var(--fk-highlight-code-line-height, 1.5rem);
     color: #edede7;
     tab-size: 2;
     div:empty {

@@ -4,60 +4,55 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
   <title>Framekit - Highlight Code</title>
-
-  <style>
-    body {
-      background: #2e2e2e;
-    }
-  </style>
-
   <script src="/build/framekit-highlight-code.js"></script>
 </head>
 <body>
-  <select id="heightChanger">
-    <option value="250px">250px</option>
-    <option value="400px">400px</option>
-    <option value="600px">600px</option>
-    <option value="100vh">100vh</option>
-    <option value="100%">100%</option>
-  </select>
-  <fk-tabs id="tabs" class="c-tabs-container c-tabs__expander" height="400px" width="100%">
+  <fk-tabs class="c-tabs-container" height="300" width="100%">
     <fk-tab language="html" type="brand" header="HTML" open>
-      <fk-highlight-code language="markup"><code slot="code">
-    <script type="tedt/plain" class="language-markup"><form>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-      </div>
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+      <fk-highlight-code language="markup"><code slot="code"><script type="tedt/plain" class="language-markup"><form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
   </script></code>
       </fk-highlight-code>
   </fk-tab>
   <fk-tab language="typescript" type="brand" header="Typescript" >
 
 
-
 <fk-highlight-code language="typescript">
-  <code slot="code">
-      function jscode() {
-        const codie =
-      `isMobile(): Promise<boolean> {
-        return new Promise<boolean>((resolve) {
-          resolve(FramekitUtils.isMobile());
-        });
-      }`
-    return codie}
-  </code>
+  <code slot="code">@Method()
+isMobile(): Promise<boolean> {
+  return new Promise<boolean>((resolve) => {
+    resolve(FramekitUtils.isMobile());
+  });
+}</code>
 </fk-highlight-code>
 </fk-tab>
 <fk-tab language="java" type="brand" header="Java" >
@@ -88,6 +83,7 @@
 <fk-tab language="html" type="brand" header="HTML">
 <fk-highlight-code language="bash">
   <code slot="code">Cool, let's kick start a new Framekit presentation
+
     ? What's your project name (will be use to create a new folder)? (framekit)
     ? What's your presentation name (max. 45 characters, will be use for meta tags and manifest information)? (Framekit)
     ? What's your presentation about (its description)? (Create a lightweight presentation using Web Components 🚀)
@@ -98,39 +94,7 @@
 </fk-highlight-code>
 </fk-tab>
 </fk-tabs>
+<!-- <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
 
-<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script>
-    $("select").on('change', function(){
-      let newheight = this.value
-
-
-      $("#tabs").attr('height', this.value);
-    })
-
-    let setProps = () => {
-      let fkTabby  = document.getElementById('tabs')
-      if (fkTabby) {
-      let allTabs = [].slice.prototype(fkTabby.querySelectorAll('fk-tabs'))
-      for (let i = 0; i < allTabs.length; ++i) {
-        if (allTabs[i].open) {
-          let tabNode = allTabs[i].name
-          let tabHeight = tabNode.getBoundingRect();
-          console.log(tabHeight)
-        }
-      }
-      }
-    }
-function code(){
-    $("code[slot='code']").each( function() {
-  var divHeight = 0;
-  $(this).each( function() {
-    divHeight = $("code").height();
-    console.log('jjj: '+divHeight)
-  });
-
-})}
-
-</script>
 </body>
 </html>
