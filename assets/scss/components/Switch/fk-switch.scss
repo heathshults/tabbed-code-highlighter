@@ -1,0 +1,212 @@
+@import '../typography/mixins';
+@import '../theme/mixins';
+
+$switch-sm-height: $bp-size-text-sm;
+$switch-sm-width:  $switch-sm-height * 2;
+
+// TRANSITION SPEEDS
+$transition-fast: .15s;
+
+// ON OFF SWITCH
+$switch-height: $bp-size-text-xxl;
+$switch-width: $switch-height * 2.1;
+
+$switch-lg-height: $bp-size-text-xxxxl;
+$switch-lg-width: $switch-height * 2.7;
+
+
+
+// MIXINS
+@mixin box-sizing ($sizing: border-box) {
+  box-sizing: border-box;
+}
+
+@mixin transition ($attr,$time,$ease) {
+  -webkit-transition: $attr $time $ease;
+  -o-transition: $attr $time $ease;
+  -moz-transition: $attr $time $ease;
+  transition: $attr $time $ease;
+}
+
+.c-switch {
+  position: relative;
+  display: inline-block;
+  
+  & &__input {
+    position: absolute;
+    display: none; 
+
+    &:checked ~ .c-switch__label .c-switch__control .c-switch__handle{
+      right: 0;
+    }
+
+    &:checked ~ .c-switch__label .c-switch__control .c-switch__track .c-switch__inner{
+      margin-left: 0;
+    }
+  }
+
+  & &__label {
+    display: block;
+    cursor: pointer;
+  }
+
+  & &__text {
+    padding-left: 8px;
+    vertical-align: middle;
+    @include fk-type('body3');
+    @extend %t-text-secondary;
+    @include font-weight('semibold');
+
+    &--left {
+      padding-right: 8px;
+      padding-left: 0px;
+    }
+  }
+
+  & &__control {
+    position: relative;
+    display: inline-block;
+    width: $switch-width;
+    vertical-align: middle;
+  }
+
+  & &__handle {
+    position: absolute;
+    top: 0;
+    right: $switch-width - $switch-height;
+    z-index: 1000;
+    display: inline-block;
+    width: $switch-height;
+    height: $switch-height;
+    margin: 0;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: $switch-height;
+    box-shadow: 0 1px 2px rgba(0,0,0,.8);
+    @include transition(right, $transition-fast, ease-in-out);
+    @include fk-theme-bg('canvas');
+    @include fk-theme-switcher('border-color', fk-theme-get-border('secondary', 'dm'), fk-theme-get-border('primary'));
+  }
+
+  & &__track {
+    display: block;
+    margin: 0;
+    overflow: hidden;
+    border-radius: $switch-height * 2;
+  }
+
+  & &__inner {
+    width: 200%;
+    margin-left: -100%;
+    @include transition(margin, $transition-fast, ease-in-out);
+
+    &:before,
+    &:after {
+        float: left;
+        display: block;
+        width: 50%;
+        padding: 0;
+        height: $switch-height;
+        line-height: $switch-height;
+        font-size: 12px;
+        color: #fff;
+        font-weight: font-weight('semibold');
+        @include box-sizing(border-box);
+        box-shadow: inset 0 0 2px 1px rgba(18,18,18,.03), inset 0 0px 1px 0 rgba(18,18,18,0.7);
+        border-radius: $switch-height * 2;
+    }
+    &:before {
+        //ON
+        content: " ";
+        @include fk-theme-switcher('color', fk-theme-get-text('primary', 'lm'), fk-theme-get-text('primary','dm'));
+        @include fk-theme-switcher('background-color',$bp-lm-messaging-selected-accent , $bp-dm-messaging-selected-accent );
+        box-shadow: inset 0 0 2px 1px rgba(18,18,18, .6), inset 0 0px 1px 0 rgba(18,18,18,0.7);
+       // @include fk-theme-switcher('background-color', fk-theme-get-messaging('success', 'strong'), fk-theme-get-messaging('success', 'strong', 'dm'));
+
+        
+    
+    }
+    &:after {
+        // OFF
+        content: " ";
+       
+        text-align: right;
+        @include fk-theme-switcher('background-color', fk-theme-get-bg('layer2', lm) ,   fk-theme-get-bg('layer2', dm) );
+        @include fk-theme-switcher('color', fk-theme-get-text('secondary', lm), fk-theme-get-text('subtle', dm));
+        box-shadow: inset 0 0 2px 1px rgba(18,18,18,.03), inset 0 0px 1px 0 rgba(18,18,18,0.9);
+
+        .c-switch.c-switch--onoff &{
+          content: "OFF";
+        }
+    }
+
+  }
+} 
+ 
+
+// Variants  ===================
+.c-switch.c-switch--onoff .c-switch__inner:after {
+  content: "OFF";
+  padding-right: 3px; // left padding of text
+  @include fk-type('micro');
+  @include fk-theme-switcher('color', fk-theme-get-text('secondary', lm), fk-theme-get-text('secondary', dm));
+}
+
+.c-switch.c-switch--onoff .c-switch__inner:before {
+  content: "ON";
+  padding-left: 5px; // left padding of text
+  @include fk-type('micro');
+  @include fk-theme-switcher('color', fk-theme-get-text('secondary', dm), fk-theme-get-text('secondary', dm));
+}
+
+
+
+.c-switch.c-switch--sm .c-switch__handle  {
+    right: $switch-sm-width - $switch-sm-height;
+    width: $switch-sm-height;
+    height: $switch-sm-height;
+    height: 16px;
+}
+
+.c-switch.c-switch--sm .c-switch__control{
+  width: $switch-sm-width
+}
+
+
+.c-switch.c-switch--sm .c-switch__inner {
+  width: 200%;
+  margin-left: -100%;
+
+  &:before,
+  &:after {
+      height: 16px;
+      line-height: 16px;
+      font-size: 1px;
+      
+  }
+}
+
+
+.c-switch.c-switch--lg .c-switch__control{
+  width:   $switch-lg-width;
+  height:  $switch-lg-height;
+  }
+
+
+.c-switch.c-switch--lg .c-switch__handle  {
+  right: $switch-lg-width - $switch-lg-height;
+  width: $switch-lg-height;
+  height: $switch-lg-height;
+}
+
+.c-switch.c-switch--lg .c-switch__inner {
+  width: 200%;
+  margin-left: -100%;
+
+  &:before,
+  &:after {
+      height: $switch-lg-height;
+      line-height: $switch-lg-height;
+      
+  }
+}

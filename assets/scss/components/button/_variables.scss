@@ -1,0 +1,203 @@
+@import '../../framekit-util';
+
+
+////
+/// @group button
+////
+$link-button-ns: 'link';
+
+// temp.. not sure if control stuff shoudl be here
+$fk-control-border-radius: $bp-size-border-radius-md !default;
+$fk-control-border: $bp-size-border-width-thin solid color-neutral('30') !default;
+
+$fk-control-font-size-sm: $bp-size-text-sm !default;
+$fk-control-line-height-sm: $bp-size-text-sm;
+$fk-control-padding-sm: .1em .75em;
+
+$fk-control-font-size-default: $bp-size-text-md !default;
+$fk-control-line-height-default: $fk-global-baseline;
+$fk-control-padding-default: .5em .75em;
+
+$fk-control-font-size-lg: $bp-size-text-xl !default;
+$fk-control-line-height-lg: $bp-size-text-xl;
+$fk-control-padding-lg: .57em .75em;
+
+$fk-control-font-size-xl: $bp-size-text-xxl !default;
+$fk-control-padding-xl: .75em 2em;
+
+$fk-control-font-size-block: $bp-size-text-xl !default;
+$fk-control-line-height-block: 12px 32px;
+// end of temp
+
+$fk-button-font-size:   $fk-control-font-size-default;
+$fk-button-font-weight: font-weight('regular');
+$fk-button-line-height: $bp-type-line-height-default;
+
+$fk-button-min-width: 24px;
+// $fk-button-max-width: 250px;
+$fk-button-max-width: none;
+$fk-button-padding: $fk-control-padding-default;
+
+
+$fk-button-border-width: 1px;
+$fk-button-border-radius: $fk-control-border-radius;
+
+
+$fk-button-shadow-disabled: none;
+$fk-button-transition: color $bp-motion-animation-duration-immediantly ease-in-out, background-color $bp-motion-animation-duration-immediantly ease-in-out, border-color $bp-motion-animation-duration-quickly ease-in-out,box-shadow $bp-motion-animation-duration-quickly ease-in-out;
+
+$fk-button-link-transition: color $bp-motion-animation-duration-default ease-in-out, background-color $bp-motion-animation-duration-default ease-in-out, border-color $bp-motion-animation-duration-default ease-in-out,box-shadow $bp-motion-animation-duration-quickly ease-in-out;
+
+
+// set the class name of the button to their token designation.
+// $fk-button-variant-map: (
+//     default: 'secondary',   
+//     primary:  'primary',
+//     primary-alt: 'primaryalt',
+//     destructive: 'destructive'
+// );   
+ 
+
+
+$fk-button-variant-map: (
+    default:(
+        lm:(
+            default: fk-theme-get-interactive('secondary'),
+            hover: darken(fk-theme-get-interactive('secondary'), 2%),
+            active: darken(fk-theme-get-interactive('secondary'), 10%),
+            disabled: fk-theme-get-interactive('disabled'),
+            label: fk-theme-get-text('link'),
+        ),
+        dm:(
+            default: fk-theme-get-interactive('secondary', 'dm'),
+            hover: darken(fk-theme-get-interactive('secondary', 'dm'), 4%),
+            active: darken(fk-theme-get-interactive('secondary', 'dm'), 10%),
+            disabled: fk-theme-get-interactive('disabled', 'dm'),
+            label: fk-theme-get-text('primary', 'dm'),
+        )
+    ),   
+    primary:(
+        lm:(
+            default: fk-theme-get-interactive('primary'),
+            hover: darken(fk-theme-get-interactive('primary'), 4%),
+            active: darken(fk-theme-get-interactive('primary'), 10%),
+            disabled: fk-theme-get-interactive('disabled'),
+            label: fk-theme-get-text('primary', 'dm'),
+        ),
+        dm:(
+            default: fk-theme-get-interactive('primary'),
+            hover: darken(fk-theme-get-interactive('primary', 'dm'), 10%),
+            active: darken(fk-theme-get-interactive('primary', 'dm'), 10%),
+            disabled: fk-theme-get-interactive('disabled', 'dm'),
+            label: fk-theme-get-text('primary', 'dm'),
+        )
+    ),   
+    primary-alt: (
+        lm:(
+            default: fk-theme-get-interactive('primaryalt'),
+            hover: darken(fk-theme-get-interactive('primaryalt'), 4%),
+            active: darken(fk-theme-get-interactive('primaryalt'), 10%),
+            disabled: fk-theme-get-interactive('disabled'),
+            label: fk-theme-get-text('primary', 'dm'),
+        ),
+        dm:(
+            default: fk-theme-get-interactive('primaryalt'),
+            hover: darken(fk-theme-get-interactive('primaryalt'), 4%),
+            active: darken(fk-theme-get-interactive('primaryalt'), 10%),
+            disabled: fk-theme-get-interactive('disabled'),
+            label: fk-theme-get-text('primary', 'dm'),
+        )
+    ),   
+    destructive: (
+        lm:(
+            default: fk-theme-get-interactive('destructive'),
+            hover: darken(fk-theme-get-interactive('destructive'), 4%),
+            active: darken(fk-theme-get-interactive('destructive'), 10%),
+            disabled: fk-theme-get-interactive('disabled'),
+            label: fk-theme-get-text('primary', 'dm'),
+            ),
+        dm:(
+            default: fk-theme-get-interactive('destructive'),
+            hover: darken(fk-theme-get-interactive('destructive'), 4%),
+            active: darken(fk-theme-get-interactive('destructive'), 10%),
+            disabled: fk-theme-get-interactive('disabled'),
+            label: fk-theme-get-text('primary', 'dm'),
+        )
+    )
+);     
+ 
+
+
+
+
+
+$fk-button-size-map: (
+    'sm': (
+        font-size: $fk-control-font-size-sm,
+        padding: $fk-control-padding-sm
+    ),
+    'lg':(
+        font-size: $fk-control-font-size-lg,
+        padding: $fk-control-padding-lg
+    ),
+    'xl':(
+        font-size: $fk-control-font-size-xl,
+        padding: $fk-control-padding-xl
+    )
+);
+
+$fk-button-link-variant-map: (
+    primary:(
+        lm:(
+            default: fk-theme-get-text('link'),
+            hover: darken(fk-theme-get-text('link'), 2%),
+            active: darken(fk-theme-get-text('link'), 10%),
+            disabled: fk-theme-get-text('subtle'),
+        ),
+        dm:(
+            default: fk-theme-get-text('link', 'dm'),
+            hover: darken(fk-theme-get-text('link', 'dm'), 2%),
+            active: darken(fk-theme-get-text('link', 'dm'), 10%),
+            disabled: fk-theme-get-text('subtle', 'dm')
+        )
+    ),
+    secondary:(
+        lm: (
+            default: fk-theme-get-text('primary'),
+            hover: darken(fk-theme-get-text('primary'), 2%),
+            active: darken(fk-theme-get-text('primary'), 10%),
+            disabled: fk-theme-get-text('subtle'),
+        ),
+        dm: (
+            default: fk-theme-get-text('primary', 'dm'),
+            hover: darken(fk-theme-get-text('primary', 'dm'), 2%),
+            active: darken(fk-theme-get-text('primary', 'dm'), 10%),
+            disabled: fk-theme-get-text('subtle', 'dm')
+        )
+    ),
+    destructive: (
+        lm: (
+            default: fk-theme-get-text('error'),
+            hover: darken(fk-theme-get-text('error'), 2%),
+            active: darken(fk-theme-get-text('error'), 10%),
+            disabled: fk-theme-get-text('subtle')
+        ),
+        dm: (
+            default: fk-theme-get-text('error', 'dm'),
+            hover: darken(fk-theme-get-text('error'), 4%),
+            active: darken(fk-theme-get-text('error'), 10%),
+            disabled: fk-theme-get-text('subtle', 'dm')
+        )
+    )
+);   
+
+$fk-button-link-size-map: (
+    'sm': (
+        font-size: $fk-control-font-size-sm,
+        padding: $fk-control-padding-sm
+    ),
+    'lg':(
+        font-size: $fk-control-font-size-lg,
+        padding: $fk-control-padding-lg
+    )
+);

@@ -1,0 +1,58 @@
+/*
+   align
+*/
+$fk-utils-align-enable: true !default; 
+$fk-utils-align-responsive: true !default;
+$fk-utils-align-print: false !default;
+
+$fk-utils-align-breakpoints: map('web.breakpoints') !default;
+
+$fk-utils-align-ns: 'align' !default; 
+
+//Private function to include through looks and conditional statements
+@mixin _align($variant:'') {
+   
+   .#{$fk-ns-utilities}-#{$fk-utils-align-ns}-baseline#{$variant} {
+     vertical-align: baseline !important;  /* Browser default */
+   }
+
+   .#{$fk-ns-utilities}-#{$fk-utils-align-ns}-top#{$variant} {
+        vertical-align: top !important; 
+    }
+
+    .#{$fk-ns-utilities}-#{$fk-utils-align-ns}-middle#{$variant} {
+        vertical-align: middle !important; 
+    }
+
+    .#{$fk-ns-utilities}-#{$fk-utils-align-ns}-bottom#{$variant} {
+        vertical-align: bottom !important; 
+    }
+
+    .#{$fk-ns-utilities}-#{$fk-utils-align-ns}-text-bottom#{$variant} {
+        vertical-align: text-bottom !important; 
+    }
+
+    .#{$fk-ns-utilities}-#{$fk-utils-align-ns}-text-top#{$variant} {
+        vertical-align: text-top !important; 
+    }
+
+}
+
+
+@if($fk-config-enable-utilties AND $fk-utils-align-enable){
+    @include _align();
+}
+
+@if $fk-utils-align-print AND $fk-config-enable-print {
+    @media print {
+        @include _align($fk-separator-breakpoint + $fk-ns-print);
+    }
+}
+
+@if ($fk-utils-align-responsive AND $fk-config-enable-responsive) {
+    @each $breakpoint-name, $breakpoint-size in $fk-utils-align-breakpoints {
+        @include mq-only($breakpoint-name){
+           @include _align($fk-separator-breakpoint + $breakpoint-name);
+        }
+    }
+} 

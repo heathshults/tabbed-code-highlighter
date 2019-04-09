@@ -1,0 +1,29 @@
+$fk-help-margin-top: 0;
+$fk-help-height: 0;
+$fk-help-stack-spacing: 4px;
+$fk-help-icon-size: 'sm';
+$fk-help-icon-margin: inline('xs');
+
+
+.c-help {
+  @include fk-type('body3');
+  @include fk-theme-text('secondary');
+
+  & + .c-help {
+      margin-top: $fk-help-stack-spacing;
+  }
+
+  & .c-ucon {
+    @extend .c-ucon--#{$fk-help-icon-size};
+    margin: $fk-help-icon-margin;
+  }
+
+  &.is-error {
+      @include fk-theme-text('error');
+  }
+
+  &.is-success {
+    @include fk-theme-text('success');
+  }
+
+}

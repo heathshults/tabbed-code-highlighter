@@ -1,0 +1,31 @@
+@import 'variables';
+@import '../../framekit-util';
+@import '../../objects/media-object/mixins';
+
+ 
+//component should take on as much of the surronding content or theme values as possible.
+//TBD font size
+
+.#{$fk-ns-component}-callout {
+    @include fk-media-object-container();
+
+    // Layering / Mode coloring
+    // Typography 
+    margin-bottom: $fk-global-baseline;
+    @include inset();
+
+    &__icon {
+        @include fk-media-object-left();
+        align-self: center !important;
+        
+        //TKTK replace with mixin // poly? 
+        -ms-flex-item-align: center !important;
+    }
+
+    &__content{
+        @include fk-media-object-content();
+        padding-top: 2px; //align with icon more on single line of text
+        padding-left: space('md');
+    }
+}
+

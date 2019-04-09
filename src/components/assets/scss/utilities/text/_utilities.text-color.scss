@@ -1,0 +1,52 @@
+/*
+   text-color
+*/
+
+@import '../../components/theme/mixins';
+
+
+$fk-utils-text-color-enable: true !default; 
+$fk-utils-text-color-responsive: false !default;
+$fk-utils-text-color-print: false !default;
+
+$fk-utils-text-color-breakpoints: map('web.breakpoints') !default;
+
+$fk-utils-text-color-ns: 'text-color' !default; 
+// $fk-utils-text-color-map: $fk-theme-text-map;$fk-utils-text-color-map: $fk-theme-text-map;
+$fk-utils-text-color-map: map('lm.text');
+
+
+//if map based, add catagory, Type, Item location
+//$fk-utils-text-color-map: map('');
+
+
+//Private function to include through looks and conditional statements
+@mixin _text-color($variant:'') {
+    @each $name, $value in $fk-utils-text-color-map {
+        .#{$fk-ns-utilities}-#{$fk-utils-text-color-ns}-#{$name}#{$variant} {
+            color: fk-get-theme-text($name);
+            &-#{$fk-ns-ondark} {
+               color: fk-get-theme-text($name, 'onDark');
+            }
+        }
+    }
+}
+
+
+@if($fk-config-enable-utilties AND $fk-utils-text-color-enable){
+    @include _text-color();
+}
+
+@if $fk-utils-text-color-print AND $fk-config-enable-print {
+    @media print {
+        @include _text-color($fk-separator-breakpoint + $fk-ns-print);
+    }
+}
+
+@if ($fk-utils-text-color-responsive AND $fk-config-enable-responsive) {
+    @each $breakpoint-name, $breakpoint-size in $fk-utils-text-color-breakpoints {
+        @include mq-only($breakpoint-name){
+           @include _text-color($fk-separator-breakpoint + $breakpoint-name);
+        }
+    }
+} 

@@ -1,0 +1,101 @@
+
+//  c-modal
+//  c-modal__header
+//  c-modal__body
+//  c-modal__footer
+
+$fk-modal-lg:                          800px !default;
+$fk-modal-md:                          500px !default;
+$fk-modal-sm:                          300px !default;
+
+$fk-modal-transition:                  transform .3s ease-out !default;
+
+$fk-modal-header-padding: inset('md');
+$fk-modal-zindex: 500;
+
+
+.c-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  z-index: $fk-modal-zindex;
+  pointer-events: none;
+    display: flex;
+    align-items:  center;
+
+
+  &__container {
+    position: relative;
+    //width: auto;
+    margin: 1.75rem auto;
+  
+    //margin: $modal-dialog-margin;
+    // allow clicks to pass through for custom click handling to close modal
+  
+    // When fading in the modal, animate it to slide down
+    .is-closed {
+      transform: translate(0, -25%);
+    }
+    .is-open {
+      transform: translate(0, 0);
+    }
+
+     // Remove focus outline from opened modal
+     outline: 0;
+  }
+  &--centered &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //min-height: calc(100% - (#{$modal-dialog-margin} * 2));
+  }
+
+
+  &__dialog {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 640px;
+    height: 100%;
+    max-height: 100%;
+    
+   // height: 100px;
+    pointer-events: auto;
+    @include fk-theme-bg('canvas');
+    background-clip: padding-box;
+   
+  
+    
+    overflow: hidden;
+    // box-shadow: $bp-depth-shadow-light-xl;
+    //border-radius
+    //border
+    // Remove focus outline from opened modal
+    outline: 0;
+
+  
+
+
+
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start; // so the close btn always stays on the upper right corner
+    justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
+  }
+
+
+
+
+
+}
+
+
+
+// Modal body
+// Where all modal content resides (sibling of __header and __footer)
+

@@ -1,0 +1,71 @@
+$fk-obj-column-gap: 12px;
+
+
+@mixin fk-objects-columns(){
+
+  .#{$fk-ns-objects}columns {
+    flex-wrap: wrap;
+    margin-top: -$fk-obj-column-gap;
+    margin-right: -$fk-obj-column-gap;
+    margin-left: -$fk-obj-column-gap;
+
+    @include mq-from-sm {
+      display: flex;
+    }
+
+    &:last-child {
+      margin-bottom: -$fk-obj-column-gap;
+    }
+
+    &:not(:last-child) {
+      //margin-bottom: calc(1.5rem - #{$fk-obj-column-gap});
+      margin-bottom: $fk-obj-column-gap;
+    } // Modifiers
+
+    &--centered {
+      justify-content: center;
+    }
+
+    //force single row
+    &--row {
+      flex-wrap: nowrap;
+    }
+
+    &--gapless {
+      margin-top: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+      margin-left: 0;
+
+      &>.#{$fk-ns-objects}column {
+        padding: 0 !important;
+        margin: 0;
+      }
+      &:not(:last-child) {
+        // margin-bottom: 1.5rem;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+        
+  .#{$fk-ns-objects}column {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: $fk-obj-column-gap;
+    margin:0;
+  }
+
+   [class*='u-width-']  {
+    flex: none;
+        & > .#{$fk-ns-objects}column {
+            flex: none;
+        }
+    }
+    
+ 
+} // END MIXIN
+

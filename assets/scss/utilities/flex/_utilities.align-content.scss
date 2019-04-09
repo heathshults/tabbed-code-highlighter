@@ -1,0 +1,40 @@
+/*
+   align-content
+*/
+$fk-utils-align-content-enable: true !default; 
+$fk-utils-align-content-responsive: true !default;
+$fk-utils-align-content-print: false !default;
+
+$fk-utils-align-content-breakpoints: map('web.breakpoints') !default;
+
+$fk-utils-align-content-ns: 'align-content' !default; 
+$fk-utils-align-content-options: flex-start, center, flex-end, space-between, space-around, stretch;
+
+//Private function to include through looks and conditional statements
+@mixin _align-content($variant:'') {
+
+    @each $justify in $fk-utils-align-content-options {
+        .#{$fk-ns-utilities + $fk-utils-align-content-ns}-#{$justify}#{$variant} {
+            -ms-flex-line-pack: $justify;
+            align-content: $justify;
+        }
+    }
+}
+
+@if($fk-config-enable-utilties AND $fk-utils-align-content-enable){
+    @include _align-content();
+}
+
+@if $fk-utils-align-content-print AND $fk-config-enable-print {
+    @media print {
+        @include _align-content($fk-separator-breakpoint + $fk-ns-print);
+    }
+}
+
+@if ($fk-utils-align-content-responsive AND $fk-config-enable-responsive) {
+    @each $breakpoint-name, $breakpoint-size in $fk-utils-align-content-breakpoints {
+        @include mq-only($breakpoint-name){
+           @include _align-content($fk-separator-breakpoint + $breakpoint-name);
+        }
+    }
+} 

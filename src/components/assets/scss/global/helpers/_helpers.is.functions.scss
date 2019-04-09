@@ -1,0 +1,93 @@
+
+////
+/// @group Generic Functions
+////
+
+/// Check if value is a number
+/// @param {string} value - Value to check is a number
+@function is-number($value) {
+    @return type-of($value) == 'number';
+}
+
+
+/// Check if value is a time unit
+/// @param {string} value - Value to check is a time 
+  @function is-time($value) {
+    @return is-number($value) and index('ms' 's', unit($value)) != null;
+  }
+   
+/// Check if value is a duration
+/// @param {string} value - Value to check is a duration 
+  @function is-duration($value) {
+    @return is-time($value);
+  }
+/// Check if value is an angle unit, with def, rad, grad or turn in it
+/// @param {string} value - Value to check is a duration   
+  @function is-angle($value) {
+    @return is-number($value) and index('deg' 'rad' 'grad' 'turn', unit($value)) != null;
+  }
+
+/// Check if value is a integer
+/// @param {string} value - Value to check is a integer 
+  @function is-integer($value) {
+    @return is-number($value) and round($value) == $value;
+  }
+
+/// Check if value is a relative length with a 'em' 'ex' 'ch' 'rem' 'vw' 'vh' 'vmin' 'vmax'
+/// @param {string} value - Value to check 
+  @function is-relative-length($value) {
+    @return is-number($value) and index('em' 'ex' 'ch' 'rem' 'vw' 'vh' 'vmin' 'vmax', unit($value)) != null;
+  }
+
+ @function is-em($value){
+  @return is-number($value) and index('em', unit($value)) != null;
+ }
+
+ @function is-rem($value){
+  @return is-number($value) and index('rem', unit($value)) != null;
+ }
+
+
+/// Check if value is a relative length with a 'cm' 'mm' 'in' 'px' 'pt' 'pc'
+/// @param {string} value - Value to check  
+@function is-absolute-length($value) {
+  @return is-number($value) and index('cm' 'mm' 'in' 'px' 'pt' 'pc', unit($value)) != null;
+}
+
+
+@function is-px($value){
+  @return is-number($value) and index('px', unit($value)) != null;
+}
+
+
+/// Check if value is a percentage
+/// @param {string} value - Value to check  
+  @function is-percentage($value) {
+    @return is-number($value) and unit($value) == '%';
+  }
+
+/// Check if value is a relative or absolute length value
+/// @param {string} value - Value to check  
+  @function is-length($value) {
+    @return is-relative-length($value) or is-absolute-length($value);
+  }
+
+/// Check if value is a resolution value, looking for dpi, dpcm, dppx
+/// @param {string} value - Value to check   
+  @function is-resolution($value) {
+    @return is-number($value) and index('dpi' 'dpcm' 'dppx', unit($value)) != null;
+  }
+
+/// Check if value is a position value, looking for 'top' 'right' 'bottom' 'left' 'center'
+/// @param {string} value - Value to check  
+  @function is-position($value) {
+    @return is-length($value) or is-percentage($value) or index('top' 'right' 'bottom' 'left' 'center', $value) != null;
+  }
+
+
+
+  /// Check if value is a map 
+  @function is-map($value){
+      @return type-of($value) == 'map';
+
+  }

@@ -1,0 +1,56 @@
+@import '../theme/mixins';
+
+.#{$fk-ns-component}-tabs {
+
+    &__container {
+      width: 100%;
+      padding: 0;
+    }
+  
+    &__content {
+      display: none;
+      padding: inset('lg');
+      
+      @include fk-theme-bg('canvas');
+      @include fk-theme-shadow('xs');
+
+      &.is-active {
+        display: block;
+      }
+    }
+  
+    &__label {
+      display: inline-block;
+      padding: 1rem 1.5625rem;
+      margin: 0 0 -1px;
+      //font-weight: 400;
+      //color: #0962ba;
+      // tktk temp use theme
+      color: fk-theme-get-text('link');
+      text-align: center;
+      @include shade('05');
+
+      &:not(.is-active){
+        border-bottom: 1px solid shade('05');
+      }
+      
+     
+
+    //   border-left: 1px solid #dedede;
+  
+      &:hover {
+        cursor: pointer;
+        //custom here to subtle hover
+        background: rgba(0, 0, 0, 0.07);
+      }
+  
+      &.is-active {
+        @include fk-type('headline5');
+        @include fk-theme-bg('canvas');
+    
+        // custom here for the weirdness of tab
+        @include fk-theme-switcher('box-shadow', 0px -1px 1px rgba(27, 31, 35, 0.15), 0px -1px 1px rgba(18, 18, 18, 1));
+      }
+    } 
+}
+  

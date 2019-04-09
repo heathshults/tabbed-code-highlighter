@@ -1,0 +1,88 @@
+$fk-ns-space: '' !default;
+$fk-utils-spacing-responsive: true !default;
+$fk-utils-spacing-important: true !default;
+$fk-utils-spacing-breakpoints: get('web.breakpoints') !default;
+$fk-utils-spacing-map: map('space') !default;
+
+@mixin _utilities-spacing-groups( $variant: '') { 
+  $important: null;  //local variable context
+  @if($fk-utils-spacing-important){ $important: !important;}
+
+  @each $type, $typesizes in $fk-utils-spacing-map {
+    // have to ignore one level of map. Maybe restructure needed TKTK
+    @if $type != 'spacing' {
+
+      .#{$fk-ns-utilities}-#{$fk-ns-space + $type}-none#{$variant} { padding: 0 $important;}
+
+      @each $size, $value in $typesizes {
+        @if $size == 'default' {
+          $size:"";
+        }@else {
+          $size: -#{$size};
+          .#{$fk-ns-utilities}-#{$fk-ns-space + $type}#{$size}#{$variant} { padding: $value $important;}  
+        } 
+      }
+    }
+  }  
+} 
+
+@mixin _utilities-spacing-units($variant: '') {
+  $important: null;  //local variable context
+  @if($fk-utils-spacing-important){ $important: !important;}
+
+  @each $size, $value in map('space.spacing'){
+
+    // lets prevent "default" for now
+    @if $size == 'default'  {
+      //backlog
+    }
+    .#{$fk-ns-utilities}-#{$fk-ns-space + $fk-abbr-padding + '-' + $size + $variant} { 
+      padding: $value;
+    }
+    .#{$fk-ns-utilities}-#{$fk-ns-space + $fk-abbr-margin + '-' + $size + $variant} { 
+      margin: $value;
+    }
+
+    .#{$fk-ns-utilities}-#{$fk-ns-space + $fk-abbr-padding}x-#{$size}{
+      padding-left: $value;
+      padding-right: $value;
+    }
+    .#{$fk-ns-utilities}-#{$fk-ns-space + $fk-abbr-padding}y-#{$size}{
+      padding-top: $value;
+      padding-bottom: $value;
+    }
+
+    .#{$fk-ns-utilities}-#{$fk-ns-space + $fk-abbr-margin}x-#{$size}{
+      margin-left: $value;
+      margin-right: $value;
+    }
+    .#{$fk-ns-utilities}-#{$fk-ns-space + $fk-abbr-margin}y-#{$size}{
+      margin-top: $value;
+      margin-bottom: $value;
+    }
+
+
+
+    @each $edge, $sub in $fk-edges-map {
+      .#{$fk-ns-utilities}-#{$fk-ns-space + $fk-abbr-padding}#{$edge}-#{$size}{
+        padding-#{map-get($fk-edges-map,$edge)}: $value $important;
+      }
+
+      .#{$fk-ns-utilities}-#{$fk-ns-space + $fk-abbr-margin}#{$edge}-#{$size}{
+        margin-#{map-get($fk-edges-map,$edge)}: $value $important;
+      }
+    }
+  }
+}
+
+@include _utilities-spacing-groups;
+@include _utilities-spacing-units;
+
+@if ($fk-utils-spacing-responsive) {
+  @each $breakpoint-name, $breakpoint-size in $fk-utils-spacing-breakpoints {
+    @include mq-only($breakpoint-name){
+      @include _utilities-spacing-groups($fk-separator-breakpoint + $breakpoint-name);
+      @include _utilities-spacing-units($fk-separator-breakpoint + $breakpoint-name);
+    }
+  }
+}; 

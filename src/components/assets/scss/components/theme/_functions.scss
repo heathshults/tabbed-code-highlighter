@@ -1,0 +1,100 @@
+@import 'variables';
+@import '../../framekit-util';
+
+//=====================================================================
+//================= GETTER FUNCTIONS =================================
+//===============================================================
+
+/// Gets a background by bg / theme name. 
+/// Pulls the default mode values if no specified
+@function fk-theme-get-bg($name, $mode: $fk-theme-default-mode){
+    @return fk-theme-get-prop($mode, 'bg', $name );
+} 
+
+/// Gives back text color based on mode given 
+@function fk-theme-get-text($name, $mode: $fk-theme-default-mode){
+    @return fk-theme-get-prop($mode,'text', $name);
+}
+
+@function fk-theme-get-border($name, $mode: $fk-theme-default-mode){
+     @return fk-theme-get-prop($mode, 'border', $name);
+}
+@function fk-theme-get-interactive($name, $mode: $fk-theme-default-mode){
+    @return fk-theme-get-prop($mode,'interactive', $name);
+}
+@function fk-theme-get-messaging($name, $type:'strong', $mode: $fk-theme-default-mode){
+    @return fk-theme-get-prop($mode,'messaging', $name, $type);
+}
+
+@function fk-theme-get-shadow($name, $type:'outset', $mode: $fk-theme-default-mode){
+    @return fk-theme-get-prop($mode,'shadow',  $type, $name );
+}
+
+
+/// Worker function doing most work for pulling theme values.  No default values set to allow dynamic key set. 
+@function fk-theme-get-prop($mode, $type, $name, $keys... ){
+    @if deep-map-check(_get-mode($mode), $type, $name, $keys...){
+        @return deep-get(_get-mode($mode), $type, $name, $keys...);
+    }
+    @error ' failed to find [#{$type}] with name of [#{$name}] #{available-names(map-get(_get-mode($mode), $type))}';
+}
+ 
+@function fk-theme-determine-mode($bgcolor){
+    @if is-light($bgcolor){
+        @return $fk-theme-lm-name;
+    } @else {
+        @return $fk-theme-dm-name;
+    }
+}
+
+/// Private function to check logic if giving paramter is a color, an on naming or a valid bg color
+// @function fk-theme-determine-mode($on){
+
+//     @if($on){
+//         @if ($on == $fk-theme-tokenname-light OR $on == $fk-theme-tokenname-dark) {
+//             @return $on;
+//         } @else if type-of($on)== 'color' {
+//             @warn 'A color #{$on} was given (instead of a theme name for a color) for theme function, it is recommended to use theme colors, not custom, this feature may not be long term supported';
+//             @if (is-dark($on)) {
+//                 @return $fk-theme-tokenname-dark;
+//             }
+//         } @else {
+//             // assuming bg to test
+//             @if fk-theme-is-valid($on){
+//                 $colorPull: fk-theme-get-bg($on);
+//                 @if not is-color($colorPull){ 
+//                     @error 'in fk-theme-text(), request for #{$on} being pulled as #{$colorPull} was not a color';
+//                 }
+                
+//                 @if (is-dark($colorPull)) {
+//                     @return $fk-theme-tokenname-dark;
+//                 }
+//             } @else{
+//                 @warn '#{$on} was not found to be a color, a valid theme name or values #{onDarkName} or #{onLightName}. Sending back onLight version by default';
+//             }
+        
+//         }
+//     }
+//     @return $fk-theme-tokenname-light;
+// }
+
+
+//=====================================================================
+//================= PRIVATE FUNCTIONS =================================
+//===============================================================
+
+
+                
+
+/// Private function to pull mode by mode name
+@function _get-mode($name){
+    @if map-has-key($fk-theme-modes-map, $name){
+        @return map-get($fk-theme-modes-map, $name);
+    }
+    @error '#{$name} mode was not found in the _get-mode function';
+}
+
+// @debug fk-theme-get-bg('canvas', 'lm');
+// @debug fk-theme-get-interactive('primary');
+// @debug fk-theme-get-messaging(warning, subtle, 'dm');
+// @debug fk-theme-get-prop('bg','canvas');

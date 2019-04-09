@@ -1,0 +1,161 @@
+
+
+///This is function to get speicfic breakpoint
+///@param breakpoint name
+  @function get-breakpoint( $name ) {
+    $map: map('web.breakpoints');
+
+    @if map-has-key($map, $name) {
+      $breakpoint-value: map-get($map, $name);
+      @return $breakpoint-value;
+    } @else {
+      @error 'The breakpoint `#{$name}` called is not an option by the name given';
+    }  
+  }
+  
+  @function get-next-breakpoint-name( $name ) {
+    $map: map('web.breakpoints');
+    
+    @if map-has-key($map, $name) {
+      $breakpoint-names: map-keys($map);
+      $n: index($breakpoint-names, $name);
+      @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+    }
+  }
+  
+  @function get-breakpoint-max($name){
+    $next: get-next-breakpoint-name($name);
+    @return if($next, get-breakpoint($next) - 1, null);
+  }
+  
+  /// up until a breakpoint.  Consider private for the time being, but can be used as a custom breakpoint creation
+  @mixin mq-until-breakpoint($breakpoint) {  
+    @media screen and (max-width: $breakpoint - 1px) {
+      @content;
+    }
+  }
+  
+  /// up from a breakpoint.  Consider private for the time being, but can be used as a custom breakpoint creation
+  /// @param {number} $breakpoint - A screensize nummber.
+  @mixin mq-from-breakpoint($breakpoint) {  
+    @media screen and (min-width: $breakpoint) {
+      @content;
+    }
+  }
+  
+  @mixin mq-between-breakpoints($min, $max) {
+    @media screen and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+  
+  /// non-shortname call for up to a breakpoint set in tokens 
+  @mixin mq-until($name) {
+    @include mq-until-breakpoint(get-breakpoint($name)){
+     @content; 
+    };
+  } 
+  
+  /// non-shortname call for up from a breakpoint set in tokens
+  @mixin mq-from($name) {
+    @include mq-from-breakpoint(get-breakpoint($name)){
+      @content; 
+     };
+  }
+ /// Starting at a breakpoint and downward
+  @mixin mq-at($name) {
+    $nextbreak : get-next-breakpoint-name($name);
+    @if $nextbreak == null {
+      $nextbreak : $name;
+    }
+    
+    @include mq-until-breakpoint(get-breakpoint($nextbreak)){
+      @content; 
+    };
+  }
+
+  
+  /// gives back breakpoint for single ranged
+  @mixin mq-only($name) {
+    $min: get-breakpoint($name);
+    $max: get-breakpoint-max($name);
+  
+    @if $min != null and $max != null {
+      @include mq-between-breakpoints($min, $max) {
+        @content;
+      }
+    } @else if $max == null {
+      @include mq-from($name) {
+        @content;
+      }
+    } @else if $min == null {
+      @include mq-from($name) {
+        @content;
+      }
+    }
+  }
+  
+  
+  
+  //short name calls. Not protected from token changes. Assumed these will not change
+  /// target breakpoint up to sm
+  @mixin mq-from-sm(){
+    @include mq-from('sm'){ @content };
+  }
+  
+  /// target breakpoint up to md
+  @mixin mq-from-md(){
+    @include mq-from('md'){ @content };
+  }
+  
+  /// target breakpoint up to lg
+  @mixin mq-from-lg(){
+    @include mq-from('lg'){ @content };
+  }
+  /// target breakpoint starting at xl
+  @mixin mq-from-xl(){
+    @include mq-from('xl'){ @content };
+  }
+  
+  // --------------
+    /// target breakpoint up to sm
+  @mixin mq-until-sm(){
+    @include mq-until('sm'){ @content };
+  }
+    /// target breakpoint up to md
+  @mixin mq-until-md(){
+    @include mq-until('md'){ @content };
+  }
+  /// target breakpoint up to lg
+  @mixin mq-until-lg(){
+    @include mq-until('lg'){ @content };
+  }
+  /// target breakpoint up to lg
+  @mixin mq-until-xl(){
+    @include mq-until('xl'){ @content };
+  }
+  
+
+  /// target the single breakpoint of xs
+  @mixin mq-xs(){
+    @include mq-only('xs'){ @content };
+  }
+  /// target only single breakpoint of sm
+  @mixin mq-sm(){
+    @include mq-only('sm'){ @content };
+  }
+  
+  /// target only single breakpoint of md
+  @mixin mq-md(){
+    @include mq-only('md'){ @content };
+  }
+  
+  /// target only single breakpoint of lg
+  @mixin mq-lg(){
+    @include mq-only('lg'){ @content };
+  }
+  
+  /// target only single breakpoint of xl
+  @mixin mq-xl(){
+    @include mq-only('xl'){ @content };
+  }

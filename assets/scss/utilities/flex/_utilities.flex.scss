@@ -1,0 +1,107 @@
+/*
+   flex-wrap
+*/
+$fk-utils-flex-enable: true !default;
+$fk-utils-flex-responsive: true !default;
+$fk-utils-flex-print: false !default;
+
+$fk-utils-flex-breakpoints: map('web.breakpoints') !default;
+
+$fk-utils-flex-ns: 'flex' !default; 
+
+//if map based, add catagory, Type, Item location
+//$fk-utils-flex-map: map('');
+
+
+//Private function to include through looks and conditional statements
+@mixin _flex-wrap($variant:'') {
+    .#{$fk-ns-utilities + $fk-utils-flex-ns}#{$variant} { 
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    };
+
+    .#{$fk-ns-utilities + $fk-utils-flex-ns}-inline#{$variant} { 
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+    };
+
+
+    .#{$fk-ns-utilities + $fk-utils-flex-ns}-nowrap#{$variant} { 
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    };
+    .#{$fk-ns-utilities + $fk-utils-flex-ns}-wrap#{$variant} { 
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    };
+    .#{$fk-ns-utilities + $fk-utils-flex-ns}-wrap-reverse#{$variant} { 
+        -ms-flex-wrap: wrap-reverse;
+        flex-wrap: wrap-reverse;
+    };
+
+    .#{$fk-ns-utilities + $fk-utils-flex-ns}-none#{$variant} {
+        -webkit-box-flex: 0; 
+        -ms-flex: none; 
+        flex: none; /* Equal to flex: 0 0 auto; as per the spec */
+    };
+
+    .#{$fk-ns-utilities + $fk-utils-flex-ns}-auto#{$variant} {
+        -webkit-box-flex: 1;
+        -ms-flex: auto;
+        flex: auto; /* Equal to flex: 1 1 auto; as per the spec */
+    };
+    
+    .#{$fk-ns-utilities + $fk-utils-flex-ns}-1#{$variant} { 
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+    };
+
+    .#{$fk-ns-utilities + $fk-utils-flex-ns}-1-1-auto#{$variant} { 
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+    };
+
+    .#{$fk-ns-utilities + $fk-utils-flex-ns}-1-0-auto#{$variant} { 
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+    };
+
+    .#{$fk-ns-utilities + $fk-utils-flex-ns}-0-1-auto#{$variant} { 
+        -webkit-box-flex: 0;
+        -ms-flex: 0 1 auto;
+        flex: 0 1 auto;
+    };
+
+    .#{$fk-ns-utilities + $fk-utils-flex-ns}-0-0-auto#{$variant} { 
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+    };
+
+
+
+}
+
+
+@if($fk-config-enable-utilties $fk-utils-flex-enable){
+    @include _flex-wrap();
+}
+
+@if $fk-utils-flex-print AND $fk-config-enable-print {
+    @media print {
+        @include _flex-wrap($fk-separator-breakpoint + $fk-ns-print);
+    }
+}
+
+@if ($fk-utils-flex-responsive AND $fk-config-enable-responsive) {
+    @each $breakpoint-name, $breakpoint-size in $fk-utils-flex-breakpoints {
+        @include mq-only($breakpoint-name){
+           @include _flex-wrap($fk-separator-breakpoint + $breakpoint-name);
+        }
+    }
+} 

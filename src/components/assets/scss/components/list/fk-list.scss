@@ -1,0 +1,142 @@
+
+@import 'variables';
+
+
+
+// @debug space('xs');
+
+$fk-list-padding: space('xs') 0;
+$fk-list-magin: 0;
+
+$fk-list-item-height: 36px;
+$fk-list-item-padding: 0 space('lg');
+
+$fk-list-item-line-height: line-height("compressed");
+
+$fk-list-item-anchor-margin: 0 space('md') 0 0;
+$fk-list-item-anchor-theme: 'subtle';
+
+$fk-list-item-meta-padding: 0 space('md') 0 0;
+
+$fk-list-item-two-line-height: 72px;
+
+$fk-list-large-padding: space('xs') 0;
+$fk-list-item-large-height: 48px;
+$fk-list-item-large-two-line-height: 72px;
+
+
+
+
+
+
+.#{$fk-ns-component}-list {
+
+    padding: $fk-list-padding;
+    margin: $fk-list-magin;
+    line-height: $fk-list-item-line-height;
+    list-style-type: none;
+
+    &--two-line > .#{$fk-ns-component}-list-item {
+        height: $fk-list-item-two-line-height;
+    }
+
+    &--large#{&}--two-line{
+        height: $fk-list-item-large-two-line-height;
+    }
+
+    &--lg{
+        padding: $fk-list-large-padding;
+        
+        & > .#{$fk-ns-component}-list-item {
+            height: $fk-list-item-large-height;
+            @include fk-type("body1");
+
+            &__secondary-text {
+                
+            }
+
+        }
+    }
+
+    // &--large > .#{$fk-ns-component}-list-item {
+      
+
+    
+    //     &__secondary-text{
+    //       line-height:  $fk-list-item-large-secondary-font-size;
+    //     }
+    // }
+     
+    .#{$fk-ns-component}-divider {
+        margin: space('sm') 0;
+    }
+
+}
+
+
+//scoped not BEM element because it can be used alone
+.#{$fk-ns-component}-list-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: $fk-list-item-height;
+    padding: $fk-list-item-padding;
+    @include fk-type("body2");
+    @include fk-theme-text("primary"); 
+
+    &__text, & {
+       @include overflow-ellipsis();
+    }
+
+    &__text {
+        flex-grow: 1;
+    }
+
+    &__secondary {
+        display: block;
+        @include fk-type('body3');
+        @include fk-theme-text('secondary'); 
+    }
+    
+    &__text, &__primary-text, &__secondary-text{
+        line-height: $fk-list-item-line-height;
+    }
+    
+    &:focus {
+     outline: none;
+    }
+
+
+    &__anchor {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin: $fk-list-item-anchor-margin;
+        @include fk-theme-text($fk-list-item-anchor-theme); 
+        max-width: 36px; // prevent rougue icons to blow up
+    }
+
+    &__meta {
+        @include fk-theme-text('secondary'); 
+        @include fk-type('body3');
+    }
+
+
+}
+
+
+a.#{$fk-ns-component}-list-item  {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #ccc;
+      }
+    
+    
+    
+
+
+}

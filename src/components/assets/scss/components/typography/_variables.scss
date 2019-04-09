@@ -1,0 +1,129 @@
+@import '../../framekit-util';
+
+$fk-type-ns: 'type';
+$fk-type-font-family: $bp-type-font-family-sans !default;
+
+$fk-type-base: (
+    font-family: $fk-type-font-family,
+    -moz-osx-font-smoothing: grayscale,
+    -webkit-font-smoothing: antialiased,
+) !default;
+
+$fk-type-default-letter-spacing: .01em;
+$fk-type-font-weight-values: map('type.font-weight.sans') !default;
+
+$fk-type-styles: (
+    display1 : (
+        font-size: text-size('display-1'),
+        font-weight: font-weight('regular'),
+        line-height: line-height(),
+        letter-spacing:  $fk-type-default-letter-spacing,
+        text-decoration: inherit,
+        text-transform: inherit
+    ),
+    display2: (
+        font-size: text-size('display-2'),
+        font-weight: font-weight('regular'),
+        line-height: line-height(),
+        letter-spacing:  $fk-type-default-letter-spacing,
+        text-decoration: inherit,
+        text-transform: inherit
+    ),
+    headline1: (
+        font-size: text-size('xxxxl'),
+        font-weight: font-weight('semibold'),
+        line-height: line-height(),
+        letter-spacing:  $fk-type-default-letter-spacing,
+        text-decoration: inherit,
+        text-transform: inherit
+    ),
+    headline2: (
+        font-size: text-size('xxxl'),
+        font-weight: font-weight('semibold'),
+        line-height: line-height(),
+        letter-spacing:  $fk-type-default-letter-spacing,
+        text-decoration: inherit,
+        text-transform: inherit
+    ),
+    headline3: (
+        font-size: text-size('xl'),
+        font-weight: font-weight('semibold'),
+        line-height: line-height(),
+        letter-spacing:  $fk-type-default-letter-spacing,
+        text-decoration: inherit,
+        text-transform: inherit
+    ),
+    headline4: (
+        font-size: text-size('lg'),
+        font-weight: font-weight('semibold'),
+        line-height: line-height(),
+        letter-spacing:  $fk-type-default-letter-spacing,
+        text-decoration: inherit,
+        text-transform: inherit
+    ),
+    headline5: (
+        font-size: text-size('md'),
+        font-weight: font-weight('semibold'),
+        line-height: line-height(),
+        letter-spacing:  $fk-type-default-letter-spacing,
+        text-decoration: inherit,
+        text-transform: inherit
+    ),
+
+    category1: (
+        font-size: text-size('xl'),
+        font-weight: font-weight('regular'),
+        line-height: line-height(),
+        letter-spacing:  $fk-type-default-letter-spacing,
+        text-decoration: inherit,
+        text-transform: uppercase
+    ),
+    category2: (
+        font-size: text-size('md'),
+        font-weight: font-weight('regular'),
+        line-height: line-height(),
+        letter-spacing:  $fk-type-default-letter-spacing,
+        text-decoration: inherit,
+        text-transform: uppercase
+    ),
+    category3: (
+        font-size: text-size('sm'),
+        font-weight: font-weight('regular'),
+        line-height: line-height(),
+        letter-spacing:  $fk-type-default-letter-spacing,
+        text-decoration: inherit,
+        text-transform: uppercase
+    ),
+    body1: (
+        font-size: text-size('lg'),
+        font-weight: font-weight('regular'),
+        line-height: line-height(),
+        letter-spacing:  $fk-type-default-letter-spacing,
+        text-decoration: inherit,
+        text-transform: inherit
+    ),
+    body2: (
+        font-size: text-size('md'),
+        font-weight: font-weight('regular'),
+        line-height: line-height(),
+        letter-spacing:  $fk-type-default-letter-spacing,
+        text-decoration: inherit,
+        text-transform: inherit
+    ),
+    body3: (
+        font-size: text-size('sm'),
+        font-weight: font-weight('regular'),
+        line-height: line-height('compressed'),
+        letter-spacing:  $fk-type-default-letter-spacing,
+        text-decoration: inherit,
+        text-transform: inherit
+    ),
+    micro: (
+        font-size: text-size('xs'),
+        font-weight: font-weight('regular'),
+        line-height: line-height('compressed'),
+        letter-spacing:  $fk-type-default-letter-spacing,
+        text-decoration: inherit,
+        text-transform: inherit
+    )
+)

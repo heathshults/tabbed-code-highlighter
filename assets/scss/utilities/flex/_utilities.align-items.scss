@@ -1,0 +1,41 @@
+/*
+   align-items
+*/
+$fk-utils-align-items-enable: true !default; 
+$fk-utils-align-items-responsive: true !default;
+$fk-utils-align-items-print: false !default;
+
+$fk-utils-align-items-breakpoints: map('web.breakpoints') !default;
+
+$fk-utils-align-items-ns: 'align-items' !default; 
+$fk-utils-align-items-options: flex-start, flex-end, center, baseline, stretch;
+
+//Private function to include through looks and conditional statements
+@mixin _align-items($variant:'') {
+
+    @each $justify in $fk-utils-align-items-options {
+        .#{$fk-ns-utilities + $fk-utils-align-items-ns}-#{$justify}#{$variant} {
+            -webkit-box-align: $justify;
+            -ms-flex-align: $justify;
+            align-items: $justify;
+        }
+    }
+}
+
+@if($fk-config-enable-utilties AND $fk-utils-align-items-enable){
+    @include _align-items();
+}
+
+@if $fk-utils-align-items-print AND $fk-config-enable-print {
+    @media print {
+        @include _align-items($fk-separator-breakpoint + $fk-ns-print);
+    }
+}
+
+@if ($fk-utils-align-items-responsive AND $fk-config-enable-responsive) {
+    @each $breakpoint-name, $breakpoint-size in $fk-utils-align-items-breakpoints {
+        @include mq-only($breakpoint-name){
+           @include _align-items($fk-separator-breakpoint + $breakpoint-name);
+        }
+    }
+} 

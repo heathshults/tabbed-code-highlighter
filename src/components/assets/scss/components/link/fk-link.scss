@@ -1,0 +1,104 @@
+@import '../theme/mixins';
+
+%link {
+  cursor: pointer; 
+  &:hover {
+
+  }
+  &:visited {
+      color: inherit;
+  }
+}
+
+%c-link {
+    @extend %link;
+    @include fk-theme-text('link');
+ 
+}
+
+%c-link-article {
+    @include fk-theme-text('link');
+    $underline-color: rgba(fk-theme-get-text('link'), .15);
+    background-image: linear-gradient($underline-color,$underline-color,$underline-color);
+    background-repeat: repeat-x;
+    background-position: 1px 1.1em;
+    background-size: 1em 2px;
+
+    &:hover {
+        //@include fk-theme-switcher( 'color', lighten(fk-theme-get-text('link', 'lm'), 10%) , lighten(fk-theme-get-text('link', 'dm'), 10%) );
+        text-decoration: none;
+        $underline-color: rgba(fk-theme-get-text('link'), .45);
+        background-image: linear-gradient($underline-color,$underline-color,$underline-color);
+
+      //  color: $color;
+      //  $color2: rgba(fk-theme-get-interactive('primary'), .6);
+        // background-image: linear-gradient($fk-rgba-link-50,$fk-rgba-link-50);
+        // background-image: linear-gradient($color, $color);
+        // background-size: .45em 1px;
+        // background-position: 0 1.1em;
+    }
+}
+
+
+
+// background-image: linear-gradient(90deg, #333, #333 49%, transparent 50%, transparent 100%);\\
+
+%c-link-info {
+    $color2: rgba(fk-theme-get-interactive('primary'), .6);
+    border-bottom: 1px dashed $color2;
+    @include fk-theme-text('link');
+
+    &:hover {
+        $color3: rgba(fk-theme-get-interactive('primary'), .4);
+        // border-bottom: 1px dashed currentColor;
+        text-decoration: none;
+    }
+}
+.c-link-info {
+    @extend %c-link-info; 
+}
+
+%c-link-implied {
+    text-decoration: none;
+    color: currentColor;
+
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+.c-link-implied {
+    @extend %c-link-implied;
+}
+
+
+.c-link {
+    @extend %c-link;
+}
+
+.c-link-article {
+    @extend %c-link-article;
+}
+
+.c-link-underlined {
+    @extend %c-link;
+    text-decoration: underline;
+}
+
+
+
+
+
+    .c-link-inline {
+    // takes on color, primary? 
+    }
+    
+    .c-link-primary {
+        // primary color
+        
+    }
+    
+    .c-link-secondary {
+        // subtle color
+    }
+    

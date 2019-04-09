@@ -1,0 +1,41 @@
+/*
+   justify-content
+*/
+$fk-utils-justify-content-enable: true !default; 
+$fk-utils-justify-content-responsive: true !default;
+$fk-utils-justify-content-print: false !default;
+
+$fk-utils-justify-content-breakpoints: map('web.breakpoints') !default;
+
+$fk-utils-justify-content-ns: 'justify-content' !default; 
+$fk-utils-justify-content-options: flex-start, center, flex-end, space-between, space-around, space-evenly;
+
+//Private function to include through looks and conditional statements
+@mixin _justify-content($variant:'') {
+
+    @each $justify in $fk-utils-justify-content-options {
+        .#{$fk-ns-utilities + $fk-utils-justify-content-ns}-#{$justify}#{$variant} {
+            -webkit-box-pack: $justify;
+            -ms-flex-pack: $justify;
+            justify-content: $justify;
+        }
+    }
+}
+
+@if($fk-config-enable-utilties AND $fk-utils-justify-content-enable){
+    @include _justify-content();
+}
+
+@if $fk-utils-justify-content-print AND $fk-config-enable-print {
+    @media print {
+        @include _justify-content($fk-separator-breakpoint + $fk-ns-print);
+    }
+}
+
+@if ($fk-utils-justify-content-responsive AND $fk-config-enable-responsive) {
+    @each $breakpoint-name, $breakpoint-size in $fk-utils-justify-content-breakpoints {
+        @include mq-only($breakpoint-name){
+           @include _justify-content($fk-separator-breakpoint + $breakpoint-name);
+        }
+    }
+} 

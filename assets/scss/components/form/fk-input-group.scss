@@ -1,0 +1,13 @@
+.c-form-input-group > .c-form-input-group {
+    display: flex;
+  
+    &-prepend {
+      flex: 0 0 auto;
+    }
+  
+    &-append {
+      flex: 0 0 auto;
+    }
+  
+  }
+  

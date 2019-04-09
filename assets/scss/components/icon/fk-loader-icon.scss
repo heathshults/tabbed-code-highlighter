@@ -1,0 +1,35 @@
+@import 'mixins';
+
+// move to tools
+// @mixin center($width, $height: 0) {
+//     position: absolute;
+  
+//     @if $height != 0 {
+//       left: calc(50% - (#{$width} / 2));
+//       top: calc(50% - (#{$height} / 2));
+//     }
+//     @else {
+//       left: calc(50% - (#{$width} / 2));
+//       top: calc(50% - (#{$width} / 2));
+//     }
+//   }
+
+.#{$fk-ns-component}-ucon--lg.#{$fk-ns-component}-ucon-loader:after{
+    @include square(36px);
+}
+.#{$fk-ns-component}-ucon--sm.#{$fk-ns-component}-ucon-loader:after{
+    @include fk-icon-size('sm');
+}
+
+.#{$fk-ns-component}-ucon-loader {
+    &:after{
+        @include fk-loader-icon('md');
+      //  position: absolute;
+       // @include center(1em);
+    }
+
+    &--sm  {
+
+    }
+
+}

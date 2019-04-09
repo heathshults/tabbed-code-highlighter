@@ -1,0 +1,150 @@
+@import '../typography/mixins';
+
+
+$fk-accordion-headline: 'headline2';
+$fk-accordion-control-headline-stack: 'md';
+
+$fk-accordion-headline--large: 'headline1';
+$fk-accordion-control-headline--large: 'headline2';
+
+
+$fk-accordion-icon-size: $bp-size-icon-md;
+$fk-accordion-icon-spacing: 16px;
+$fk-accordion-icon-top: .8em;
+$fk-accordion-icon-color: #0a649d; //TKTK MOVE TO MIX OR TOKEN
+
+$fk-accordion-icon-width:  $bp-size-icon-md;
+$fk-accordion-icon-height: $bp-size-icon-md;
+
+$fk-accordion-control-border: 1px solid fk-theme-get-border('subtle'); 
+$fk-accordion-control-headline: 'headline3';
+$fk-accordion-control-background: none;
+$fk-accordion-control-transition: all .25s ease-in-out;
+$fk-accordion-control-text-align: left;
+$fk-accordion-control-padding-top: 12px;
+$fk-accordion-control-padding-right: 0;
+$fk-accordion-control-padding-bottom: 12px;
+$fk-accordion-control-padding-left: ($fk-accordion-icon-spacing * 2) + $fk-accordion-icon-width;
+
+$fk-accordion-item-padding-top:  0;
+$fk-accordion-item-padding-right: $fk-accordion-control-padding-left;
+$fk-accordion-item-padding-bottom:  $fk-global-baseline;
+$fk-accordion-item-padding-left: $fk-accordion-control-padding-left;
+
+
+.#{$fk-ns-component}-accordion {
+  width: 100%;
+  border: 0;
+  @include stack();
+
+ 
+  &__control {
+    display: block;
+    position: relative;
+    width: 100%;
+    left: 0;
+    border: none;
+    text-decoration: inherit;
+    padding-top:   $fk-accordion-control-padding-top;
+    padding-right: $fk-accordion-control-padding-right;
+    padding-bottom:$fk-accordion-control-padding-bottom;
+    padding-left:  $fk-accordion-control-padding-left;
+    text-align: $fk-accordion-control-text-align;
+    background: $fk-accordion-control-background;
+    transition: $fk-accordion-control-transition;
+    border-top: $fk-accordion-control-border;
+    @include fk-type($fk-accordion-control-headline);
+
+    &:hover,
+    &:focus {
+      outline: none;
+    }
+
+    &__icon{
+   
+    }
+    &::after {
+      // position: absolute;
+      // top:    $fk-accordion-icon-top;
+      // left:   $fk-accordion-icon-spacing;
+      // width:  $fk-accordion-icon-width;
+      // height: $fk-accordion-icon-height;
+     
+      // background-image: url("data:image/svg+xml,%3Csvg  viewBox='0 0 24 24' id='chevron-down' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath  stroke='' d='M22 8.08l-2-2-8 8-8-8-2 2 10 10 10-10z'/%3E%3C/svg%3E");
+      // background-repeat: no-repeat;
+      // background-position: center;
+      // content: '';
+      // transition: all .25s ease-in-out;
+      // transform: rotate(0deg);
+
+
+      .is-open & {
+        transition: all .25s ease-in-out;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  // TEMP ICON USAGE.. TKTK REPLACE WITH MIXIN
+  &__icon {
+    color: $fk-accordion-icon-color;
+    &:before, &:after {
+      content: "";
+      display: block;
+      left: $fk-accordion-icon-spacing;
+      position: absolute;
+      top: 50%;
+      transition: all .25s ease-in-out;
+      transform: translate(-50%,-50%);
+    }
+  
+    &:before {
+      border: 3px solid currentColor;
+      border-bottom: 0;
+      border-right: 0;
+      height: 12px;
+      width: 12px;
+      transform: translate(-50%, -75%) rotate(225deg); //down
+    }
+  }
+
+  &__item.is-open &__control &__icon {
+    &:before {
+      transform: translate(-50%, -25%) rotate(45deg);
+    }
+  }
+
+  &__headline{
+     @include fk-type($fk-accordion-headline);
+     @include stack($fk-accordion-control-headline-stack);
+  }
+
+
+  &__item {
+
+  }
+
+  &__content {
+     display: none;
+     padding: 0;
+     // padding-right: 4rem;
+
+     padding-top: $fk-accordion-item-padding-top;
+     padding-right: $fk-accordion-item-padding-right;
+     padding-bottom: $fk-accordion-item-padding-bottom;
+     padding-left: $fk-accordion-item-padding-left;
+
+     .is-open & {
+       display: block;
+     }
+   }
+
+  &--lg &__headline {
+      @include fk-type($fk-accordion-headline--large);
+  }
+
+  &--lg &__control {
+    @include fk-type($fk-accordion-control-headline--large);
+}
+
+}

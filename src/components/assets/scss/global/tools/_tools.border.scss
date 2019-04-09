@@ -1,0 +1,25 @@
+
+@function border-radius($name: 'md'){
+    $text-c : 'size';
+    $text-t : 'border';
+    $text-i : 'radius';
+    $q: dot-str($text-c, $text-t, $text-i);
+    $map: map($q);
+   
+    @if map-has-key($map, $name) {
+     
+        @return map-get($map, $name);
+    } @else{
+        @warn error-maps('text-size()', $map, $name);
+        @return '';
+    }
+
+
+
+}
+
+
+
+@mixin border-radius($name: 'md'){
+    border-radius: border-radius($name);
+}

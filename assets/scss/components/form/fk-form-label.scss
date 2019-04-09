@@ -1,0 +1,35 @@
+$input-label-font-size: $fk-control-font-size-default;
+$input-label-font-weight: font-weight('semibold');
+$input-label-margin: stack('sm');
+$input-label-line-height: $fk-global-baseline;
+$input-text-color: color-text('primary');
+
+@mixin label-base() {
+  @include text-crop();
+  display: block;
+  margin: $input-label-margin;
+  font-weight: $input-label-font-weight;
+
+
+  &--sm {
+
+    //font-size: $fk-control-font-size-sm;
+  }
+
+  &--lg {
+   @include fk-type('body1');
+  }
+
+  &--xl {
+    font-size: $fk-control-font-size-xl;
+  }
+}
+
+
+
+
+
+.#{$fk-ns-component}-form-label{
+  @include label-base();
+ 
+}

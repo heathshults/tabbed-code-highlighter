@@ -1,0 +1,17 @@
+@function z-index($name:'base') {
+    $text-c : 'web';
+    $text-t : 'z-index';
+    $text-i : null;
+
+    $q: dot-str($text-c, $text-t);
+    $map: map($q);
+
+    @if map-has-key($map, $name) {
+        @return map-get($map, $name);
+    } @else{
+        @warn error-maps('z-index()', $map, $name);
+        @return '';
+    }
+}
+
+

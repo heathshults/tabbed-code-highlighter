@@ -1,0 +1,29 @@
+// Automatic Mapping files. Injector should sort these by alpha to prevent triggering GIT changes
+/* inject:sass */
+@import "_utilities.align.scss";
+@import "_utilities.currentcolor.scss";
+@import "_utilities.cursor.scss";
+@import "_utilities.display.scss";
+@import "_utilities.shade.scss";
+@import "_utilities.shadow.scss";
+@import "_utilities.sr.scss";
+@import "_utilities.tint.scss";
+@import "_utilities.transform.scss";
+@import "_utilities.visible.scss";
+@import "_consider/_utilities.text-size.scss";
+@import "space/_utilities.spacing.scss";
+@import "width/_utilities.child-widths.scss";
+@import "width/_utilities.widths.scss";
+@import "flex/_utilities.align-content.scss";
+@import "flex/_utilities.align-items.scss";
+@import "flex/_utilities.align-self.scss";
+@import "flex/_utilities.flex-direction.scss";
+@import "flex/_utilities.flex.scss";
+@import "flex/_utilities.justify-content.scss";
+@import "flex/_utilities.order.scss";
+@import "text/_utilities.general.scss";
+@import "text/_utilities.text-align.scss";
+@import "text/_utilities.text-color.scss";
+@import "text/_utilities.text-weight.scss";
+@import "text/_utilities.text.scss";
+/* endinject */

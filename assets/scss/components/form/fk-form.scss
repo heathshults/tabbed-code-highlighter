@@ -1,0 +1,87 @@
+@import 'variables';
+@import '../theme/mixins';
+
+// :not([class*='c-form-input']){
+//     background-color: red;
+// }
+
+@import 'fk-form-input'; 
+@import 'fk-form-help-text';
+@import 'fk-form-checkradio';
+@import 'fk-form-label';
+
+.c-form-group {
+    margin-bottom: $fk-form-item-margin-bottom;
+
+    .c-form-item {
+      margin-bottom: 0;
+    }
+}
+
+  .c-form-inline, .c-form-inline > .c-form-item {
+    display: inline-block;
+    margin: $fk-form-item-margin-right;
+  }
+
+
+  .c-form-item {
+    margin-bottom: $fk-form-item-margin-bottom;
+  }
+
+  .c-form-row {
+    display: flex;
+    align-items: flex-start;
+
+    .c-form-item {
+      position: relative;
+      flex-basis: auto;
+      flex-direction: row;
+      flex-grow: 1;
+      min-width: 24px;
+      flex-shrink: 1;
+
+      &:not(:last-of-type) {
+        margin: $fk-form-item-margin-right;
+      }
+
+      &--fit {
+        width: auto;
+        max-width: 100%;
+        flex-shrink: 0;
+      }
+
+    }
+}
+
+.c-form-select {
+  @extend %fk-input;
+  &:not([multiple]):not([size]) {
+    padding-right: 2em; // background: none;
+    background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23667189'%20d='M2%200L0%202h4zm0%205L0%203h4z'/%3E%3C/svg%3E") no-repeat right .5em center/.75em .75em;
+  }
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+
+.c-form-group {
+  margin-bottom: $fk-form-item-margin-bottom;
+
+  .c-form-item {
+    margin-bottom: 0;
+  }
+}
+
+
+.c-form--horizontal {
+  .c-form-item, .c-form-group {
+    display: flex;
+    //flex-wrap: wrap;
+  }
+}
+
+
+
+
+

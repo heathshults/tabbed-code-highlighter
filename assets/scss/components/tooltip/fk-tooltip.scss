@@ -1,0 +1,23 @@
+@import '../typography/mixins';
+
+$fk-tooltip-opacity-shown: .9;
+$fk-tooltip-max-width: 200px;
+$fk-tooltip-border-radius: $bp-size-border-radius-md;
+$fk-tooltip-arrow-width: .8rem;
+$fk-tooltip-arrow-height: .4rem;
+$fk-tooltip-margin: 0;
+$fk-tooltip-padding: $bp-space-inset-md;
+
+.#{$fk-ns-component}-tooltip {
+    @include fk-type('body2');
+    @include fk-theme-bg('navy');
+
+    position: absolute;
+    display: block;
+    word-wrap: break-word;
+    opacity: 1;
+
+    &.is-visible {
+
+    }
+}

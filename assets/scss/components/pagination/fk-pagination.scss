@@ -1,0 +1,42 @@
+
+@import '../button/mixins';
+
+
+$fk-pagination-spacing-item: 4px;
+
+.c-pagination {
+    display: flex;
+    @include list-unstyled();
+
+    &__item {
+        margin: 0 $fk-pagination-spacing-item/2;
+       // @include text_crop(); //tktk bugged but needed to get ellipse on bottom
+       height: 24px;
+    }
+
+    &__item.is-active &__link {
+        font-weight: bold;
+        @extend .c-button-link:active;
+        color: fk-get-theme-text('primary');
+    }
+
+    &__link {
+        @include fk-button-base();
+        @include fk-button-link();
+        
+        padding:.2em .4em;
+        vertical-align: top;
+      // line-height: 24px;
+       // @include text_crop();
+        //@include fk-button-size-variants($fk-button-link-size-map);
+    }
+
+    & .c-ucon {
+       @include square(14px);
+        //fill : $pagination-color;
+        margin:0;
+        margin-top: -2px;
+    }
+
+
+}

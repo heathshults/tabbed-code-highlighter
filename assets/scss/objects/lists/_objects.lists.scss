@@ -1,0 +1,49 @@
+
+$list-ns:  $fk-ns-objects;
+$list-ml: 0px;
+$list-inline-item-spacer: $bp-space-spacing-sm;
+
+ 
+.#{$list-ns}list {
+  &--divided>li+li:before{
+    margin-right: $list-inline-item-spacer;
+    background: red;
+    border-top: 2px solid #000;
+  }
+}
+
+.#{$list-ns}list-bare{
+  margin-left: $list-ml;
+  list-style: none;
+
+  &__item {
+    margin-left: $list-ml; 
+  }
+}
+
+
+/* ==========================================================================
+   #LIST-INLINE
+   ========================================================================== */
+
+/**
+ * The list-inline object simply displays a list of items in one line.
+ */
+
+.#{$list-ns}list-inline {
+  margin-left: $list-ml;
+  list-style: none;
+
+  &__item {
+    display: inline-block;
+    
+    &:not(:last-child){
+      margin-right: $list-inline-item-spacer;
+    }
+  } 
+
+  &--divided>li+li:before{
+    margin-right: $list-inline-item-spacer;
+    content: "|";
+  }
+}

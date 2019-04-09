@@ -1,0 +1,40 @@
+
+// $fk-text-ns: 'text'; 
+
+
+// .#{$fk-ns-utilities}-#{$fk-text-ns}-justify {
+//  text-align: justify;
+// }
+
+
+
+
+
+// // Text overflow utilities
+
+// /*   Overflow behavior: display an ellipsis to represent clipped text */
+// .#{$fk-ns-utilities}-#{$fk-text-ns}-ellipsis {
+//  //@include overflow-ellipsis();
+// }
+//  /*-- Overflow behavior: truncate the text  */
+// .#{$fk-ns-utilities}-#{$fk-text-ns}-clip {
+//  overflow: hidden;
+//  text-overflow: clip;
+//  white-space: nowrap;
+// }
+// /*--  Text may be broken at arbitrary points  */
+// .#{$fk-ns-utilities}-#{$fk-text-ns}-break {
+//  hyphens: auto;
+//  word-break: break-word;
+//  word-wrap: break-word;
+// }
+
+
+// .#{$fk-ns-utilities}-#{$fk-text-ns}-crop {
+//  //@include text-crop();
+// }
+
+// .#{$fk-ns-utilities}-#{$fk-text-ns}-monospace {
+//  font-family: "Source Code Pro";
+// }
+

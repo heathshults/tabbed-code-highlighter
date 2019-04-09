@@ -1,0 +1,52 @@
+@import 'mixins';
+@import '../animation/mixins';
+
+
+.#{$fk-ns-component}-ucon{
+    position: relative;
+    display: inline-block;
+        // height:100%;
+    // min-width:  fk-get-icon-size('md');
+    // min-height: fk-get-icon-size('md');
+   
+    //TKTK test.. may be problematic
+    vertical-align: middle;
+    stroke-width: 0;
+  
+    // text-indent: -9999px;
+    //  box-sizing: border-box;
+    //  font-size: inherit;
+    //  font-style: normal;
+  
+    //  &::before,
+    //  &::after {
+    //    content: "";
+    //    display: block;
+    //    left: 50%;
+    //    position: absolute;
+    //    top: 50%;
+    //    transform: translate(-50%, -50%);
+    //  }
+  
+    @include fk-icon-size();
+  
+    svg {
+      vertical-align: top;
+    }
+   
+    &--lg {
+      @include fk-icon-size('lg');
+    } 
+  
+    &--sm {
+      @include fk-icon-size('sm');
+    }
+  
+    &--mirrored {
+      filter: FlipH;
+      transform: scaleX(-1);
+      //fill: red;
+    }
+  
+  } 
+

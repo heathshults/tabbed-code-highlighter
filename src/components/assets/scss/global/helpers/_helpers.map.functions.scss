@@ -1,0 +1,277 @@
+// Breaks the ITCSS order only because these functions are needed at base level of some of the tools
+
+
+///@group Generic Functions
+
+$fk-global-default-token-map: null !default;
+
+/// Get a value from a nested map by keys
+/// @param {map} $map [none]- The Map to search
+/// @param {string} $keys [none]- The Keys to search the map for
+/// @return {map} - map
+/// @example
+/// deep-get($fk-spacing, 'xs', 'y')
+/// assumes check has already been done to prevent error 
+@function deep-get($map, $keys...) {
+  @if type-of($map) != 'map' {
+    @error 'The argument $map: #{$map} is of incorrect type: `#{type-of($map)}`. Type of `Map` is required!';
+  }
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+
+/// Check a deep map for a key
+/// @return {boolan} - True/False
+@function deep-map-check($map, $keys...) {
+    
+    @if type-of($map) != 'map' {
+      @error 'The argument $map: `#{$map}` is of incorrect type: `#{type-of($map)}`. Type of `Map` is required!';
+    }
+
+
+    @each $key in $keys {
+
+      // if $key but its not a map no longer
+      // usually means extra key added
+
+      @if not is-map($map){
+        @warn 'deep-map-check was given a key (#{$key}) but reduced map is no longer a map, usually meaning an extra key was added';
+        @return false;
+      }
+
+      @if not map-has-key($map, $key) {
+        @return false;
+      }
+
+      $map: map-get($map, $key);
+    }
+
+    @return true;
+  }
+
+
+  /// checks for a value in deep map. Used for fallbacks
+  @function deep-val-check($map, $keys...) {
+ 
+    @if deep-map-check($map, $keys...){
+      // a valid chain with at least a maps
+
+      @if not is-map(deep-get($map, $keys...)){
+        @return true;
+      }
+    } 
+    @return false;
+  }
+
+
+
+  @function deep-val-get($map, $keys...) {
+    $fallbacks: $fk-global-map-fallbacks;
+
+    @if type-of($map) != 'map' {
+      @error 'deep-get-fallback needs a map supplied, given: `#{$map}` which is a: `#{type-of($map)}`!';
+    }
+    @if not deep-map-check($map, $keys...) {
+      // is not a valid as is it. GIve error
+      @return get-deep-map-error($map, $keys...);
+    }
+
+    $q: deep-get($map, $keys...);
+    
+    @if not is-map($q){
+      @return $q;
+    }
+
+    // @warn 'need to try fallbacks';
+
+    @each $fallback in $fallbacks {
+      $q-keys: join($keys, $fallback...);
+
+      @if deep-val-check($map, $q-keys...){
+        // @warn 'found success with fallback';
+        @return deep-get($map, $q-keys...);
+      }
+    } 
+
+      // @warn 'returned is a map.. in val so to test fallbacks'
+
+    @error 'Deep Val Get didnt get to a val..add more keys or changed to deep-get for a map';
+  }
+
+  @function get-deep-map-error($map, $keys...){
+    @each $key in $keys {
+      @if not is-map($map){
+        @return 'failed at a non-map on:(#{$key})in given keys:(#{$keys}) \A  Typically this is an extra key given. \A Available keys at fail is:#{available-names($map, $level:0)} ';
+      }
+      @if not map-has-key($map, $key) {
+        @return 'failed at key:(#{$key}) in given keys:(#{$keys}) \A \A Available keys at fail is:#{available-names($map, $level:0)} ';
+      }
+      $map: map-get($map, $key);
+    }
+    @return 'get-deep-map-error() assumes bad key call, but none fail';
+  }
+
+
+
+
+
+
+
+/// Search for any value contained within nested maps, by using dot notation as the key argument.  Returns back whatever is at that location, map or value
+/// @example 
+///   get('border.radius.xs', $config);
+/// @requires deep-map-check
+/// @returns {value} The value of the key
+/// @param {string} $key - Dot notation location of a key/value
+/// @param {map} $map [$fk-global-default-token-map] - The Map to search through 
+
+@function get($key, $map: $fk-global-default-token-map) {
+    $keys: str-explode($key, '.');
+    
+    @if type-of($value: $map) != 'map' {
+        @error '$map provided to get(#{$key}`) was not a $map.';
+    }
+
+    @if not deep-map-check($map, $keys...) {
+      @warn $keys;
+      @error "The argument $map doesn't has some of the $keys: `#{$keys}`!  `#{available-names($map, $level: 0)}";
+    }
+  
+    @return deep-get($map, $keys...);
+} 
+
+/// Gets a single variable value in a deep nested map using dot notation call to CTI structured tokens. Uses get() but errors out if return is map to ensure use
+/// is safe to use. labeled var to mimic out css vars will be used. Default map can be set by config. 
+/// @example 
+///   val('border.radius.xs', $config);
+/// @requires deep-map-check, get
+/// @returns {value} The value of the key
+/// @param {string} $key - Dot notation location of a key/value
+/// @param {map} $map [$fk-tokens] - The Map to search through 
+
+@function val($keys, $map: $fk-global-default-token-map){
+  $return: get($keys, $map);
+  @if (type-of($value: $return )== 'map' ) {
+    @error 'var() function returned a map, but function is for varible values, if wanting a map use get direction.';
+  }
+  @return $return;
+}
+
+
+@function map($keys, $map: $fk-global-default-token-map){
+  $return: get($keys, $map);
+  @if (type-of($value: $return ) != 'map' ) {
+    @error 'map() function did not return map if wanting to get a value, use val()';
+  }
+  @return $return;
+}
+
+
+// seems not needed
+// @function map-q($map: $fk-global-default-token-map, $err: '[ungiven]', $key:null, $path...){
+//   @if NOT $key {
+//     @error 'map-q requirs a key given';
+//   }
+  
+//   $q: dot-str($path);
+//   $map: map($q);
+ 
+//   @if map-has-key($map, $key) {
+//    @return map-get($map, $key);
+//   }
+
+//   @warn error-map('map-q()',$map, $key);
+//   @return '';
+// }
+
+  /// list available keys at a map level
+  @function available-names($map, $level: 1) {
+    @if type-of($map) != 'map' {
+      @return null;
+    }
+
+    $output: '';
+    $newline: '\A ';
+
+    @if $level == 0 {
+      @each $key, $value in $map {
+        $output: $output +
+          '#{$newline}- #{$key}';
+      }
+    } @else if $level == 1 {
+      @each $key, $value in $map {
+        $output: $output +
+          '#{$newline}- #{$key} #{available-names($value, $level + 1)}';
+      }
+    } @else {
+      $output: '';
+      $i: 1;
+
+      @each $key, $value in $map {
+        $sep: if($i < length($map), ', ', '');
+        $output: $output + '#{$key}#{$sep}#{available-names($value, $level + 1)}';
+        $i: $i + 1;
+      }
+
+      $output: $output + ')';
+    }
+
+    @return $output;
+  }
+
+  /// Creates a dot sepereated string from a given array of items for doing deep map queries
+  /// why do this instead of use the items to q the map directly
+  @function dot-str($items...){
+    $str: '';
+    $first: true;
+    
+    @each $item in $items{
+        // Check if not a null value, usually in default values
+        @if not $item { @return $str;}
+        
+        @if $first {
+          $str: $item;
+          $first: false;
+      } @else {
+          $str: $str + '.' + $item;
+      }
+
+    }
+    @return $str;
+  }
+
+  /// Reverses a map order. 
+  @function map-reverse($map) {
+    $result: null;
+
+    @if type-of($map) == "map" {
+        $keys: map-keys($map);
+        $map-reversed: ();
+        
+        @for $i from length($keys) through 1 {
+            $map-reversed: map-merge(
+                $map-reversed,
+                (nth($keys, $i): map-get($map, nth($keys, $i)))
+            );
+        }
+
+        @if type-of($map-reversed) == "map" {
+            $result: $map-reversed;
+        } @else {
+            @warn 'There was an error reversing the order of "#{$map}"';
+        }
+    } @else {
+        @warn '"#{$map}" is not a valid map';
+    }
+
+    @return $result;
+  }
+  
+
+  @function error-maps($name,$map,$key,$level: 1){
+    $newline: '\A ';
+    @return '#{$name} returned a value not found in desired map \A Available Options are: #{available-names($map, $level)}';
+}

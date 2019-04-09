@@ -1,0 +1,108 @@
+$space-c : 'space';
+$space-t : 'spacing';
+$space-i : null;
+
+$default-spacing: 'md';
+
+@function space($key: $default-spacing) {
+    $q: dot-str($space-c, $space-t);
+    $map: map($q);
+
+    @if  map-has-key($map, $key) {
+     @return map-get($map, $key);
+    }
+
+    @warn error-maps('space()',$map, $key);
+    @return '';
+
+}
+
+
+@function inset($key: $default-spacing) {
+    $space-t: 'inset';
+    $q: dot-str($space-c, $space-t);
+    $map: map($q);
+
+    @if  map-has-key($map, $key) {
+     @return map-get($map, $key);
+    }
+
+    @warn error-maps('inset()',$map, $key);
+    @return '';
+}
+
+
+@mixin inset($key: $default-spacing){
+    padding: inset($key);
+}
+
+@function squish($key: $default-spacing) {
+    $space-t: 'squish';
+    $q: dot-str($space-c, $space-t);
+    $map: map($q);
+
+    @if  map-has-key($map, $key) {
+     @return map-get($map, $key);
+    }
+
+    @warn error-maps('squish()',$map, $key);
+    @return '';
+}
+
+
+@mixin squish($key: $default-spacing){
+    padding: squish($key);
+}
+
+@function stretch($key: $default-spacing) {
+    $space-t: 'stretch';
+    $q: dot-str($space-c, $space-t);
+    $map: map($q);
+
+    @if  map-has-key($map, $key) {
+     @return map-get($map, $key);
+    }
+
+    @warn error-maps('stretch()',$map, $key);
+    @return '';
+}
+
+
+@mixin stretch($key: $default-spacing){
+    padding: stretch($key);
+}
+
+@function stack($key:  $default-spacing) {
+    $space-t: 'stack';
+    $q: dot-str($space-c, $space-t);
+    $map: map($q);
+
+    @if  map-has-key($map, $key) {
+     @return map-get($map, $key);
+    }
+
+    @warn error-maps('stack()',$map, $key);
+    @return '';
+}
+
+@mixin stack($key: $default-spacing) {
+    margin: stack($key);
+}
+
+@function inline($key:$default-spacing) {
+    $space-t: 'inline';
+    $q: dot-str($space-c, $space-t);
+    $map: map($q);
+
+    @if  map-has-key($map, $key) {
+     @return map-get($map, $key);
+    }
+
+    @warn error-maps('space()',$map, $key);
+    @return '';
+}
+
+
+@mixin inline($key: $default-spacing) {
+    margin: inline($key);
+}

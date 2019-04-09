@@ -1,0 +1,7 @@
+/// Mixin for creating different sizes for the buttons
+@mixin modal-size ($padding-y, $padding-x, $width, $height, $border-radius) {
+  width: $width;
+  height: $height;
+  padding: $padding-y $padding-x;
+  border-radius: $border-radius;
+}

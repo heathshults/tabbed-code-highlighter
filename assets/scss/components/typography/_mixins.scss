@@ -1,0 +1,37 @@
+@import 'variables';
+@import '../theme/mixins';
+
+@mixin fk-type-core-styles(){
+    body {
+        font-size: $bp-size-text-md;
+        line-height: 1.5em;
+        font-family: "Source Sans Pro", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    // Loop through core styles and create classes
+    @each $style in map-keys( $fk-type-styles) {
+        .#{$fk-ns-component}-#{$fk-type-ns}-#{$style} {
+            @include fk-type($style);
+            @include text-crop();
+        }
+    }
+
+    // Categories need to be set manually due to extension of text color
+    [class*='#{$fk-ns-component}-#{$fk-type-ns}-category-'] {
+        // @extend %t-text-secondary;
+    }
+}
+
+@mixin fk-type($style){
+    @if not map-has-key($fk-type-styles, $style) {
+        @error "Invalid style specified! #{$style} doesn't exist. Choose one of #{map-keys($fk-type-styles)}";
+    } 
+
+    $style-props: map-get($fk-type-styles, $style);
+    @each $key, $value in $style-props {
+        #{$key}: $value;
+    }
+}
+
+ 

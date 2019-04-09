@@ -1,0 +1,29 @@
+
+    $modal-backdrop-opacity: $bp-depth-opacity-medium !default;
+
+
+    
+    // Modal background
+    .#{$fk-ns-component}-scrim {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: $bp-web-z-index-high;
+      background-color: color-neutral("95");
+      opacity:  $modal-backdrop-opacity;
+      
+      // Fade for backdrop
+      .fade { opacity: 0;
+        transform: translate(0, -25%);
+      }
+      // REPLACE WITH VARIABLE
+      .show { 
+          opacity: $modal-backdrop-opacity;
+       }
+    }
+
+    .fade { opacity: 0;
+      transform: translate(0, -25%);
+    }

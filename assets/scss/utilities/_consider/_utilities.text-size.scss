@@ -1,0 +1,37 @@
+/*
+   text-size
+*/
+
+$fk-utils-text-size-enable: true !default; 
+$fk-utils-text-size-responsive: true !default;
+$fk-utils-text-size-print: false !default;
+$fk-utils-text-size-breakpoints: map('web.breakpoints') !default;
+$fk-utils-text-size-ns: 'text-size' !default; 
+$fk-utils-text-size-sizes: get('size.text') !default;
+
+//Private function to include through looks and conditional statements
+@mixin _text-size($variant:'') {
+    @each $name, $size in $fk-utils-text-size-sizes {
+        .#{$fk-ns-utilities}-#{$fk-utils-text-size-ns + '-' + $name + $variant } {
+            font-size: $size;
+        }
+    }
+}
+
+@if($fk-config-enable-utilties AND $fk-utils-text-size-enable){
+    @include _text-size();
+}
+
+@if $fk-utils-text-size-print AND $fk-config-enable-print {
+    @media print {
+        @include _text-size($fk-separator-breakpoint + $fk-ns-print);
+    }
+}
+
+@if ($fk-utils-text-size-responsive AND $fk-config-enable-responsive) {
+    @each $breakpoint-name, $breakpoint-size in $fk-utils-text-size-breakpoints {
+        @include mq-only($breakpoint-name){
+           @include _text-size($fk-separator-breakpoint + $breakpoint-name);
+        }
+    }
+} 

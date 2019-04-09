@@ -1,0 +1,99 @@
+/*
+   WIDTHS
+*/
+
+$fk-utils-width-responsive: true !default;
+$fk-utils-width-print: false !default;
+// Map needs to be in reverse order 
+// TODO need to move reverse global
+$fk-utils-width-breakpoints: map-reverse(get('web.breakpoints')) !default;
+
+@import '_settings.widths.scss';
+
+//child-width-1-2>*
+
+@mixin _width($variant:'') {
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-1#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-1#{$variant}>* { width: 1.1rem !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-2#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-2#{$variant}>* { width: 2rem !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-3#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-3#{$variant}>* { width: 4rem !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-4#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-4#{$variant}>* { width: 8rem !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-5#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-5#{$variant}>* { width: 16rem !important;}
+
+    /* Halves */
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-1-2#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-1-2#{$variant}>* { width:  (100% * 1 / 2.001) !important;}
+
+    /* Thirds */
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-1-3#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-1-3#{$variant}>* { width:  (100% * 1 / 3.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-2-3#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-2-3#{$variant}>* { width:  (100% * 2 / 3.001) !important;}
+
+    /* Quarters */
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-1-4#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-1-4#{$variant}>* { width:  (100% * 1 / 4.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-2-4#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-2-4#{$variant}>* { @extend .u-width-1-2#{$variant} ;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-3-4#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-3-4#{$variant}>* { width:  (100% * 3 / 4.001) !important;}
+
+    /* Fifths */
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-1-5#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-1-5#{$variant}>* { width:  (100% * 1 / 5.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-2-5#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-2-5#{$variant}>* { width:  (100% * 2 / 5.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-3-5#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-3-5#{$variant}>* { width:  (100% * 3 / 5.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-4-5#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-4-5#{$variant}>* { width:  (100% * 4 / 5.001) !important;}
+
+    /* Sixths */
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-1-6#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-1-6#{$variant}>* { width: (100% * 1 / 6.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-2-6#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-2-6#{$variant}>* { @extend .u-width-1-3#{$variant} ;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-3-6#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-3-6#{$variant}>* { @extend .u-width-1-2#{$variant} ;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-4-6#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-4-6#{$variant}>* { @extend .u-width-2-3#{$variant} ;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-5-6#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-5-6#{$variant}>* { width: (100% * 5 / 6.001) !important;}
+
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-1-10#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-1-10#{$variant}>* { width: (100% * 1 / 10.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-2-10#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-2-10#{$variant}>* { width: (100% * 2 / 10.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-3-10#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-3-10#{$variant}>* { width: (100% * 3 / 10.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-4-10#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-4-10#{$variant}>* { width: (100% * 4 / 10.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-5-10#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-5-10#{$variant}>* { @extend .u-width-1-2#{$variant};}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-6-10#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-6-10#{$variant}>* { width: (100% * 6 / 10.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-7-10#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-7-10#{$variant}>* { width: (100% * 7 / 10.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-8-10#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-8-10#{$variant}>* { width: (100% * 8 / 10.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-9-10#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-9-10#{$variant}>* { width: (100% * 9 / 10.001) !important;}
+
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-1-12#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-1-12#{$variant}>* { width: (100% * 1 / 12.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-2-12#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-2-12#{$variant}>* { width: (100% * 2 / 12.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-3-12#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-3-12#{$variant}>* { width: (100% * 3 / 12.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-4-12#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-4-12#{$variant}>* { width: (100% * 4 / 12.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-5-12#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-5-12#{$variant}>* { width: (100% * 5 / 12.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-6-12#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-6-12#{$variant}>* { @extend .u-width-1-2#{$variant};}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-7-12#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-7-12#{$variant}>* { width: (100% * 7 / 12.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-8-12#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-8-12#{$variant}>* { width: (100% * 8 / 12.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-9-12#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-9-12#{$variant}>* { width: (100% * 9 / 12.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-10-12#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-10-12#{$variant}>* { width: (100% * 10 / 12.001) !important;}
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-11-12#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-11-12#{$variant}>* { width: (100% * 11 / 12.001) !important;}
+
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-full#{$variant}, .#{$fk-ns-utilities}-#{$fk-ns-child}-#{$fk-ns-width}-full#{$variant}>* { 
+      width: 100% !important;
+    }
+
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-fill#{$variant} { 
+      flex: 1;
+      min-width: 1px;
+    };
+
+    .#{$fk-ns-utilities}-#{$fk-ns-width}-fit#{$variant} {
+      flex: none !important;
+    };
+};
+
+@if($fk-config-enable-utilties){
+  @include _width();
+}
+
+@if $fk-utils-width-print AND $fk-config-enable-print {
+  @media print {
+      @include _width($fk-separator-breakpoint + $fk-ns-print);
+  }
+}
+
+@if ($fk-utils-width-responsive AND $fk-config-enable-responsive) {
+  @each $breakpoint-name, $breakpoint-size in $fk-utils-width-breakpoints {
+      @include mq-at($breakpoint-name){
+        @include _width($fk-separator-breakpoint + $breakpoint-name);
+      }
+  }
+} 

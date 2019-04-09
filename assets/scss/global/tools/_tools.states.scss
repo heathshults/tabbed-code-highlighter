@@ -1,0 +1,27 @@
+@mixin fk-hover{
+    &.is-hovered, 
+    &:hover {
+        @content;
+    }
+}
+
+@mixin fk-active {
+    &:active,  
+    &.is-active {
+        @content;
+    }
+}
+
+@mixin fk-disabled {
+    &[disabled],
+    &:disabled,
+    &.is-disabled {
+        @content;
+    }
+}
+
+@mixin fk-focus {
+    &:focus {
+        @content;
+    }
+}

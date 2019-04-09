@@ -1,0 +1,14 @@
+// Automatic Mapping files. Injector should sort these by alpha to prevent triggering GIT changes
+/* inject:sass */
+@import "helpers/_helpers.color.scss";
+@import "helpers/_helpers.exports.scss";
+@import "helpers/_helpers.general.scss";
+@import "helpers/_helpers.is.functions.scss";
+@import "helpers/_helpers.list.functions.scss";
+@import "helpers/_helpers.map.functions.scss";
+@import "helpers/_helpers.screenreader.scss";
+@import "helpers/_helpers.shapes.scss";
+@import "helpers/_helpers.string.functions.scss";
+@import "helpers/_helpers.svg.scss";
+@import "helpers/_helpers.units.functions.scss";
+/* endinject */

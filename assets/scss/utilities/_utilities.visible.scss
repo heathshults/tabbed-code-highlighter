@@ -1,0 +1,66 @@
+/*
+   visible
+*/
+$fk-utils-visible-responsive: true !default;
+$fk-utils-visible-print: false !default;
+$fk-utils-visible-breakpoints: map('web.breakpoints') !default;
+$fk-utilsvisible-ns: 'visible' !default; 
+
+
+//Private function to include through loops and conditional statements
+@mixin _visible($variant:'') {
+  .#{$fk-ns-utilities}-hidden#{$variant}{
+    display: none !important;
+   }
+   
+  /* Visibility
+    ========================================================================== */
+  // hides but stays in DOM
+  .#{$fk-ns-utilities}-invisible#{$variant}{ 
+    visibility: hidden !important; 
+  }
+ 
+  .#{$fk-ns-utilities}-visible#{$variant}{ 
+    visibility: visible !important; 
+  }
+
+}
+
+
+
+
+
+
+
+@if($fk-config-enable-utilties){
+  @include _visible();
+
+  /* Visibility Toggle */
+  .#{$fk-ns-utilities}-visible-toggle:not(:hover):not(.is-hover) .#{$fk-ns-utilities}-hidden-hover:not(:focus) {
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .#{$fk-ns-utilities}-visible-toggle:not(:hover):not(.#{$fk-ns-utilities}-hover) .#{$fk-ns-utilities}-invisible-hover:not(:focus) { 
+    opacity: 0 !important; 
+  }
+ 
+}
+
+@if $fk-utils-visible-print AND $fk-config-enable-print {
+  @media print {
+    @include _visible($fk-separator-breakpoint + $fk-ns-print);
+  }
+}
+
+@if ($fk-utils-visible-responsive AND $fk-config-enable-responsive) {
+  @each $breakpoint-name, $breakpoint-size in $fk-utils-visible-breakpoints {
+    @include mq-only($breakpoint-name){
+      @include _visible($fk-separator-breakpoint + $breakpoint-name);
+    }
+  }
+} 

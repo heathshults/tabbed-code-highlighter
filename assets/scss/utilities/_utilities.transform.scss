@@ -1,0 +1,33 @@
+$fk-ns-transform-capitalize: 'capitalize' !default;
+$fk-ns-transform-uppercase: 'uppercase' !default;
+$fk-ns-transform-lowercase: 'lowercase' !default;
+$fk-utils-transform-responsive: false !default;
+$fk-utils-transform-breakpoints: $fk-global-breakpoints-map !default;
+
+
+//PRIVATE MIXIN. Do not use outside this local scope, import order not guaranteed in utilities
+@mixin _utilities-transform ( $variant: '') { 
+   
+  .#{$fk-ns-utilities}-#{$fk-ns-transform-uppercase + $variant} {
+    text-transform: uppercase !important;
+  }
+
+  .#{$fk-ns-utilities}-#{$fk-ns-transform-lowercase + $variant} {
+    text-transform: lowercase !important;
+  }
+
+  .#{$fk-ns-utilities}-#{$fk-ns-transform-capitalize + $variant } {
+    text-transform: capitalize !important;
+  }
+}
+
+
+@include _utilities-transform;
+
+@if ($fk-utils-transform-responsive == true) {
+  @each $breakpoint-name, $breakpoint-size in $fk-utils-transform-breakpoints {
+    @include mq-only($breakpoint-name){
+      @include _utilities-transform($fk-separator-breakpoint + $breakpoint-name);
+    }
+  }
+}     

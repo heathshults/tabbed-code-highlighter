@@ -1,0 +1,194 @@
+@import '../../framekit-util.scss';
+@import './variables';
+@import '../theme/mixins';
+
+/// Meant to loop through a map  of buttom themes and set variants for colors
+@mixin fk-button-color-variants($button-variants){
+    @each $button-name, $button-map in $button-variants {
+        $lm-theme: map-get($button-map, 'lm');
+        $dm-theme: map-get($button-map, 'dm');
+
+        @if $button-name =='default' {
+           @include fk-button( map-get($lm-theme, 'default'), map-get($lm-theme, 'label'), map-get($lm-theme, 'hover'), map-get($lm-theme, 'active'), map-get($lm-theme, 'disabled'));
+       
+           @include fk-theme-in-dark(){
+             @include fk-button( map-get($dm-theme, 'default'), map-get($dm-theme, 'label'), map-get($dm-theme, 'hover'), map-get($dm-theme, 'active'), map-get($dm-theme, 'disabled'));
+           }
+       
+        } @else {
+            &--#{$button-name} {
+                @include fk-button( map-get($lm-theme, 'default'), map-get($lm-theme, 'label'), map-get($lm-theme, 'hover') , map-get($lm-theme, 'active'), map-get($lm-theme, 'disabled'));
+            
+                @include fk-theme-in-dark(){
+                    @include fk-button( map-get($dm-theme, 'default'), map-get($dm-theme, 'label'), map-get($dm-theme, 'hover'), map-get($dm-theme, 'active'), map-get($dm-theme, 'disabled'));
+                }
+            } 
+        }
+    }
+}
+
+/// Meant to loop through a map and set variants to the called parent element
+@mixin fk-button-size-variants($sizes){
+    @each $size, $props in $sizes {
+       &--#{$size} {
+         @include fk-button-size-variant($props);
+
+         //
+        //  &.is-loading {
+        //     &:after{
+        //         @include square(16px);
+        //     }
+        //  }
+        
+       }
+    }
+}
+
+
+@mixin fk-button-base(){
+    display: inline-block;
+    position: relative;
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid transparent;
+    border-radius: $fk-button-border-radius;
+    margin: 0;
+    cursor: pointer; 
+    user-select: none;    
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: inherit;
+    vertical-align: middle;
+    font-size: $fk-control-font-size-default;
+    padding:  $fk-control-padding-default;
+    font-weight: $fk-button-font-weight;
+    transition: $fk-button-transition;
+    min-width: $fk-button-min-width;
+    max-width: $fk-button-max-width;
+    background-color: #fff;
+    // /color: $bp-color-interactive-primary-bg-on-light;
+    // TKTK add theming
+    // @include fk-theme-onDark {
+    //     //background-color: $bp-color-interactive-primaryalt-bg-on-light;
+    //     color: #fff
+    // }
+
+    @include fk-hover {
+        text-decoration: none;
+    }
+  
+    @include fk-disabled {
+        box-shadow: none;
+        border-color: transparent;
+        cursor: not-allowed;
+    }  
+}
+
+
+@mixin fk-button-elevated(){
+
+    @include fk-theme-shadow('xs');
+    border: 1px solid $bp-color-shade-10;
+
+    @include fk-hover {
+        @include fk-theme-shadow('xs');
+    }
+
+    @include fk-active {
+        @include fk-theme-shadow('xs');
+    }
+  
+    @include fk-disabled {
+        @include fk-theme-shadow('none');
+    }
+}
+
+
+@mixin fk-button-size-variant($props){
+    @each $key, $value in $props {
+        #{$key}: $value;
+    }
+}
+
+
+@mixin fk-button($bg, $label, $hover, $active, $disabled){ 
+    // Determines the if the bg is dark or light
+    $_variant-tone: get-tone($bg);
+    background-color: $bg;
+    color: $label;
+
+    @include fk-hover {
+       background-color: $hover;
+    }
+
+    @include fk-active {
+       background-color: $active
+    }
+    
+    @include fk-disabled {
+        background-color: $disabled
+        
+    }
+
+    &:focus {
+        @if ($_variant-tone != 'light'){
+           box-shadow: 0 0 0px 3px rgba($bg, .4);
+        } @else { 
+           box-shadow: 0 0 0px 3px rgba(#ccc, .5);
+        }
+    }
+
+    // Variant here due to need for color values. 
+    &.is-loading {  
+        @include fk-hover {
+            background-color: $bg;
+         }
+
+        &:after{
+            color: $label;
+        }
+    }
+}
+
+
+/// Given a map of link button options loops through and creates
+@mixin fk-button-link-variants($button-variants){
+    @each $button-name, $token-name in $button-variants {
+        $color: fk-theme-get-link($token-name);
+    
+        @if $button-name =='default' {
+            @include fk-button-link($color)
+         } @else {
+             &--#{$button-name} {
+                 @include fk-button-link($color)
+            }
+        }
+    }
+}
+
+
+@mixin fk-button-link($color:fk-theme-get-link('primary')){ 
+    // Determines the if the bg is dark or light
+    color: $color;
+  //  transition: $fk-button-link-transition;
+
+    @include fk-hover {
+      color: darken($color, 10%);
+      background-color: rgba(18,18,18,0.03);
+    }
+
+    @include fk-disabled {
+        $d-theme: fk-get-theme-btn-map('disabled');
+        color:  fk-get-theme-text('subtle');
+        background: transparent;
+    }
+    @include fk-active {
+        background-color: $bp-color-shade-10;
+        color: #121212;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0px 3px rgba(#ccc, .5);
+    }
+}

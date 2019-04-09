@@ -1,0 +1,90 @@
+
+$page-padding-sm: space('md');
+$page-padding-md: space('lg');
+$page-padding-lg: 64px;
+
+
+//tktk move width spaces to variables or tokens
+
+.#{$fk-ns-objects}container {
+  @extend %o-container;
+}
+
+.#{$fk-ns-objects}container-fluid, .l-fluid .#{$fk-ns-objects}container  {
+  @extend %o-container-fluid;
+}
+
+
+%#{$fk-ns-objects}container {
+  margin: 0 auto;
+
+  @include mq-until('md') {
+    width: 100%;
+    padding: 0 $page-padding-sm;
+  }
+
+  @include mq-md {
+    width: 960px;
+    padding: 0 $page-padding-md;
+    //at 960- 1377
+  }
+
+  @include mq-lg{
+    width: 1272px;
+    padding: 0 $page-padding-md;
+    //at 1378- 1740
+  }
+
+  @include mq-from('xl') {
+    width: 1680px;
+    padding: 0 $page-padding-md;
+    //at 1741
+    //targeting 1920
+
+
+  }
+}
+
+
+%#{$fk-ns-objects}container-fluid { 
+  width: 100%;
+  max-width: 100%;
+  padding: 0 $page-padding-md;
+}
+  
+  
+  
+
+
+
+
+  
+
+// $bp-web-breakpoints-xs: 320px !default; // 0 - 767px
+// $bp-web-breakpoints-sm: 768px !default; // 768px - 1024px
+// $bp-web-breakpoints-md: 960px !default; // 1365px-1536px: Default.
+// $bp-web-breakpoints-lg: 1378px !default; // 1536px - 1919px
+// $bp-web-breakpoints-xl: 1741px !default; // 1920px and up
+  
+//     @include mq-from('sm') {
+//       max-width: inherit;
+//       width: auto;
+//     }
+    
+//     @include mq-from('md') {
+//       max-width: get-breakpoint('md')-(($page-fixed-padding - $page-padding)* 2);
+//       width: auto;
+//     }
+  
+//     @include mq-from('lg') {
+//       max-width: get-breakpoint('lg')-(($page-fixed-padding - $page-padding) * 2);
+//       width: auto;
+//     }
+  
+//     @include mq-from('xl') {
+//       max-width: get-breakpoint('xl')-(($page-fixed-padding - $page-padding) * 2); 
+//       width: auto;
+//     }
+//   }
+  
+

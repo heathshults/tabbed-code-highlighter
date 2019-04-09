@@ -1,0 +1,126 @@
+
+%fk-input {
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
+    display: inline-flex;
+    font-size: $fk-input-font-size;
+    line-height: $fk-input-line-height;
+    width: $fk-input-width;
+    max-width: $fk-input-max-width;
+    padding: $fk-input-padding;
+    text-transform: unset;
+    background-clip: padding-box;
+    cursor: text;
+    border-radius: $fk-input-border-radius;
+    border-color: $fk-input-border-color;
+    border-style: solid;
+    box-shadow:$fk-input-box-shadow;
+    transition: $fk-input-transition;
+    transition-property: $fk-input-transition-property;
+    vertical-align: top;
+
+    & + .c-help{
+      padding-top: $fk-input-help-spacing;
+    }
+   
+    & + .c-button {
+      margin-right: 8px; 
+    }
+
+    & + .c-button--fullwidth {
+      margin-top: 8px; 
+    }
+  
+    &:not(:last-child){
+      margin: $fk-input-margin;
+    }
+  
+    // Placeholder
+    &::placeholder {
+      @include fk-theme-text('secondary');
+    }
+  
+    //States
+    &:hover,
+    &.is-hovered {
+          
+    }
+  
+    &:focus,
+    &.is-focused,
+    &:active,
+    &.is-active {
+      color: inherit;
+      border-color: $fk-input-active-border-color;
+      outline: none;
+      box-shadow:   $fk-input-active-shadow;
+    }
+  
+    &.is-disabled,
+    &:disabled,
+    &[disabled] {
+      color: $fk-input-disabled-color;
+      background-color: $fk-input-disabled-background;
+      border-color: $fk-input-disabled-border-color;
+      box-shadow: $fk-input-disabled-shadow;
+      cursor: not-allowed;
+    }
+  
+    &.is-error {
+      color: $fk-input-error-color;
+      border-color: $fk-input-error-border-color;
+
+      &:focus,
+      &.is-focused,
+      &:active,
+      &.is-active {
+        box-shadow: $fk-input-error-focus-shadow;
+      }
+    }
+  
+    &.is-success {
+      color: $fk-input-success-color;
+      border-color: $fk-input-success-border-color;
+  
+      &:focus,
+      &.is-focused,
+      &:active,
+      &.is-active {
+        box-shadow: $fk-input-success-focus-shadow;
+      }
+    }
+}
+
+  .c-form-input {
+       @extend %fk-input;
+       @include fk-theme-bg('canvas');
+
+      //  @mixin fk-theme-onDark(){
+      //   background-color: #ccc;
+
+      //  }
+       
+       border-width: $fk-input-border-width;
+       box-shadow: none;
+
+      &--sm {
+        padding: $fk-control-padding-sm;
+        font-size: $fk-control-font-size-sm;
+        line-height: 24px;
+      }
+    
+      &--lg {
+        padding: $fk-control-padding-lg;
+        font-size: $fk-control-font-size-lg;
+        max-height: none;
+      }
+    
+      &--monospace {
+        // @extend .u-text-monospace;
+      }
+  }
+
+  .c-form-textarea {
+      min-height: 80px; //@include c-form-control;
+  }

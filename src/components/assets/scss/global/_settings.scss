@@ -1,0 +1,121 @@
+///* ========================================================================
+//   Config
+//   ======================================================================== */
+
+// This core file sets up framekit core settings They are
+// the underpinnig of how it functions. Modify with caution.
+
+// Settings for sass post-css compiling
+//@use postcss-discard-comments(removeAll: true);
+//@use autoprefixer(grid:true); //grid
+//run command: npx autoprefixer --info  // to see settings of autoprefixer
+
+
+// Bringing in the approved tokens
+ @import './bp-tokens-v5.0.scss';
+//@import 'cxd-ds-tokens/dist/bp-tokens.scss';
+ 
+$fk-config-enable-base: true !default;
+$fk-config-enable-objects: true !default;
+$fk-config-enable-meta: true !default;
+$fk-config-enable-components: true !default;
+
+$fk-config-enable-print: true !default;
+$fk-config-enable-responsive: true !default;
+$fk-config-enable-utilties: true !default;
+
+
+//Global Namespaces
+$fk-ns-objects: 'o-' !default;
+$fk-ns-utilities: 'u' !default;
+$fk-ns-component: 'c' !default;
+$fk-ns-theme: 't' !default;
+
+//$fk-ns-qa: 'qa-' !default; // currently should NOT be in framekit
+
+$fk-global-base-font-size: $bp-size-text-base !global;
+$fk-global-baseline: $bp-type-line-height-default * $fk-global-base-font-size !global;
+$fk-global-default-token-map: $bp-tokens;
+
+$fk-global-map-fallbacks: ('50', 'default', 'medium', 'base', 'onLight', 'primary');
+
+$fk-global-spacing-units-map: map-get(map-get($bp-tokens,'space'), 'spacing');
+$fk-global-breakpoints-map: map-get(map-get($bp-tokens,'web'), 'breakpoints');
+
+//Seperators
+$fk-separator-breakpoint: \@ !default;
+
+// Global specific ns
+$fk-ns-left: 'left' !default;
+$fk-ns-right: 'right' !default;
+$fk-ns-top: 'top' !default;
+$fk-ns-bottom: 'right' !default;
+$fk-ns-center: 'center' !default;
+
+$fk-ns-print: 'print' !default;
+$fk-ns-ondark: 'on-dark' !default;
+$fk-ns-onlight: 'on-light' !default;
+
+// Abbreviations
+$fk-abbr-padding: 'p' !default;
+$fk-abbr-margin: 'm' !default;
+
+/// A list of container objects. More imporantly this items we 
+/// expect background colors to be applied to
+$fk-containers-lists: (
+  "body",
+  ".o-section",
+  ".o-container"
+);
+
+$fk-abbr-top: 't' !default;
+$fk-abbr-right: 'r' !default;
+$fk-abbr-bottom: 'b' !default;
+$fk-abbr-left: 'l' !default;
+$fk-abbr-all: 'a' !default;
+
+// Maps of Abbr to CSS naming
+$fk-edges-map: (
+  $fk-abbr-top:    top,
+  $fk-abbr-right:  right,
+  $fk-abbr-bottom: bottom,
+  $fk-abbr-left:   left
+);
+
+$fk-control-border-radius: $bp-size-border-radius-md !default;
+$fk-control-font-size-sm: $bp-size-text-sm !default;
+$fk-control-line-height-sm: $bp-size-text-sm !default;
+$fk-control-padding-sm: .1em .75em !default;
+
+$fk-control-default-font-size: $bp-size-text-md !default;
+$fk-control-default-line-height: $fk-global-baseline !default;
+$fk-control-default-padding: .5em .75em !default;
+
+$fk-control-lg-font-size: $bp-size-text-xl !default;
+$fk-control-lg-line-height: $bp-size-text-xl !default;
+$fk-control-lg-padding: .57em .75em !default;
+
+$fk-control-xl-font-size:  $bp-size-text-xl !default;
+$fk-control-xl-padding: .75em 2em!default;
+
+$fk-control-block-font-size: $bp-size-text-xl !default;
+$fk-control-block-padding: .75em 2em !default;
+$fk-control-block-line-height: 2px 32px;
+
+$fk-control-border-width: $bp-size-border-width-thin;
+
+$fk-control-border: $bp-size-border-width-thin solid color-neutral('30') !default;
+
+$fk-global-debug: false !default;
+
+
+//TEMP
+// $icon-close: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+// <path fill="currentColor" d="M3.207 5.435l2.163-2.163 14.418 14.418-2.163 2.163-14.418-14.418z"></path>
+// <path fill="currentColor" d="M3.219 17.697l14.415-14.405 2.141 2.142-14.415 14.405-2.141-2.142z"></path>
+// </svg>';
+
+// @include background-svg('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+// <path fill="currentColor" color="currentColor" d="M21.748 6.398l-1.601-1.601c-0.295-0.295-0.773-0.295-1.067 0l-9.596 9.596-4.565-4.597c-0.295-0.295-0.772-0.295-1.067 0l-1.6 1.601c-0.295 0.295-0.295 0.773 0 1.067l6.693 6.738c0.295 0.295 0.772 0.295 1.067 0l11.736-11.737c0.295-0.294 0.295-0.772 0-1.067z"></path>
+// </svg>
+// ');

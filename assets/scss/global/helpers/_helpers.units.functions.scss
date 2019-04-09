@@ -1,0 +1,38 @@
+@function rem($size, $baseSize: 16px) {
+   @if is-absolute-length($size){
+        $remSize: $size / $baseSize * 1;
+        @return #{$remSize}rem;
+
+    } @else if(is-rem($size))  {
+        @return $size;
+
+    } @else if(is-em($size)) {
+        $number: strip-units($size);
+        $remSize: #{$number}rem;
+        @return #{$remSize}rem;
+
+    } @else if(is-length($size)) {
+        $remSize: #{$number}rem;
+        @return #{$remSize}rem;
+
+    } @else {
+        @error 'Failure of rem function';
+    }
+}
+ 
+@function em($size, $baseSize: 16px) {
+    $emSize: $size / $baseSize * 1;
+    @return #{$emSize}em;
+}
+
+
+/// Removes the unit (e.g. px, em, rem) from a value, returning the number only.
+///
+/// @param {Number} $num - Number to strip unit from.
+/// @returns {Number} The same number, sans unit.
+/// @link https://github.com/zurb/foundation-sites/blob/develop/scss/util/_unit.scss
+
+@function strip-units($number){
+	@return $number / ($number * 0 + 1);
+}
+

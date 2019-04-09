@@ -1,0 +1,13 @@
+
+
+@if($fk-config-enable-utilties){
+  .#{$fk-ns-utilities}-sr-only {
+    @include sr-only();
+  }
+
+  .#{$fk-ns-utilities}-sr-only-focusable {
+    @include sr-only();
+    @include sr-only-focusable;
+  }
+}
+

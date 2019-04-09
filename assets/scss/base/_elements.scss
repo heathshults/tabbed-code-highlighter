@@ -1,0 +1,204 @@
+  @import '../components/theme/mixins';
+    
+    
+    
+    
+    
+    /* ==========================================================================
+        #PAGE ELEMENTS
+        ========================================================================== */
+  
+
+      figcaption {
+        font-style: italic;
+    }
+  
+    // Setting base element settings. Setting the Base. Keep things here simple to reduce hacking at higher levels
+  
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6{
+      line-height: line-height('compressed');
+    }
+  
+  
+    /* ==========================================================================
+        #TABLES
+        ========================================================================== */
+  
+    /**
+      * 1. Ensure tables fill up as much space as possible.
+      */
+  
+    table {
+      width: 100%; /* [1] */
+    }
+  
+    /* ==========================================================================
+        #IMAGES
+        ========================================================================== */
+  
+    /**
+      * 1. Fluid images for responsive purposes.
+      * 2. Offset `alt` text from surrounding copy.
+      * 3. Setting `vertical-align` removes the whitespace that appears under `img`
+      *    elements when they are dropped into a page as-is. Safer alternative to
+      *    using `display: block;`.
+      */
+  
+    img {
+      max-width: 100%; /* [1] */
+      font-style: italic; /* [2] */
+      vertical-align: middle; /* [3] */
+    }
+  
+  
+    // In case you don't have control over generated `width` and `height` attributes
+    // on `<img>` elements in your markup, but still want the images to be fluid,
+    // set this to `false`.
+    $fk-static-images: true !default;
+  
+    @if ($fk-static-images == true) {
+  
+      /**
+        * If a `width` and/or `height` attribute has been explicitly defined, let’s
+        * not make the image fluid.
+        */
+  
+      img[width],
+      img[height] {
+        max-width: none;
+      }
+  
+    }
+  
+  
+    /* ==========================================================================
+        #Links
+        ========================================================================== */
+  
+    a{
+    //  color: fk-theme-get-link('secondary', 'onDark'); //TKTK replace with theme link
+      text-decoration: none;
+      color: fk-theme-get-text('link');
+      
+      &:hover{
+        text-decoration: underline;
+        transition: opacity .15s ease-in;
+        // color: lighten(fk-theme-get-link('primary'), 20%);
+
+      }
+  
+    }
+  
+
+
+    /* ==========================================================================
+        #Forms and Labels
+        ========================================================================== */
+  
+    label {
+      max-width: 100%;
+      word-wrap: break-word;
+
+      &[for]{
+       cursor: pointer;
+      }
+
+    }
+  
+    [type='checkbox'],
+    [type='radio'],
+    [type='text'] {
+  
+      + label[for] {
+        cursor: pointer;
+      }
+    }
+  
+  
+    /* ==========================================================================
+        # List and Containers
+        ========================================================================== */
+  
+    /**
+      * Consistent indentation for lists.
+      */
+  
+  
+    ul {
+      list-style: disc outside;
+  
+      li:not(:last-child) {
+       // margin-bottom: 8px; // caused issues downstream ul made items
+        // line-height: 1.25; // caused issues
+      }
+  
+      ul {
+        list-style-type: circle;
+        ul{
+          list-style-type: square;
+        }
+      }
+    }
+  
+    ol {
+      list-style: inherit outside;
+      ol {
+        list-style-type: lower-alpha;
+  
+      }
+    }
+  
+  
+    dl{
+      dt {
+        font-weight: 600;
+      }
+    }
+  
+  
+  
+    /* ==========================================================================
+        #SHARED
+        ========================================================================== */
+  
+    /**
+      * Shared declarations for certain elements.
+      */
+  
+    /**
+      * Always declare margins in the same direction:
+      * csswizardry.com/2012/06/single-direction-margin-declarations
+      */
+  
+    address,
+    h1, h2, h3, h4, h5, h6, 
+    blockquote, p, pre,
+    dl, ol, ul,
+    figure,
+    hr,
+    table,
+    fieldset
+      {
+      //margin: 0 0 $bp-space-spacing-md 0;
+      margin: 0 0 #{$fk-global-baseline} 0;
+          
+      &:last-child{
+  
+      }
+    }
+  
+  
+  
+    /**
+      * Consistent indentation for lists.
+      */
+  
+    dd, ol, ul {
+      margin-left: $fk-global-baseline;
+    }
+  

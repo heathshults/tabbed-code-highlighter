@@ -1,0 +1,41 @@
+@import '../../framekit-util';
+
+$fk-form-control-border-radius: 4px !default;
+
+$fk-form-item-margin-bottom: $fk-global-baseline !default;
+$fk-form-item-margin-right: inline('md') !default;
+$fk-form-checkradio-margin-right:  inline('xs') !default;
+
+$fk-input-margin: 0; // removed due to bug when using outside form context. 
+$fk-input-width: 100%;
+$fk-input-max-width: 100%;
+
+$fk-input-padding: $fk-control-padding-default;
+$fk-input-font-size: $fk-control-default-font-size;
+$fk-input-line-height: $fk-control-line-height-default;
+$fk-input-border-width: 1px;
+$fk-input-border-radius: $bp-size-border-radius-md !default;
+$fk-input-box-shadow: none;
+$fk-input-help-spacing: 8px;
+
+$fk-input-border-color: fk-theme-get-border('secondary');;
+$fk-input-transition: 1s cubic-bezier(.4, 0, .2, 1);
+$fk-input-transition-property: color,background-color,border;
+
+$fk-input-active-border-color: fk-theme-get-border('selected');
+$fk-input-active-shadow: rgba(fk-theme-get-border('selected'), .4) 0px 0px 0px 1px; 
+
+$fk-input-error-border-color: fk-theme-get-border('error');
+$fk-input-error-focus-shadow: rgba(fk-theme-get-border('error'), .4) 0px 0px 0px 1px;
+$fk-input-error-color: inherit;
+ 
+$fk-input-success-border-color: fk-theme-get-border('success');
+$fk-input-success-color: inherit;
+$fk-input-success-focus-shadow: rgba(fk-theme-get-border('success'), .4) 0px 0px 0px 1px;
+
+$fk-input-disabled-color: fk-theme-get-text('subtle');;
+$fk-input-disabled-background: $bp-color-tint-05;
+$fk-input-disabled-border-color: $bp-color-tint-10;
+$fk-input-disabled-shadow: none; 
+
+$fk-form-item-margin-bottom:  space('lg');

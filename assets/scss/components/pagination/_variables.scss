@@ -1,0 +1,23 @@
+ 
+// Pagination
+$pagination-padding-link-y:         space('xs');
+$pagination-padding-link-x:         space('sm');
+
+$pagination-color:                  $bp-color-interactive-primary;
+$pagination-bg:                     none;
+
+$pagination-active-bg:              $bp-color-interactive-primary;
+
+$pagination-active-color:           color-neutral("00");
+$pagination-hover-color:            color-neutral('80');
+$pagination-hover-bg:               color-neutral("10");
+
+$pagination-border-radius:          0px;
+
+$pagination-spacing-item:          $bp-space-spacing-md;
+$pagination-spacing-arrow:         $bp-space-spacing-xs;
+$pagination-spacing-prevnext:      $bp-space-spacing-sm;
+//$pagination-size-arrow:             1rem; // no longer neeeded as using svg
+
+$pagination-disabled-color: #ccc;
+$pagination-disabled-bg: none;

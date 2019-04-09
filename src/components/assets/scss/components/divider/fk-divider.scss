@@ -1,0 +1,27 @@
+
+
+
+
+[class*='c-divider'] {
+    border: none;
+    margin-bottom: $fk-global-baseline;
+}
+
+// /* Add margin if adjacent element */
+// * + [class*='uk-divider'] { margin-top: $divider-margin-vertical; }
+
+
+
+.#{$fk-ns-component}-divider {
+    height: 1px;
+}
+
+
+.#{$fk-ns-component}-divider::after{
+    content: "";
+    display: inline-block;
+    width:100%;
+    max-width: 100%;
+    border-top: 1px solid #333;
+    vertical-align: top;
+}

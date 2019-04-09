@@ -1,0 +1,64 @@
+
+@import "./mixins.scss";
+@import './variables';
+@import "../icon/mixins";
+
+
+.#{$fk-ns-component}-button {
+    @include fk-button-base();
+    @include fk-button-elevated();
+    @include fk-button-color-variants($fk-button-variant-map);
+    @include fk-button-size-variants($fk-button-size-map);
+
+    &.is-loading {
+        opacity: .6;
+        color: transparent;
+        cursor: not-allowed;
+
+        //here to force specificity
+        &.c-button--sm:after{
+            width: 8px;
+            height:8px;
+            margin-left:-4px;
+            margin-top:-4px;
+            border-width: 1px;
+        }
+
+        &.c-button--xl:after{
+            width: 24px;
+            height:24px;
+            margin-left:-12px;
+            margin-top:-12px;
+        }
+
+        &:after{
+            position: absolute;
+            @include fk-loader-icon();
+            top: 50%;
+            left: 50%;
+            margin-left:-6px;
+            margin-top:-6px;
+            width: 12px;
+            height:12px;
+        }
+    }
+}
+
+
+.#{$fk-ns-component}-button.#{$fk-ns-component}-button--fullwidth {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+
+// .#{$fk-ns-component}-button-link {
+//       @include fk-button-base();
+//       @include fk-button-link-variants($fk-button-link-variant-map);
+//       @include fk-button-size-variants($fk-button-link-size-map);
+// } 
+
+// %#{$fk-ns-component}-button-link {
+//     @include fk-button-base();
+//     @include fk-button-size-variants($fk-button-link-size-map);
+// }

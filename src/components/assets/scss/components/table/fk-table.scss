@@ -1,0 +1,85 @@
+
+
+
+
+
+
+.#{$fk-ns-component}-table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0 0 $fk-global-baseline;
+
+    th {
+        // padding: $table-cell-padding-vertical $table-cell-padding-horizontal;
+        text-align: left;
+        vertical-align: bottom;
+        padding: 0 0 8px 16px;     
+    }
+
+    tr {
+
+       
+    }
+
+    // being extra expecific
+    & &--category {
+        @extend .#{$fk-ns-utilities}-shade-5;
+        text-transform: uppercase;
+        font-weight: font-weight('semibold');
+        font-size: .75em;
+        td {
+            height: 24px;
+        }
+
+    }
+
+    td {
+        padding-left: space('md');
+        padding-right: space('md');
+        height: 48px;
+    }
+
+
+    td  > :last-child { 
+        margin-bottom: 0; 
+    }
+
+    thead {
+        border-bottom: 1px solid rgb(207, 203, 203);
+    }
+
+    tr:last-child td{
+        border-bottom: 1px solid rgb(207, 203, 203);
+    }
+
+    &--divided > tr:not(:first-child),
+    &--divided > :not(:first-child) > tr,
+    &--divided > :first-child > tr:not(:first-child) {
+        //TKTK needs to extend a class to get the right border color
+        border-top: 1px solid #ccc; 
+    }
+
+    
+    &--bordered {
+
+    }
+
+    &--scrollable {
+
+    }
+
+    &--responsive {
+
+    }
+
+    &--shrink {
+         
+    }
+
+    &--compressed {
+        td {
+            height: 24px;
+        }
+    }
+
+}

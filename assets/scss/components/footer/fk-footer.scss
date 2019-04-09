@@ -1,0 +1,21 @@
+.#{$fk-ns-component}-footer {
+  display: block;
+  width: 100%;
+  padding: $bp-space-spacing-lg; //temp use, inset function returns padding instead of just value
+  //text-align: center;
+  @include fk-theme-text('primary');
+  @include fk-theme-bg('layer1');
+  //background color is defined by a background utility class
+
+  &--fluid {
+      & > .o-container {
+        width: 100%;
+        max-width: none;
+      }
+  }
+
+  &--centered{
+    text-align: center;
+  }
+
+}

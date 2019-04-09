@@ -1,0 +1,12 @@
+@import 'variables';
+
+
+
+.c-form-radio, 
+.c-form-check {
+  //margin: $fk-form-item-margin-right;
+
+  input {
+    margin: $fk-form-checkradio-margin-right;
+  }
+}

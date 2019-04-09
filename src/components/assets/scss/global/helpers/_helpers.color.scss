@@ -1,0 +1,59 @@
+
+@import './_color-constants';
+
+
+/// Calculate the luminance for a color.
+/// See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+@function get-luminance($color) {
+  $red: nth($linear-channel-values, red($color) + 1);
+  $green: nth($linear-channel-values, green($color) + 1);
+  $blue: nth($linear-channel-values, blue($color) + 1);
+
+  @return .2126 * $red + .7152 * $green + .0722 * $blue;
+}
+
+/// Calculate the contrast ratio between two colors.
+/// See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+@function get-contrast($back, $front) {
+  $backLum: get-luminance($back) + .05;
+  $foreLum: get-luminance($front) + .05;
+
+  @return max($backLum, $foreLum) / min($backLum, $foreLum);
+}
+
+/// Determine whether the color is "light" or "dark".
+@function get-tone($color) {
+  @if $color == "dark" or $color == "light" {
+    @return $color;
+  }
+
+  $minimumContrast: 3.1;
+
+  $lightContrast: get-contrast($color, white);
+  $darkContrast: get-contrast($color, rgba(black, .87));
+
+  @if ($lightContrast < $minimumContrast) and ($darkContrast > $lightContrast) {
+    @return "light";
+  } @else {
+    @return "dark";
+  }
+}
+
+// Determine whether to use dark or light text on top of given color to meet accessibility standards for contrast.
+// Returns "dark" if the given color is light and "light" if the given color is dark.
+@function get-contrast-tone($color) {
+  @return if(get-tone($color) == "dark", "light", "dark");
+}
+
+/// Returns true if color is a light tone based on the get-tone and contast functions
+@function is-light($color){
+  @return get-tone($color) == "light";
+} 
+
+@function is-dark($color){
+   @return get-tone($color) == "dark";
+}
+
+@function is-color($color){
+  @return type-of($color) == 'color';
+}

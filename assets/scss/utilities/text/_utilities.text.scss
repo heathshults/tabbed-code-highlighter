@@ -1,0 +1,58 @@
+/*
+   text-align
+*/
+
+// @import '../../components/typography/mixins';
+
+
+
+
+$fk-utils-text-align-enable: true !default; 
+$fk-utils-text-align-responsive: true !default;
+$fk-utils-text-align-print: false !default;
+
+$fk-utils-text-align-breakpoints: map('web.breakpoints') !default;
+
+$fk-utils-text-align-ns: 'text-align' !default; 
+
+
+
+//Private function to include through looks and conditional statements
+@mixin _text-align($variant:'') {
+   
+   // .#{$fk-ns-utilities}-#{$fk-utils-text-align-ns}-class#{$variant} 
+
+   //css goes here
+
+   // If map based.. Loop
+    //@each $name, $size in $fk-utils-measure-map {
+    //  @if($name!='base'){
+    //    $variant:--#{$name};
+    // } @else{
+    //     $variant: '';
+    //  }
+    // .#{$fk-ns-utilities}-#{$fk-ns-measure + $variant} {
+    //     @include measure($name);
+    // }
+    //}
+
+}
+
+
+@if($fk-config-enable-utilties AND $fk-utils-text-align-enable){
+    @include _text-align();
+}
+
+@if $fk-utils-text-align-print AND $fk-config-enable-print {
+    @media print {
+        @include _text-align($fk-separator-breakpoint + $fk-ns-print);
+    }
+}
+
+@if ($fk-utils-text-align-responsive AND $fk-config-enable-responsive) {
+    @each $breakpoint-name, $breakpoint-size in $fk-utils-text-align-breakpoints {
+        @include mq-only($breakpoint-name){
+           @include _text-align($fk-separator-breakpoint + $breakpoint-name);
+        }
+    }
+} 

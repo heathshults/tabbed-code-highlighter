@@ -1,0 +1,128 @@
+
+@import '../theme/mixins';
+
+// $link: fk-theme-get-interactive('primary', 'link');
+// $link-hover: fk-theme-get-interactive('primary', 'link');;
+
+// $fk-breadcrumb-item-color: fk-theme-get-text('primary') !default;
+// $fk-breadcrumb-item-hover-color: fk-theme-get-text('primary') !default;
+
+// $fk-breadcrumb-item-active-color: fk-theme-get-text('primary') !default;xw
+
+$fk-breadcrumb-item-padding-vertical: 0 !default;
+$fk-breadcrumb-item-padding-horizontal: .5em !default;
+
+$fk-breadcrumb-item-padding-vertical-compressed: 0 !default;
+$fk-breadcrumb-item-padding-horizontal-compressed: 4px !default;
+
+$fk-breadcrumb-item-separator-color: fk-theme-get-border('primary') !default;
+$fk-breadcrumb-item-separator-color-compressed: fk-theme-get-border('secondary') !default;
+ 
+$size-small: 12px;
+$size-normal: 16px;
+$size-large: 24px;
+
+.#{$fk-ns-component}-breadcrumb {
+  display: block;
+  font-size: $size-normal;
+  line-height: 24px;
+  white-space: nowrap;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $fk-breadcrumb-item-padding-vertical $fk-breadcrumb-item-padding-horizontal;
+    @include fk-theme-text('secondary');
+    text-decoration: none;
+    letter-spacing: .06rem;
+
+    &:hover {
+        @include fk-theme-text('primary'); //TKTK replace with theme link mix or extension
+    }
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+
+    &:first-child a {
+      padding-left: 0;
+    }
+
+    &.is-active {
+      a {
+        pointer-events: none;
+        cursor: default;
+        @include fk-theme-text('primary');
+       
+      }
+    }
+
+    & + li::before {
+      @include fk-theme-text('subtle');
+      content: "/";
+    }
+  }
+
+  ul,
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-left:0;
+  }
+
+  .icon {
+    &:first-child {
+      margin-right: .5em;
+    }
+
+    &:last-child {
+      margin-left: .5em;
+    }
+  }
+
+  // Alignment
+  &--centered {
+    ol,
+    ul {
+      justify-content: center;
+    }
+  }
+
+  &--right {
+    ol,
+    ul {
+      justify-content: flex-end;
+    }
+  }
+
+  // Sizes
+  &--sm {
+    font-size: $size-small;
+  }
+
+  &--lg {
+    font-size: $size-large;
+  }
+
+  &--compressed {
+    li {
+      & + li::before {
+        color: $fk-breadcrumb-item-separator-color-compressed;
+        content: "/";
+      }
+    }
+ 
+   
+    //$fk-breadcrumb-item-separator-color-compressed
+    a {
+      padding: $fk-breadcrumb-item-padding-vertical-compressed $fk-breadcrumb-item-padding-horizontal-compressed;
+      letter-spacing: 0rem;
+    }
+
+  }
+
+}

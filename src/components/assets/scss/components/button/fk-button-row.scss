@@ -1,0 +1,23 @@
+@import '../../framekit-util';
+
+.#{$fk-ns-component}-button-row {
+
+    .#{$fk-ns-component}-button {
+       // margin-bottom: space('xs');
+       //caused downstream issues.  tktk reeval
+    }
+    
+    .#{$fk-ns-component}-button:not(:last-child) {
+        margin-right: space('md');
+    }
+
+    &--right {
+        text-align: right;
+    }
+
+    &--center {
+        text-align: center;
+    }
+}
+
+

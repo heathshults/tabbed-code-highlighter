@@ -1,0 +1,78 @@
+//default setting
+$fk-tools-media-name-content: 'content' !default;
+$fk-tools-media-name-left: 'left' !default;
+$fk-tools-media-name-right: 'right' ;
+
+//used to extend the media object
+@mixin media-object( $ns-content: $fk-tools-media-name-content, $ns-left: $fk-tools-media-name-left, $ns-right: $fk-tools-media-name-right) {
+  @include fk-media-object-container();
+
+  &__#{$ns-content}{
+    @include fk-media-object-content();
+  }
+
+  &__#{$ns-left},
+  &__#{$ns-right} {
+    @include fk-media-object-left();
+  }
+  &__#{$ns-left} {
+    //removed margins, shoudl be unstyled
+    //@include fk-media-object-left();
+  }
+
+  &__#{$ns-right} {
+   //removed margins, shoudl be unstyled
+   // @include fk-media-object-right();
+  }
+
+
+}
+
+@mixin fk-media-object-container(){
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+          align-items: flex-start;
+  text-align: left;
+
+  //when nesting bump down the first a bit
+  & &:first-of-type {
+    margin-top: 1rem;
+  }
+}
+
+@mixin fk-media-object-content(){
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+          flex-grow: 1;
+  text-align: left;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+
+  // object should be just container
+  // &:not(:last-child) {
+  //   margin-bottom: $fk-global-baseline;
+  // }
+
+}
+
+
+@mixin fk-media-object-left(){
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+@mixin fk-media-object-right(){  
+  @include fk-media-object-left();
+ // margin-left: 1rem;
+}
+

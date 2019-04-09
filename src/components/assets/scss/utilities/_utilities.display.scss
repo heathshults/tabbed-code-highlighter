@@ -1,0 +1,38 @@
+/* Basscss Layout */
+$fk-utils-display-enable: true !default;  // ability to disable this util directly
+$fk-utils-display-ns: 'display' !default;
+$fk-utils-display-responsive: false !default; // output responsive classes
+$fk-utils-display-print: false !default; // output print classes
+$fk-utils-display-breakpoints: map('web.breakpoints') !default;
+
+@mixin _utilities-display( $variant: '') {
+  .#{$fk-ns-utilities}-#{$fk-utils-display-ns}-none#{$variant} { display: none };
+  .#{$fk-ns-utilities}-#{$fk-utils-display-ns}-inline#{$variant}   { display: inline };
+  .#{$fk-ns-utilities}-#{$fk-utils-display-ns}-block#{$variant}    { display: block };
+  .#{$fk-ns-utilities}-#{$fk-utils-display-ns}-inline-block#{$variant} { display: inline-block };
+  .#{$fk-ns-utilities}-#{$fk-utils-display-ns}-table#{$variant}    { display: table };
+  .#{$fk-ns-utilities}-#{$fk-utils-display-ns}-table-row#{$variant}    { display: table-row };
+  .#{$fk-ns-utilities}-#{$fk-utils-display-ns}-table-cell#{$variant} { display: table-cell };
+  .#{$fk-ns-utilities}-#{$fk-utils-display-ns}-flex#{$variant} { display: flex };
+  .#{$fk-ns-utilities}-#{$fk-utils-display-ns}-inline-flex#{$variant}  { display: inline-flex};
+}
+
+
+@if($fk-config-enable-utilties AND $fk-utils-display-enable){
+  @include _utilities-display;
+}
+
+@if $fk-utils-display-print AND $fk-config-enable-print {
+  @media print {
+    @include _utilities-display($fk-separator-breakpoint + $fk-ns-print);
+  }
+}
+
+
+@if ($fk-utils-display-responsive AND $fk-config-enable-responsive) {
+  @each $breakpoint-name, $breakpoint-size in $fk-utils-display-breakpoints {
+    @include mq-only($breakpoint-name){
+      @include _utilities-display($fk-separator-breakpoint + $breakpoint-name);
+    }
+  }
+} 

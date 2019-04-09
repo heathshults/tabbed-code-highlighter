@@ -1,0 +1,50 @@
+/*
+   text-weight
+*/
+$fk-utils-text-weight-enable: true !default; 
+$fk-utils-text-weight-responsive: true !default;
+$fk-utils-text-weight-print: false !default;
+
+$fk-utils-text-weight-breakpoints: map('web.breakpoints') !default;
+
+$fk-utils-text-weight-ns: 'text-weight' !default; 
+
+//if map based, add catagory, Type, Item location
+//$fk-utils-text-weight-map: map('');
+
+// TK Map to tokens, assuming using main 
+//Private function to include through looks and conditional statements
+@mixin _font-weight($variant:'') {
+   
+   .#{$fk-ns-utilities}-#{$fk-utils-text-weight-ns}-regular#{$variant} {
+        font-weight: 400;
+   }
+   .#{$fk-ns-utilities}-#{$fk-utils-text-weight-ns}-semibold#{$variant} {
+        font-weight: 600;
+    }
+    .#{$fk-ns-utilities}-#{$fk-utils-text-weight-ns}-bold#{$variant} {
+        font-weight: 700;
+    }
+    .#{$fk-ns-utilities}-#{$fk-utils-text-weight-ns}-thin#{$variant} {
+        font-weight: 300;
+    }
+}
+
+
+@if($fk-config-enable-utilties AND $fk-utils-text-weight-enable){
+    @include _font-weight();
+}
+
+@if $fk-utils-text-weight-print AND $fk-config-enable-print {
+    @media print {
+        @include _font-weight($fk-separator-breakpoint + $fk-ns-print);
+    }
+}
+
+@if ($fk-utils-text-weight-responsive AND $fk-config-enable-responsive) {
+    @each $breakpoint-name, $breakpoint-size in $fk-utils-text-weight-breakpoints {
+        @include mq-only($breakpoint-name){
+           @include _font-weight($fk-separator-breakpoint + $breakpoint-name);
+        }
+    }
+} 

@@ -1,0 +1,19 @@
+
+$fk-section-padding-compressed:  get('space.spacing.sm');
+$fk-section-padding-default: $fk-global-baseline;
+$fk-section-padding-lg: get('space.spacing.lg');
+
+
+
+@mixin fk-objects-section(){
+    padding: $fk-section-padding-default 0;
+
+   &--compressed {
+
+   }
+
+}
+
+.o-section{
+    @include fk-objects-section();
+}

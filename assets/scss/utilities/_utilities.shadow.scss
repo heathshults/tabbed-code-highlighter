@@ -1,0 +1,46 @@
+/*
+   shadow
+*/
+$fk-utils-shadow-enable: false !default; 
+$fk-utils-shadow-responsive: false !default;
+$fk-utils-shadow-print: false !default;
+
+$fk-utils-shadow-breakpoints: map('web.breakpoints') !default;
+
+$fk-utils-shadow-ns: 'shadow' !default; 
+
+//if map based, add catagory, Type, Item location
+// $fk-utils-shadow-map: map('depth.shadow');
+
+//Private function to include through looks and conditional statements
+@mixin _shadow($variant:'') {
+
+    @each $type, $map in $fk-utils-shadow-map {
+        @each $name, $shadow in $map {
+                .#{$fk-ns-utilities}-#{$fk-utils-shadow-ns}-#{$type}-#{$name}#{$variant} {
+                    box-shadow:  $shadow
+                }
+            
+        }
+    } 
+
+}
+
+
+@if($fk-config-enable-utilties AND $fk-utils-shadow-enable){
+    @include _shadow();
+}
+
+@if $fk-utils-shadow-print AND $fk-config-enable-print {
+    @media print {
+        @include _shadow($fk-separator-breakpoint + $fk-ns-print);
+    }
+}
+
+@if ($fk-utils-shadow-responsive AND $fk-config-enable-responsive) {
+    @each $breakpoint-name, $breakpoint-size in $fk-utils-shadow-breakpoints {
+        @include mq-only($breakpoint-name){
+           @include _shadow($fk-separator-breakpoint + $breakpoint-name);
+        }
+    }
+} 

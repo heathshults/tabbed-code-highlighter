@@ -1,0 +1,81 @@
+@import '../typography/mixins';
+
+
+
+.#{$fk-ns-component}-image-responsive {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+// object-fit support is coming to Microsoft Edge
+// https://developer.microsoft.com/en-us/microsoft-edge/platform/status/objectfitandobjectposition/
+.#{$fk-ns-component}-image-fit-cover {
+    object-fit: cover;
+}
+
+
+.#{$fk-ns-component}-image-fit-contain {
+    object-fit: contain;
+}
+
+.#{$fk-ns-component}-video-responsive {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    &::before {
+      content: "";
+      display: block;
+      padding-bottom: 56.25%; // Default ratio 16:9, you can calculate this value by dividing 9 by 16
+    }
+  
+    iframe,
+    object,
+    embed {
+      border: 0;
+      bottom: 0;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  video.#{$fk-ns-component}-video-responsive {
+    height: auto;
+    max-width: 100%;
+  
+    &::before {
+      content: none;
+    }
+  }
+
+  .#{$fk-ns-component}-video-responsive-4-3 {
+    &::before {
+      padding-bottom: 75%; // Ratio 4:3
+    }
+  }
+  
+  .#{$fk-ns-component}-video-responsive-1-1 {
+    &::before {
+      padding-bottom: 100%; // Ratio 1:1
+    }
+  }
+
+
+
+
+.#{$fk-ns-component}-figure {
+    @include stack('lg');
+
+    &__caption {
+        @include fk-type('body2');
+        @include fk-theme-text('secondary');
+
+    }
+
+}

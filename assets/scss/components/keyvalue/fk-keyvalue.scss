@@ -1,0 +1,49 @@
+@import "../../framekit-util.scss";
+
+
+.#{$fk-ns-component}-keyvalue{
+    text-align: center;
+
+    &__label {
+      //Extending now, TKTK review mixin use
+      @include fk-type("category3");
+      @include fk-theme-text("secondary"); 
+      @include text-crop();
+    }
+  
+    &__value {  
+        @include fk-type("body1");
+        @include text-crop();
+    }
+  
+    &--lg  &__label {
+        @include fk-type("category2");
+        @include mq-until-md { } //TKTK Define
+    }
+    
+    &--lg  &__value {
+        @include fk-type("headline1");
+        @include mq-until-md {}//TKTK Define
+    }
+  
+
+    &--xl > &__label {
+        @include fk-type("category2");
+            @include mq-until-md {}
+    }
+
+    &--xl > &__value {
+        @include fk-type("display2");
+        @include mq-until-md {}
+    }
+
+    &__label + &__value {
+        margin-top: 4px;
+    }
+
+     &__value + &__label{
+       margin-top: 4px;
+    }
+
+
+  }

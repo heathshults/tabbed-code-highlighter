@@ -1,0 +1,38 @@
+/// Remove padding and list style from a list
+@mixin list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+/// Makes a list inline
+// TKTK insert BP padding/margin
+@mixin list-inline {
+    @include list-unstyled();
+    margin-left: 0; //tktk
+
+    > li {
+        display: inline-block;
+        padding-left:0; //tktk
+        padding-right:0; //tktk
+        &:not(:last-child){
+            margin-right: $bp-space-spacing-sm;
+        }
+
+    }
+}
+
+
+@mixin list-comma {
+    @include list-unstyled();
+    li {
+        display: inline;
+
+        &:after {
+            content: ", ";
+        }
+
+        &:last-child:after {
+            content: "";
+        }
+    }
+}

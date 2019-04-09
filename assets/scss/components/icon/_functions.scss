@@ -1,0 +1,16 @@
+@function fk-get-icon-size($size){
+    $c : 'size';
+    $t : 'icon';
+  
+    $q: dot-str($c, $t);
+    $map: map($q);
+  
+    @if map-has-key($map, $size) {
+      $size: map-get($map, $size);
+      @return $size;
+  
+    }@else{
+      @warn error-maps('fk-get-icon-size()', $map, $key);
+    }
+  
+  }

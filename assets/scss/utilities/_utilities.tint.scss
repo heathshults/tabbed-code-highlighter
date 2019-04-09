@@ -1,0 +1,41 @@
+/*
+   tint
+*/
+$fk-utils-tint-enable: true !default; 
+$fk-utils-tint-responsive: false !default;
+$fk-utils-tint-print: false !default;
+
+$fk-utils-tint-breakpoints: map('web.breakpoints') !default;
+
+$fk-utils-tint-ns: 'tint' !default; 
+
+//if map based, add catagory, Type, Item location
+$fk-utils-tint-map: map('color.tint');
+
+//Private function to include through looks and conditional statements
+@mixin _tint($variant:'') {
+    @each $name, $tint in $fk-utils-tint-map {
+            .#{$fk-ns-utilities}-#{$fk-utils-tint-ns}-#{$name}#{$variant} {
+            background-color:  #{$tint}
+        }
+    }
+}
+
+
+@if($fk-config-enable-utilties AND $fk-utils-tint-enable){
+    @include _tint();
+}
+
+@if $fk-utils-tint-print AND $fk-config-enable-print {
+    @media print {
+        @include _tint($fk-separator-breakpoint + $fk-ns-print);
+    }
+}
+
+@if ($fk-utils-tint-responsive AND $fk-config-enable-responsive) {
+    @each $breakpoint-name, $breakpoint-size in $fk-utils-tint-breakpoints {
+        @include mq-only($breakpoint-name){
+           @include _tint($fk-separator-breakpoint + $breakpoint-name);
+        }
+    }
+} 

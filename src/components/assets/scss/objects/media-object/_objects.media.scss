@@ -1,0 +1,9 @@
+
+@import 'mixins';
+
+
+.#{$fk-ns-objects}media {
+  @include media-object();
+}
+
+

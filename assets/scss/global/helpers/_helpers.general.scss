@@ -1,0 +1,33 @@
+
+/// Used to insert a clearfix
+@mixin clearfix {
+    &::after {
+        clear: both;
+        content: " ";
+        display: table;
+    }
+}
+
+/// Makes the element overlay its parent contrainer,
+/// like the transparent modal background
+@mixin overlay($offset:0) {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    @if $offset != 0 {
+        bottom: $offset;
+        left: $offset;
+        right: $offset;
+        top: $offset;
+    }
+}
+
+/// sets a block to overflow as an ellipsis
+@mixin overflow-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

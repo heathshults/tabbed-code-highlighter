@@ -1,0 +1,90 @@
+
+// Tracking when processed, to reduce cylces of re-reads
+$fk-theme-loaded: false !default;
+
+$fk-theme-classname-prefix: 't-mode--';
+$fk-theme-classname-prefix-bg: 't-bg-';
+$fk-theme-default-mode: 'lm'; 
+
+$fk-theme-lm-name: 'lm';
+$fk-theme-lm-className: '#{$fk-theme-classname-prefix}light';
+$fk-theme-lm-map:  map-get($fk-global-default-token-map, 'lm');
+
+$fk-theme-dm-name: 'dm';
+$fk-theme-dm-className: '#{$fk-theme-classname-prefix}dark';
+$fk-theme-dm-map: map-get($fk-global-default-token-map, 'dm');
+
+$fk-theme-modes-list: ($fk-theme-lm-className, $fk-theme-dm-className);
+$fk-theme-modes-map: (
+    $fk-theme-lm-name: $fk-theme-lm-map,
+    $fk-theme-dm-name: $fk-theme-dm-map
+);
+ 
+$fk-theme-default-mode-map: map-get($fk-global-default-token-map, $fk-theme-default-mode);
+
+$fk-theme-lm-light-bg-classes: ();
+$fk-theme-lm-dark-bg-classes: ();
+$fk-theme-dm-light-bg-classes: ();
+$fk-theme-dm-dark-bg-classes: ();
+
+$fk-theme-dark-in-lm-exceptions:();
+$fk-theme-light-in-dm-exceptions:();
+
+@if not $fk-theme-loaded {
+    @each $mode, $map in $fk-theme-modes-map {
+        @each $bgName, $color in map-get($map, 'bg'){
+
+            $className: '.#{$fk-theme-classname-prefix-bg + $bgName}';
+        
+            @if $mode == 'lm' AND NOT is-light($color){
+                $fk-theme-dark-in-lm-exceptions: append-check($fk-theme-dark-in-lm-exceptions, $className);
+            } @else if $mode == 'dm' AND is-light($color){
+                $fk-theme-light-in-dm-exceptions: append-check($fk-theme-light-in-dm-exceptions, $className);
+            }
+
+            @if is-light($color){
+                @if $mode == 'lm' {
+                    $fk-theme-lm-light-bg-classes: append($fk-theme-lm-light-bg-classes, $className, comma );
+                } @else {
+                    $fk-theme-dm-light-bg-classes: append($fk-theme-lm-light-bg-classes, $className, comma );
+                }
+
+            } @else {
+                @if $mode == 'lm' {
+                    $fk-theme-lm-dark-bg-classes: append($fk-theme-lm-dark-bg-classes, $className, comma );
+                } @else {
+                    $fk-theme-dm-dark-bg-classes: append($fk-theme-dm-dark-bg-classes, $className, comma );
+                }
+            }
+        }
+
+        $modeClass: $fk-theme-lm-className;
+
+        @if($mode =='lm'){
+            $modeClass: $fk-theme-dm-className;
+        }
+
+    }
+}
+
+@if $fk-global-debug {
+    @debug $fk-theme-dark-in-lm-exceptions;
+    @debug $fk-theme-light-in-dm-exceptions;
+
+    @debug "LM LIGHT============";
+    @debug $fk-theme-lm-light-bg-classes;
+
+    @debug "LM DARK============";
+    @debug $fk-theme-lm-dark-bg-classes;
+
+    @debug "DM LIGHT============";
+    @debug $fk-theme-dm-light-bg-classes;
+
+    @debug "DM DARK============";
+    @debug $fk-theme-dm-dark-bg-classes;
+
+    @debug "Dark============";
+    @debug $fk-theme-dark-bg-classes;
+}
+
+$fk-theme-loaded: true;

@@ -1,0 +1,53 @@
+/* Basscss Layout */
+$fk-utils-order-enable: true !default;  // ability to disable this util directly
+$fk-utils-order-ns: 'order' !default; 
+$fk-utils-order-responsive: true !default; // output responsive classes
+$fk-utils-order-print: false !default; // output print classes
+$fk-utils-order-breakpoints: map('web.breakpoints') !default;
+
+ @function _add-unit-to-value($value)  {
+	@return if($value != 0, $value, 0);
+}
+
+
+@mixin _utilities-order( $variant: ''){
+	@for $i from 0 to 12 {
+		.#{$fk-ns-utilities + $fk-utils-order-ns}-#{$i}#{$variant} {
+			-webkit-box-ordinal-group: _add-unit-to-value($i);
+			-ms-flex-order: _add-unit-to-value($i);
+			order: _add-unit-to-value($i);
+		}
+	}
+
+	.#{$fk-ns-utilities}-#{$fk-utils-order-ns}-minus1#{$variant} {
+		-webkit-box-ordinal-group: 0;		
+		-ms-flex-order: -1;		
+		order: -1;
+	}
+	
+	.#{$fk-ns-utilities}-#{$fk-utils-order-ns}-last#{$variant} {
+		-webkit-box-ordinal-group: 100; 
+		-ms-flex-order: 99;
+		order: 99;
+	}
+}
+
+
+
+
+
+@if($fk-config-enable-utilties AND $fk-utils-order-enable){
+    @include _utilities-order;
+}
+
+
+
+@if ($fk-utils-order-responsive AND $fk-config-enable-responsive) {
+    @each $breakpoint-name, $breakpoint-size in $fk-utils-display-breakpoints {
+        @include mq-only($breakpoint-name){
+             @include _utilities-order($fk-separator-breakpoint + $breakpoint-name);
+        }
+    }
+} 
+
+

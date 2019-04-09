@@ -1,0 +1,31 @@
+  @import '../../framekit-util';
+  @import '../animation/keyframes/spinAround';
+  @import 'functions';
+
+  $fk-loader-border-width:1px;
+  $fk-loader-border-color:#fff;
+
+  @mixin fk-icon-size($size:'default'){
+    @include square(fk-get-icon-size($size));
+  }
+  
+  @mixin fk-loader-icon($color:#ccc, $size:fk-get-icon-size('md')){
+    @include square($size);
+    display: block;
+    animation: spinAround 500ms infinite linear;
+    top:0;
+    left:0; 
+    border: 1px solid currentColor;
+    border-radius: 4rem;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: "";
+ 
+    // themeing concerns
+    @if not is-color($color){}
+
+
+  }
+  
+
+  

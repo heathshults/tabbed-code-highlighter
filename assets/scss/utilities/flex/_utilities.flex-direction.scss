@@ -1,0 +1,43 @@
+/*
+   flex-direction
+*/
+$fk-utils-flex-direction-enable: true !default; 
+$fk-utils-flex-direction-responsive: true !default;
+$fk-utils-flex-direction-print: false !default;
+
+$fk-utils-flex-direction-breakpoints: map('web.breakpoints') !default;
+
+$fk-utils-flex-direction-ns: 'flex-direction' !default; 
+$fk-utils-flex-direction-options: row, row-reverse, column, column-reverse;
+
+//Private function to include through looks and conditional statements
+@mixin _flex-direction($variant:'') {
+
+    @each $direction in $fk-utils-flex-direction-options {
+        .#{$fk-ns-utilities + $fk-utils-flex-direction-ns}-#{$direction}#{$variant} {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: $direction;
+            flex-direction: $direction;
+        }
+    }
+}
+
+
+@if($fk-config-enable-utilties AND $fk-utils-flex-direction-enable){
+    @include _flex-direction();
+}
+
+@if $fk-utils-flex-direction-print AND $fk-config-enable-print {
+    @media print {
+        @include _flex-direction($fk-separator-breakpoint + $fk-ns-print);
+    }
+}
+
+@if ($fk-utils-flex-direction-responsive AND $fk-config-enable-responsive) {
+    @each $breakpoint-name, $breakpoint-size in $fk-utils-flex-direction-breakpoints {
+        @include mq-only($breakpoint-name){
+           @include _flex-direction($fk-separator-breakpoint + $breakpoint-name);
+        }
+    }
+} 

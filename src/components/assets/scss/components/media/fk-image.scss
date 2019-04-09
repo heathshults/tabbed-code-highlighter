@@ -1,0 +1,97 @@
+$fk-image-dimensions:  16 24 32 48 64 96 128 !default;
+
+.c-image {
+  position: relative;
+  display: block;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  // Ratio
+  &.c-image--square,
+  &.c-image--1by1,
+  &.c-image--5by4,
+  &.c-image--4by3,
+  &.c-image--3by2,
+  &.c-image--5by3,
+  &.c-image--16by9,
+  &.c-image--2by1,
+  &.c-image--3by1,
+  &.c-image--4by5,
+  &.c-image--3by4,
+  &.c-image--2by3,
+  &.c-image--3by5,
+  &.c-image--9by16,
+  &.c-image--1by2,
+  &.c-image--1by3 {
+    img {
+      @include overlay;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &.c-image--square,
+  &.c-image--1by1 {
+    padding-top: 100%;
+  }
+
+  &.c-image--5by4 {
+    padding-top: 80%;
+  }
+
+  &.c-image--4by3 {
+    padding-top: 75%;
+  }
+
+  &.c-image--3by2 {
+    padding-top: 66.6666%;
+  }
+
+  &.c-image--5by3 {
+    padding-top: 60%;
+  }
+
+  &.c-image--16by9 {
+    padding-top: 56.25%;
+  }
+
+  &.c-image--2by1 {
+    padding-top: 50%;
+  }
+
+  &.c-image--3by1 {
+    padding-top: 33.3333%;
+  }
+
+  &.c-image--4by5 {
+    padding-top: 125%;
+  }
+
+  &.c-image--3by4 {
+    padding-top: 133.3333%;
+  }
+
+  &.c-image--2by3 {
+    padding-top: 150%;
+  }
+
+  &.c-image--3by5 {
+    padding-top: 166.6666%;
+  }
+
+  &.c-image--9by16 {
+    padding-top: 177.7777%;
+  }
+
+  &.c-image--1by2 {
+    padding-top: 200%;
+  }
+
+  &.c-image--1by3 {
+    padding-top: 300%;
+  }
+}

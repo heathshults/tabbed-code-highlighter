@@ -1,0 +1,17 @@
+
+ @import '../../../framekit-util';
+ 
+// Keyframes are wraped with export mixin to ensure they only get loaded once
+// and only animations called are included in css
+
+  @include exports('spinAround'){
+    @keyframes spinAround {
+        from {
+          transform: rotate(0deg);
+        }
+      
+        to {
+          transform: rotate(359deg);
+        }
+      }    
+  }

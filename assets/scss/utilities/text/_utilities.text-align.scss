@@ -1,0 +1,16 @@
+$fk-text-ns: 'text'; 
+
+// Text
+// Text alignment utilities
+ .#{$fk-ns-utilities}-#{$fk-text-ns}-left, .#{$fk-ns-utilities}-child-#{$fk-text-ns}-left {
+    text-align: left;
+  }
+  
+   .#{$fk-ns-utilities}-#{$fk-text-ns}-right, .#{$fk-ns-utilities}-child-#{$fk-text-ns}-right {
+    text-align: right;
+  }
+  
+   .#{$fk-ns-utilities}-#{$fk-text-ns}-center, .#{$fk-ns-utilities}-child-#{$fk-text-ns}-center {
+    text-align: center;
+  }
+  

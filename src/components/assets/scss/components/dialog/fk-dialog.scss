@@ -1,0 +1,79 @@
+$fk-dialog-bg:'canvas';
+$fk-dialog-shadow:'lg';
+
+$fk-dialog-border-radius: border-radius('md');
+$fk-dialog-width: 450px;
+$fk-dialog-message-padding:inset('lg');
+
+$fk-dialog-graphic-size: 100px;
+$fk-dialog-graphic-margin: stack('md');
+$fk-dialog-title-type: 'headline3';
+
+$fk-dialog-text-type: 'body2';
+$fk-dialog-text-theme: 'primary';
+$fk-dialog-title-plus-text-theme: 'secondary';
+
+.c-dialog {
+    width:  $fk-dialog-width;
+    text-align: left;
+    border-radius: $fk-dialog-border-radius;
+    @include fk-theme-bg($fk-dialog-bg);
+    @include fk-theme-shadow($fk-dialog-shadow);
+
+   &__message {
+       padding: $fk-dialog-message-padding;
+       display: flex;
+       position: relative;
+       flex-direction: column;
+   }
+
+
+    &__title {
+        @include fk-type($fk-dialog-title-type);
+    }
+
+    &__text {
+        @include fk-theme-text($fk-dialog-text-theme);
+        @include fk-type($fk-dialog-text-type);
+    }  
+          
+    &__title + &__text {
+        @include fk-theme-text($fk-dialog-title-plus-text-theme);
+    }  
+       
+
+    &__actions { 
+        padding: $fk-dialog-message-padding;
+        padding-top: 0;
+        @extend .c-button-row;
+        border-bottom-right-radius: $fk-dialog-border-radius;
+        border-bottom-left-radius:  $fk-dialog-border-radius;
+        text-align: right;
+    }
+
+
+    &--graphic {
+        text-align: center;
+    }
+    &--graphic > &__actions {
+        text-align: center;
+    }
+
+    &__graphic {
+        align-self: center;
+       // @include square($fk-dialog-graphic-size);
+       @extend .c-ucon;
+       @extend .c-ucon--lg;
+        margin: $fk-dialog-graphic-margin;
+        &.error {
+         //@include fk-theme-interactive('destructive');
+        }
+  
+        &.neutral {
+         color: fk-theme-get-messaging('neutral');
+        }
+     }  
+
+
+}
+

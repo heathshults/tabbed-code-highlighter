@@ -1,0 +1,37 @@
+// Cursors
+$fk-utils-cursor-ns: 'cursor' !default;
+
+@if($fk-config-enable-utilties){
+  .#{$fk-ns-utilities}-#{$fk-utils-cursor-ns}-auto {
+    cursor: auto !important;
+  }
+    
+  .#{$fk-ns-utilities}-#{$fk-utils-cursor-ns}-help {
+    cursor: help !important;
+  }
+
+  .#{$fk-ns-utilities}-#{$fk-utils-cursor-ns}-pointer {
+    cursor: pointer !important;
+  }
+    
+  .#{$fk-ns-utilities}-#{$fk-utils-cursor-ns}-move {
+    cursor: move !important;
+  }
+    
+  .#{$fk-ns-utilities}-#{$fk-utils-cursor-ns}-zoom-in {
+    cursor: zoom-in !important;
+  }
+    
+  .#{$fk-ns-utilities}-#{$fk-utils-cursor-ns}-zoom-out {
+    cursor: zoom-out !important;
+  }
+    
+  .#{$fk-ns-utilities}-#{$fk-utils-cursor-ns}-not-allowed {
+    cursor: not-allowed !important;
+  }
+
+  .#{$fk-ns-utilities}-#{$fk-utils-cursor-ns}-wait {
+    cursor: wait !important;
+  }
+  
+}

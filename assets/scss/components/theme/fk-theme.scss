@@ -1,0 +1,78 @@
+    @import 'mixins';
+    @import '../animation/mixins';
+
+   // @include fk-core-theme-styles();
+
+    body {
+        @include fk-theme-bg('canvas');
+        @include fk-theme-text('primary');
+        transition: background-color 100ms linear;
+    }
+
+    // Setup Containers for background colors with modes used directly. 
+    // May cause issues with used with combined bg names
+    // LIGHT MODE
+    $containerClassList: list-item-append($fk-containers-lists, #{$fk-theme-lm-className}, '.');
+    #{$containerClassList} {
+        background: fk-theme-get-bg('canvas', 'lm');
+        color: fk-theme-get-text('primary', fk-theme-determine-mode(fk-theme-get-bg('canvas', 'lm')));
+    }
+    // DARK MODE
+    $containerDarkClassList: list-item-append($fk-containers-lists, #{$fk-theme-dm-className}, '.');
+    #{$containerDarkClassList} {
+        background: fk-theme-get-bg('canvas', 'dm');
+        color: fk-theme-get-text('primary', fk-theme-determine-mode(fk-theme-get-bg('canvas', 'dm')));
+    }
+
+    @each $bgName, $color in map-get($fk-theme-default-mode-map, 'bg'){
+        %t-bg-#{$bgName}{
+            @include fk-theme-bg($bgName);
+        }
+
+        .t-bg-#{$bgName}{
+            @extend  %t-bg-#{$bgName};
+        }
+    }
+
+    @each $textName, $color in map-get($fk-theme-default-mode-map, 'text'){
+        
+        %t-text-#{$textName} {
+            color: fk-theme-get-text($textName, $fk-theme-default-mode); 
+
+            $classes: ();
+            $classes: list-item-prepend($fk-theme-light-in-dm-exceptions, '.t-mode--dark');
+            $classes: list-item-append($classes, '&');
+         
+            // light mode
+            .t-mode--light &, [class*='t-mode--'] .t-mode--light &, #{$classes} {
+                color: fk-theme-get-text($textName, 'lm');
+            }
+
+            $classes: ();
+            $classes: list-item-prepend($fk-theme-dark-in-lm-exceptions, '.t-mode--light');
+            $classes: list-item-append($classes, '&');
+
+            $classes2: ();
+            $classes2: list-item-append($fk-theme-dark-in-lm-exceptions, '&');
+            
+            // dark 
+            .t-mode--dark &, [class*='t-mode--'] .t-mode--dark &, #{$classes}, #{$classes2} {
+                color: fk-theme-get-text($textName, 'dm');
+            }
+        }
+
+        .t-text-#{$textName} {
+            @extend  %t-text-#{$textName};
+        }
+
+    }   
+    
+
+    @each $borderName, $color in map-get($fk-theme-default-mode-map, 'border'){
+        %t-border-#{$borderName}{
+            @include fk-theme-border($borderName);
+        }
+        .t-border-#{$borderName}{
+            @extend  %t-border-#{$borderName};
+        }
+    }

@@ -1,0 +1,33 @@
+@function tint($name){
+    $tint-c : 'color';
+    $tint-t : 'tint';
+
+    $q: dot-str($tint-c, $tint-t);
+    $map: map($q);
+
+    @if map-has-key($map, $name) {
+        @return map-get($map, $name);
+    } @else{
+        @warn error-maps('ting()', $map, $name);
+        @return '';
+    }
+}
+
+@function shade($name){
+    $shade-c : 'color';
+    $shade-t : 'shade';
+
+    $q: dot-str($shade-c, $shade-t);
+    $map: map($q);
+
+    @if map-has-key($map, $name) {
+        @return map-get($map, $name);
+    } @else{
+        @warn error-maps('ting()', $map, $name);
+        @return '';
+    }
+}
+
+@mixin shade($name, $prop: 'background-color'){
+    #{$prop}: shade($name);
+}

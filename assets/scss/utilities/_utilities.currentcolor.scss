@@ -1,0 +1,9 @@
+
+@if($fk-config-enable-utilties){
+    .u-fill-current {
+        fill: currentColor !important;
+    }
+    .u-stroke-current {
+        stroke: currentColor !important;
+    }
+}

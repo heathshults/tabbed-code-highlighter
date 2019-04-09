@@ -1,0 +1,128 @@
+@import '../../framekit-util';
+@import 'variables';
+@import 'functions';
+
+
+// Set up extendable classes. 
+// Set here so products using only the mixin can extend
+// @each $bgName, $color in map-get($fk-theme-default-mode-map, 'bg'){
+//     %t-bg-#{$bgName}{
+//         background-color: $color;
+//         color: fk-theme-get-text('primary', fk-theme-determine-mode($color));
+
+//     }
+// }
+
+
+@mixin fk-theme-bg($bgName){
+  //  @extend %t-bg-#{$name};
+  $bg: fk-theme-get-bg($bgName, $fk-theme-default-mode);
+  $lm-bg: fk-theme-get-bg($bgName, 'lm');
+  $dm-bg: fk-theme-get-bg($bgName, 'dm');
+
+  background-color: $bg;
+  // base for layer... 
+  color: fk-theme-get-text('primary', fk-theme-determine-mode($bg));
+
+  // Doesnt write code if colors dont change anyway.  TKTK Harden test to see if 
+  // causes issue with nesting
+  @if $lm-bg != $dm-bg {
+
+        // dark mode 
+        @include fk-theme-in-dark(){
+            background-color: fk-theme-get-bg($bgName, 'dm');
+            color: fk-theme-get-text('primary', fk-theme-determine-mode($dm-bg));
+               
+            // @each $textName, $color in map-get($fk-theme-default-mode-map, 'text'){
+            //     .t-text-#{$textName}{
+            //         color: fk-theme-get-text($textName, fk-theme-determine-mode($lm-bg));
+            //     }
+            // } 
+        }
+        @include fk-theme-in-light(){
+           background-color: fk-theme-get-bg($bgName, 'lm');
+           color: fk-theme-get-text('primary', fk-theme-determine-mode($lm-bg));
+
+            // @each $textName, $color in map-get($fk-theme-default-mode-map, 'text'){
+            //     .t-text-#{$textName}{
+            //         color: fk-theme-get-text($textName, fk-theme-determine-mode($lm-bg));
+            //     }
+            // }
+        }
+    }
+}
+
+@mixin fk-theme-border($name){
+    @include fk-theme-switcher('border-color', fk-theme-get-border($name, 'lm'), fk-theme-get-border($name, 'dm'));
+}
+
+
+@mixin fk-theme-text($name){
+   @include fk-theme-switcher('color', fk-theme-get-text($name,'lm'), fk-theme-get-text($name, 'dm'));
+}
+@mixin fk-theme-shadow($name){
+   @if $name == 'none' {
+       box-shadow: none;
+   } @else {
+    @include fk-theme-switcher('box-shadow', fk-theme-get-shadow($name,  $mode:'lm'), fk-theme-get-shadow($name, $mode:'dm'));
+   }
+ }
+
+
+
+
+@mixin fk-theme-in-dark(){
+    // & [class*='#{$fk-theme-classname-prefix}dark'], //had &[ was causing issues.. removed to access breakage
+    [class*='#{$fk-theme-classname-prefix}dark'] &, [class*='#{$fk-theme-classname-prefix}'] [class*='#{$fk-theme-classname-prefix}dark'] &{
+        @content;
+    }
+}
+
+@mixin fk-theme-in-light(){
+    // & [class*='#{$fk-theme-classname-prefix}light'],
+    [class*='#{$fk-theme-classname-prefix}light'] &, [class*='#{$fk-theme-classname-prefix}'] [class*='#{$fk-theme-classname-prefix}light'] &{
+        @content;
+    }
+}
+
+@mixin fk-theme-on-dark(){
+    $list: ();
+    $list: list-item-append($fk-theme-lm-dark-bg-classes, '&');
+    $list2: list-item-append($fk-theme-dm-dark-bg-classes, '&');
+    $list: append( $list ,  $list2 , comma);
+
+    #{$list}{
+        @content;
+    }
+ }
+
+ @mixin fk-theme-on-light(){
+    $list: ();
+    $list: list-item-append($fk-theme-lm-dark-bg-classes, '&');
+
+    #{$list}{
+        @content;
+    }
+ }
+
+
+ @mixin fk-theme-text-on-dark($name){
+    color: fk-theme-get-text($name, 'dm');
+ }
+
+ @mixin fk-theme-text-on-light($name){
+    color: fk-theme-get-text($name, 'lm');
+ }
+
+
+
+@mixin fk-theme-switcher($prop, $onLight, $onDark){
+    #{$prop}: if($fk-theme-default-mode == 'lm', $onLight, $onDark);
+    @include fk-theme-in-light(){
+        #{$prop}: $onDark;
+    } 
+
+    @include fk-theme-in-dark(){
+        #{$prop}: $onDark;
+    } 
+}

@@ -1,0 +1,62 @@
+@function list-contains($list,$var) {
+    @return (null != index($list, $var));
+}
+
+@function append-check($list, $item, $fail:false, $warn:false){
+
+    @if not list-contains($list, $item){
+        @return  append($list, $item, comma);
+    } @else {
+        // @debug 'its in the list===================';
+        @if($fail){
+            @error 'append-check failed because of duplicate item #{$item} in list';
+        }
+
+        @if($warn) {
+            @warn 'append-check didnt append because of duplicate item #{$item} in list ';
+        }
+        @return $list;
+    }
+}
+
+@function deep-append($list, $items...){
+    @each $item in $items {
+        @if type-of($item)== 'map' OR  type-of($item)== 'list'{
+            @each $name, $value in $item{
+                $list: append-check($list, $name, $warn: true);
+            }
+        }@else if type-of($item)== 'string' {
+            $list:append-check($list, $item);
+        }@else if type-of($item)== 'list' {
+            @each $name, $value in $item{
+                $list: append-check($list, $name, $warn: true);
+            }
+        }    
+    }
+    @return $list;
+}
+
+/// Helper to append a text item to each item in a list
+/// meant to appeand class item to a list of classes
+@function list-item-append($list, $appendText, $itemSeperator: ' ') {
+    $newList: ();
+    
+    @each $item in $list {
+        $newItem: $item + $itemSeperator + $appendText;
+        $newList: append($newList, $newItem, comma );
+    }
+
+    @return $newList;
+}
+/// Helper to prepend a text item to each item in a list
+/// meant to appeand class item to a list of classes
+@function list-item-prepend($list, $appendText, $itemSeperator: ' ') {
+    $newList: ();
+    
+    @each $item in $list {
+        $newItem: $appendText + $itemSeperator + $item;
+        $newList: append($newList, $newItem, comma );
+    }
+
+    @return $newList;
+}

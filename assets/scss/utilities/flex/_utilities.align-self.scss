@@ -1,0 +1,66 @@
+/*
+   align-self
+*/
+$fk-utils-align-self-enable: true !default; 
+$fk-utils-align-self-responsive: true !default;
+$fk-utils-align-self-print: false !default;
+
+$fk-utils-align-self-breakpoints: map('web.breakpoints') !default;
+$fk-utils-align-self-ns: 'align-self' !default; 
+
+
+//Private function to include through looks and conditional statements
+@mixin _align-self($variant:'') {
+   
+    .#{$fk-ns-utilities + $fk-utils-align-self-ns}-auto#{$variant} {
+        -ms-flex-item-align: auto !important;
+        -ms-grid-row-align: auto !important;
+        align-self: auto !important;
+    }
+
+    .#{$fk-ns-utilities + $fk-utils-align-self-ns}-start#{$variant} {
+        -ms-flex-item-align: start !important;
+        align-self: flex-start !important;
+   }
+
+    .#{$fk-ns-utilities + $fk-utils-align-self-ns}-end#{$variant} {
+        -ms-flex-item-align: end !important;
+        align-self: flex-end !important;
+    }
+
+    .#{$fk-ns-utilities + $fk-utils-align-self-ns}-center#{$variant} {
+        -ms-flex-item-align: center !important;
+        -ms-grid-row-align: center !important;
+        align-self: center !important;
+    }
+
+    .#{$fk-ns-utilities + $fk-utils-align-self-ns}-baseine#{$variant} {
+        -ms-flex-item-align: baseline !important;
+        align-self: baseline !important;
+    }
+
+    .#{$fk-ns-utilities + $fk-utils-align-self-ns}-stretch#{$variant} {
+        -ms-flex-item-align: stretch !important;
+        -ms-grid-row-align: stretch !important;
+        align-self: stretch !important;
+    }
+}
+
+
+@if($fk-config-enable-utilties AND $fk-utils-align-self-enable){
+    @include _align-self();
+}
+
+@if $fk-utils-align-self-print AND $fk-config-enable-print {
+    @media print {
+        @include _align-self($fk-separator-breakpoint + $fk-ns-print);
+    }
+}
+
+@if ($fk-utils-align-self-responsive AND $fk-config-enable-responsive) {
+    @each $breakpoint-name, $breakpoint-size in $fk-utils-align-self-breakpoints {
+        @include mq-only($breakpoint-name){
+           @include _align-self($fk-separator-breakpoint + $breakpoint-name);
+        }
+    }
+} 
