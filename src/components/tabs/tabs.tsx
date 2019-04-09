@@ -14,6 +14,8 @@ export class FkTabs {
   @Prop() cssClass?: string;
   @Prop({mutable: true}) tabContainerHeight: any;
   @Prop() convToHTMLElement: any;
+  @Prop() btnIdShowMore: number = 1000;
+  @Prop() btnIdTabHead: number = 999;
 
   hostData(){
     this.tabContainerHeight = this.elem.style.setProperty('height', this.height)
@@ -83,8 +85,9 @@ export class FkTabs {
 
 
   @Method()
-  removeFocus(tabIndex: number) {
-    if (!this.tabs[tabIndex].disabled) {
+  removeFocus(tabIndex: number, btnId: number) {
+
+    if (!this.tabs[tabIndex].disabled && tabIndex === this.btnIdTabHead || !this.tabs[tabIndex].disabled && btnId === this.btnIdShowMore) {
       this.tabs = this.tabs.map((tab) => {
         tab.blur()
         return tab
@@ -105,10 +108,11 @@ export class FkTabs {
                 return (
                   <button
                     role="tab"
+                    id={tab.header}
                     disabled={tab.disabled}
                     class={`c-tab-heading ${typeClass} ${openClass}`}
                     onClick={() => this.openTab(i)}
-                    onMouseOut={() => this.removeFocus(i)} >
+                    onMouseOut={() => this.removeFocus(i, 999)} >
                     {tab.header}
                   </button>
                 );
@@ -125,7 +129,7 @@ export class FkTabs {
               disabled={tab.disabled}
               class={`c-button c-button--showMore`}
               onClick={() => this.expand(i)}
-              onMouseOut={() => this.removeFocus(i)} >
+              onMouseOut={() => this.removeFocus(i, this.btnIdShowMore)} >
               Show More
             </button>
           );

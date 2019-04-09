@@ -50,6 +50,8 @@ export namespace Components {
   }
 
   interface FkTabs {
+    'btnIdShowMore': number;
+    'btnIdTabHead': number;
     'convToHTMLElement': any;
     'cssClass'?: string;
     'currentTab': () => Promise<number>;
@@ -57,12 +59,14 @@ export namespace Components {
     'getNewHeight': () => Promise<string>;
     'height'?: string;
     'openTab': (tabIndex: number) => void;
-    'removeFocus': (tabIndex: number) => void;
+    'removeFocus': (tabIndex: number, btnId: number) => void;
     'tabContainerHeight': any;
     'value': string;
     'width'?: string;
   }
   interface FkTabsAttributes extends StencilHTMLAttributes {
+    'btnIdShowMore'?: number;
+    'btnIdTabHead'?: number;
     'convToHTMLElement'?: any;
     'cssClass'?: string;
     'height'?: string;
