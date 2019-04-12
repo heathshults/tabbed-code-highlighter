@@ -2,37 +2,59 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import FKTabs from './tabs';
-
-export const tab = {
-  id: '1',
-  title: 'Test Tabs',
-  state: 'TASK_INBOX',
-  updatedAt: new Date(2018, 0, 1, 9, 0),
-  language: 'html',
-  type: 'brand',
-  header: 'HTML',
-  open: ''
-};
+export const tab = [
+  {
+    id: 1,
+    header: 'Tab 1',
+    class: 'c-tabs[type={`panelList"]',
+    state: 'open',
+    language: 'html',
+    type: 'brand',
+    content: `<p>This is the content for tab 1</p>`
+  },
+  {
+    id: 2,
+    header: 'Tab 2',
+    class: 'c-tabs[type={`panelList"]',
+    state: '',
+    language: 'JAVASCRIPT',
+    type: 'brand',
+    content: `<p>This is the content for tab 2</p>`
+  },
+  {
+    id: 3,
+    header: 'Tab 3',
+    class: 'c-tabs[type={`panelList"]',
+    state: '',
+    language: 'JAVASCRIPT',
+    type: 'brand',
+    content: `<p>This is the content for tab 3</p>`
+  }
+];
 
 export const actions = {
-  onClick: action('openTab'),
   onClick: action('expand'),
   onMouseOut: action('removeFocus')
 };
 
 storiesOf('Tabs', module)
-  .add('default', () => <fk-tabs class={`c-tabs-container`} height={`300`} width={`100%`} {...actions} >
-    <fk-tab language={`html`} type={`brand`} header={`HTML`} ><fk-highlight-code language={`markup`}><code slot={`code`}><spanT type={`tedt/plain`} class={`language-markup`}><p>Hello</p></spanT></code></fk-highlight-code></fk-tab>
-    <fk-tab language={`html`} type={`brand`} header={`CODE`} ><fk-highlight-code language={`markup`}><code slot={`code`}><spanT type={`tedt/plain`} class={`language-markup`}><p>Hello</p></spanT></code></fk-highlight-code></fk-tab>
-    <fk-tab language={`html`} type={`brand`} header={`YAML`} open><fk-highlight-code language={`markup`}><code slot={`code`}><span type={`tedt/plain`} class={`language-markup`}><p>Hello</p></span></code></fk-highlight-code></fk-tab></fk-tabs>
-  )
-  .add('onClick', () => <fk-tabs class={`c-tabs-container`} height={`300`} width={`100%`} {...actions} >
-  <fk-tab language={`html`} type={`brand`} header={`HTML`} ><fk-highlight-code language={`markup`}><code slot={`code`}><spanT type={`tedt/plain`} class={`language-markup`}><p>Hello</p></spanT></code></fk-highlight-code></fk-tab>
-  <fk-tab language={`html`} type={`brand`} header={`CODE`} ><fk-highlight-code language={`markup`}><code slot={`code`}><spanT type={`tedt/plain`} class={`language-markup`}><p>Hello</p></spanT></code></fk-highlight-code></fk-tab>
-  <fk-tab language={`html`} type={`brand`} header={`YAML`} open><fk-highlight-code language={`markup`}><code slot={`code`}><span type={`tedt/plain`} class={`language-markup`}><p>Hello</p></span></code></fk-highlight-code></fk-tab></fk-tabs>)
-  .add('onMouseOut', () => <fk-tabs class={`c-tabs-container`} height={`300`} width={`100%`} {...actions} >
-  <fk-tab language={`html`} type={`brand`} header={`HTML`} ><fk-highlight-code language={`markup`}><code slot={`code`}><spanT type={`tedt/plain`} class={`language-markup`}><p>Hello</p></spanT></code></fk-highlight-code></fk-tab>
-  <fk-tab language={`html`} type={`brand`} header={`CODE`} ><fk-highlight-code language={`markup`}><code slot={`code`}><spanT type={`tedt/plain`} class={`language-markup`}><p>Hello</p></spanT></code></fk-highlight-code></fk-tab>
-  <fk-tab language={`html`} type={`brand`} header={`YAML`} open><fk-highlight-code language={`markup`}><code slot={`code`}><span type={`tedt/plain`} class={`language-markup`}><p>Hello</p></span></code></fk-highlight-code></fk-tab></fk-tabs>);
-
+  .add('as MyTabs', () => {
+    <div id={`theTabContainer`} class={`c-tabs`}>
+      <div role={`tablist`} class={`c-tabs`}>
+        <div class={`c-tabs__nav`}>
+          <div class={`c-tabs__headings`}>
+            {tab.map((tab) =>
+              <button language={tab.html} type={tab.brand}  role={`tab`} class={`c-tab-heading c-tab-heading--brand c-tab-heading--active`} state={tab.state} {...actions}>
+                {tab.header}
+              </button>
+            )}
+          </div>
+          {tab.map((tab) =>
+          <div role={`tabpanel`}class={`c-tabs__tab c-tabs__tab--brand`}>
+            {tab.content}
+          </div>
+          )};
+        </div>
+      </div>
+    </div>
+  });

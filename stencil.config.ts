@@ -20,7 +20,10 @@ export const config: Config = {
   ],
   copy: [
     {
-      src: 'src/global/*.woff2'
+      src: 'global/*.woff2'
+    },
+    {
+      src: 'global/framekit.css'
     }
   ],
   plugins: [

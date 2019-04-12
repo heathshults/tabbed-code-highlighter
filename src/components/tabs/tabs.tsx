@@ -14,6 +14,7 @@ export class FkTabs {
   @Prop() cssClass?: string;
   @Prop({mutable: true}) tabContainerHeight: any;
   @Prop() convToHTMLElement: any;
+  @Prop() idx: any;
 
   hostData(){
     this.tabContainerHeight = this.elem.style.setProperty('height', this.height)
@@ -66,8 +67,9 @@ export class FkTabs {
   @Method()
   expand(tabIndex: number) {
     if (!this.tabs[tabIndex].disabled) {
+      // let openTabPanel: HTMLDivElement = this.tabs[tabIndex]
+      // let divTabPanel: any =  this.elem.shadowRoot.querySelector('.c-tabs[role="container"]')
       let openTabPanel: HTMLDivElement = this.tabs[tabIndex]
-      // openTabPanel.classList.toggle('c-tabs__expander')
       let divTabPanel: HTMLDivElement=  openTabPanel.shadowRoot.querySelector('div[role="tabpanel"]')
       divTabPanel.classList.toggle('c-tabs__expander')
       return;
@@ -95,7 +97,7 @@ export class FkTabs {
   render() {
 
     return (
-      <div id="theTabContainer" class="c-tabs">
+      <div class="c-tabs" role="container" id={this.idx}>
         <div role="tablist" class="c-tabs">
           <div class="c-tabs__nav">
             <div class="c-tabs__headings">
@@ -122,6 +124,7 @@ export class FkTabs {
           if (tab.open) {
           return (
             <button
+              id={`btn${this.idx}`}
               disabled={tab.disabled}
               class={`c-button c-button--showMore`}
               onClick={() => this.expand(i)}

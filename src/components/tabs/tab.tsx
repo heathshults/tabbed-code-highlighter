@@ -1,5 +1,6 @@
 import { Component, Prop } from '@stencil/core';
 
+
 @Component({
   tag: 'fk-tab',
   styleUrl: '../../global/app.scss',

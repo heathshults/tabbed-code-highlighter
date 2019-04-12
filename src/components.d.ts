@@ -56,6 +56,7 @@ export namespace Components {
     'expand': (tabIndex: number) => void;
     'getNewHeight': () => Promise<string>;
     'height'?: string;
+    'idx': any;
     'openTab': (tabIndex: number) => void;
     'removeFocus': (tabIndex: number) => void;
     'tabContainerHeight': any;
@@ -66,6 +67,7 @@ export namespace Components {
     'convToHTMLElement'?: any;
     'cssClass'?: string;
     'height'?: string;
+    'idx'?: any;
     'onChange'?: (event: CustomEvent) => void;
     'tabContainerHeight'?: any;
     'value'?: string;

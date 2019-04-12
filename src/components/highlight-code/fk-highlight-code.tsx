@@ -343,10 +343,10 @@ export class FramekitHighlightCode {
   }
 
   render() {
-    return <pre data-source="plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js" data-label="Copy" class="fk-highlight-code-container no-whitespace-normalization">
+    return <div class="c-tabs__codePanel"><pre data-source="plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js" data-label="Copy" class="fk-highlight-code-container no-whitespace-normalization">
       {/* <code class="fk-codesample"></code> */}
       <code slot="code" class="theCodeTag"> </code>
-    </pre>;
+    </pre></div>;
   }
 
 }
