@@ -1,12 +1,12 @@
 # ANNOUNCEMENT
 
-This Web Component has been moved to the [Framekit monorepo](https://github.com/framekit/framekit) main project.
+This Web Component has been moved to the [Framebox monorepo](https://github.com/framebox/frames) main project.
 
-# Framekit - Highlight Code
+# framebox - Highlight Code
 
-Create a PWA presentation using Web Components, [Ionic](http://ionicframework.com) components and HTML or Markdown 🚀
+Create a PWA presentation using Web Components, [Ionic](http://ionicframework.com) components and HTML or Markdown ðŸš€
 
-Cherry on the cake 🍒�FramekitckGo] comes with a [Progressive Web App](https://framekit.app) to remote control your slides 📱
+Cherry on the cake ðŸ’ðŸframebox] comes with a [Progressive Web App](https://framekit.app) to remote control your slides ðŸ“±
 
 ## Table of contents
 
@@ -19,37 +19,37 @@ Cherry on the cake 🍒�FramekitckGo] comes with a [Progressive Web App](https:
 
 ## Code
 
-This component is the code highlighter of [Framekit].
+This component is the code highlighter of [Framebox].
 
 It is developed with [Stencil](https://stenciljs.com) and use [Prism.js](https://prismjs.com) from [James DiGioia](https://twitter.com/jamesdigioia) for the highlighting itself.
 
 ## Getting Started
 
-Start you new presentation by following the quick  👉 [Getting Started guide](https://docs.framekit.com/docs) 👈
+Start you new presentation by following the quick  ðŸ‘‰ [Getting Started guide](https://docs.framebox.com/docs) ðŸ‘ˆ
 
 ## Example
    
-The [Framekit website](https://github.com/framekit/framekit-website) is a full featured presentation developed with [Framekit].
+The [framebox website](https://github.com/framebox/framebox-website) is a full featured presentation developed with [framebox].
 
 ## Standalone
 
-To create easily your PWA presentation and to enjoy all the options, I suggest you to use the starter kit as described in the [documentation](https://docs.framekit.com/docs).
+To create easily your PWA presentation and to enjoy all the options, I suggest you to use the starter kit as described in the [documentation](https://docs.framebox.com/docs).
 
-However, if you are looking to use this Web Component as a standalone component, to add a code highlighter feature to your web applications, follow its dedicated [guide](https://docs.framekit.com/components/code).
+However, if you are looking to use this Web Component as a standalone component, to add a code highlighter feature to your web applications, follow its dedicated [guide](https://docs.framebox.com/components/code).
 
 ## Develop
 
 To develop and run this Web Component locally, proceed as following:
 
 ```
-git clone https://github.com/framekit/framekit-highlight-code
-cd framekit-highlight-code
+git clone https://github.com/framebox/framebox-highlight-code
+cd framebox-highlight-code
 npm install
 npm run start
 ```
 
 ## License
 
-MIT © [David Dal Busco](mailto:david.dalbusco@outlook.com)
+MIT Â© [Heath Shults](mailto:heatheshults@gmail.com.com)
 
-[Framekit]: https://framekit.com
+[framebox]: https://framebox.com
