@@ -6,7 +6,7 @@ This Web Component has been moved to the [Framebox monorepo](https://github.com/
 
 Create a PWA presentation using Web Components, [Ionic](http://ionicframework.com) components and HTML or Markdown ðŸš€
 
-Cherry on the cake ðŸ’ðŸframebox] comes with a [Progressive Web App](https://framekit.app) to remote control your slides ðŸ“±
+Cherry on the cake framebox] comes with a [Progressive Web App](https://framekit.app) to remote control your slides
 
 ## Table of contents
 
@@ -25,7 +25,7 @@ It is developed with [Stencil](https://stenciljs.com) and use [Prism.js](https:/
 
 ## Getting Started
 
-Start you new presentation by following the quick  ðŸ‘‰ [Getting Started guide](https://docs.framebox.com/docs) ðŸ‘ˆ
+Start you new presentation by following the quick  [Getting Started guide](https://docs.framebox.com/docs) 
 
 ## Example
    
@@ -50,6 +50,6 @@ npm run start
 
 ## License
 
-MIT Â© [Heath Shults](mailto:heatheshults@gmail.com.com)
+MIT [Heath Shults](mailto:heatheshults@gmail.com.com)
 
 [framebox]: https://framebox.com
