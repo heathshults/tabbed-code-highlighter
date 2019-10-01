@@ -1,20 +1,8 @@
 {
-  "name": "framekit-highlight-code",
+  "name": "hscript-wc-pwa",
   "version": "1.0.0",
-  "description": "A Web Component to highlight your code",
-  "module": "dist/esm/index.js",
-  "main": "dist/index.js",
-  "unpkg": "dist/ionic.js",
-  "types": "dist/types/components.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "files": [
-    "dist/",
-    "README.md",
-    "LICENSE"
-  ],
-  "hugo-bin": {
-    "buildTags": "extended"
-  },
+  "description": "Progressive web app for housing my web components",
+  "main": "index.js",
   "scripts": {
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
@@ -27,11 +15,23 @@
     "site.build": "cd devsite && .bin/hugo",
     "page.create": "cd devsite && .bin/hugo new",
     "idxdb": "cd devsite && hugo-lunr  -i \"src/content/**/*\" -o src/content/search/site-index.json",
-    "eslint": "cd devsite && eslint -c ./config/.eslintrc"
+    "eslint": "cd devsite && eslint -c ./config/.eslintrc",
+    
   },
+  "keywords": [
+    "stencil",
+    "stenciljs",
+    "web components",
+    "pwa",
+    "progressive web app",
+    "prismjs"
+  ],
+  "author": "Heath Shults",
+  "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
+    "@babel/node": "^7.6.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
     "@babel/plugin-transform-arrow-functions": "^7.2.0",
     "@babel/plugin-transform-parameters": "^7.4.3",
@@ -39,10 +39,6 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.4.0",
     "@csstools/normalize.css": "^9.0.1",
-    "@stencil/core": "^0.18.0",
-    "@stencil/postcss": "^0.1.0",
-    "@stencil/sass": "^0.1.1",
-    "@stencil/utils": "0.0.5",
     "@types/prismjs": "^1.9.0",
     "acorn": "^6.1.1",
     "autoprefixer": "^9.6.0",
@@ -54,10 +50,9 @@
     "http-server": "^0.11.1",
     "hugo-lunr": "0.0.4",
     "jsbeautify": "^0.3.6",
-    "lerna": "^3.16.4",
     "list-stream": "^1.0.1",
     "markdown-it": "^8.4.2",
-    "marked": "^0.6.1",
+    "marked": "^0.7.0",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^6.1.2",
     "prismjs": "^1.15.0",
@@ -77,22 +72,5 @@
     "type": "git",
     "url": "ssh+https://github.com/heathshults/tabbed-code-highlighter.git"
   },
-  "author": "Heath Shults",
-  "license": "MIT",
-  "bugs": {
-    "url": "hhttps://github.com/heathshults/tabbed-code-highlighter/bugs"
-  },
-  "homepage": "https://heathshults.com",
-  "keywords": [
-    "stencil",
-    "stenciljs",
-    "web components",
-    "pwa",
-    "progressive web app",
-    "presentation",
-    "slides",
-    "slideshow",
-    "talk",
-    "prismjs"
-  ]
+  "homepage": "https://heathshults.com"
 }
