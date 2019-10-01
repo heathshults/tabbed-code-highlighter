@@ -1,12 +1,8 @@
-# ANNOUNCEMENT
+# @heathenscript - Tabbed Code Highlighter
 
-This Web Component has been moved to the [Framebox monorepo](https://github.com/framebox/frames) main project.
+This is a web component compiled with Stencil.js and the [Ionic](http://ionicframework.com) framework. This component is created with love from my buddies Typescript, HTML and CSS. Other than that, this is one of my first projects in the web component realm. I thought ``` Another code highlighter, why not! ```
 
-# framebox - Highlight Code
 
-Create a PWA presentation using Web Components, [Ionic](http://ionicframework.com) components and HTML or Markdown ðŸš€
-
-Cherry on the cake framebox] comes with a [Progressive Web App](https://framekit.app) to remote control your slides
 
 ## Table of contents
 
@@ -17,15 +13,15 @@ Cherry on the cake framebox] comes with a [Progressive Web App](https://framekit
 - [Develop](#develop)
 - [License](#license)
 
-## Code
+## Highlight Code
 
-This component is the code highlighter of [Framebox].
+If you like code you will like this. And even if you don't it's still pretty cool.
 
-It is developed with [Stencil](https://stenciljs.com) and use [Prism.js](https://prismjs.com) from [James DiGioia](https://twitter.com/jamesdigioia) for the highlighting itself.
+It is a combination of [Stencil](https://stenciljs.com) and [Prism.js](https://prismjs.com). Thank you [James DiGioia](https://twitter.com/jamesdigioia) for the highlighting itself.
 
 ## Getting Started
 
-Start you new presentation by following the quick  [Getting Started guide](https://docs.framebox.com/docs) 
+There is really nothing to it. See below. 
 
 ## Example
    

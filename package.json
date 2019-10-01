@@ -12,35 +12,77 @@
     "README.md",
     "LICENSE"
   ],
+  "hugo-bin": {
+    "buildTags": "extended"
+  },
   "scripts": {
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll"
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "babel": "babel --presets @babel/preset-env js/main.js -o public/main.bundle.js",
+    "server.test": "cd devsite && http-server -p 9304",
+    "site.start": "cd devsite && .bin/hugo server",
+    "site.alt.dev": "cd devsite && .bin/hugo server --gc --baseURL http://localhost/ --port 1313 --disableLiveReload --noHTTPCache --navigateToChanged --meminterval ms --memstats ../logs --log --logFile ./_logs/hugo.log --verbose --verboseLog",
+    "site.build": "cd devsite && .bin/hugo",
+    "page.create": "cd devsite && .bin/hugo new",
+    "idxdb": "cd devsite && hugo-lunr  -i \"src/content/**/*\" -o src/content/search/site-index.json",
+    "eslint": "cd devsite && eslint -c ./config/.eslintrc"
   },
-  "dependencies": {
-    "prismjs": "^1.15.0"
-  },
+
   "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
+    "@babel/plugin-transform-arrow-functions": "^7.2.0",
+    "@babel/plugin-transform-parameters": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.4.0",
+    "@csstools/normalize.css": "^9.0.1",
     "@stencil/core": "^0.18.0",
     "@stencil/postcss": "^0.1.0",
     "@stencil/sass": "^0.1.1",
     "@stencil/utils": "0.0.5",
     "@types/prismjs": "^1.9.0",
-    "autoprefixer": "^9.4.6",
+    "autoprefixer": "^9.6.0",
+    "acorn": "^6.1.1",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "browser-sync": "^2.26.3",
+    "clipboard": "^2.0.4",
+    "http-server": "^0.11.1",
+    "global": "^4.3.2",
+    "hugo-lunr": "0.0.4",
+    "jsbeautify": "^0.3.6",
+    "list-stream": "^1.0.1",
+    "markdown-it": "^8.4.2",
+    "marked": "^0.6.1",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^6.1.2",
+    "puppeteer": "^1.17.0",
+    "prismjs": "^1.15.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "slimerjs": "^1.0.0",
     "stylelint": "^9.10.1",
-    "stylelint-order": "^2.1.0"
+    "stylelint-order": "^2.1.0",
+    "webpack": "^4.32.2"
   },
+  "eslint.options": {
+    "configFile": "./.eslintrc.js"
+  },
+  "configDir": "./config",
   "repository": {
     "type": "git",
-    "url": "ssh+https://bitbucket:8443/FLK/framekit-highlight-code.git"
+    "url": "ssh+https://github.com/heathshults/tabbed-code-highlighter.git"
   },
-  "author": "CXD",
+  "author": "Heath Shults",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/framekit/framekit-highlight-code"
+    "url": "hhttps://github.com/heathshults/tabbed-code-highlighter/bugs"
   },
-  "homepage": "https://framekit.fanniemae.com",
+  "homepage": "https://heathshults.com",
   "keywords": [
     "stencil",
     "stenciljs",
