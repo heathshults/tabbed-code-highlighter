@@ -1,0 +1,8 @@
+<div class="side-wrapper u-p-lg u-mt-sm">
+<nav class="u-mt-sm t-light">
+  {{ $currentPage := . }}
+  {{ range .Site.Menus.secMain }}
+  <a class="fk-nav-link fk-menu-list__item{{if or ($currentPage.IsMenuCurrent "secMain" .) ($currentPage.HasMenuCurrent "secMain" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+  {{ end }}
+</nav>
+</div>

@@ -1,0 +1,29 @@
+{{/*  <div class='code-tabs'>
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">{{ .Inner }}</div>
+</div>  */}}
+<script>
+  let tabs = Array.from(document.querySelectorAll('fk-tab'))
+</script>
+
+
+<div class="c-tabs">
+  <div role="tablist" class="c-tabs">
+    <div class="c-tabs__nav">
+      <div class="c-tabs__headings">
+        <script>
+         (() => {tabs.map((tab, i) => {
+            const openClass = tab.open ? 'c-tab-heading--active' : '';
+            const typeClass = tab.type ? `c-tab-heading--${tab.type}` : '';
+            const typeClassTab = this.type ? `c-tabs__tab--${this.type}` : '';
+            return (
+              '<button role="tab" disabled="'+tab.disabled+'" class="c-tab-heading '+typeClass+ ' ' +openClass +'" onClick="'+ (() => {this.openTab(i)})+'">'+ tab.header+'</button>',
+
+              '<div role="tabpanel" hidden="'+ !this.open+'"" class="c-tabs__tab'+ typeClassTab+'">' {{ .Inner }} '</div>'
+            );
+          })})
+        </script>
+      </div>
+    </div>
+  </div>
+</div>

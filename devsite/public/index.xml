@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Framekit on Infinity Comming Soon Template By Themefisher</title>
+    <link>https://www.example.com/</link>
+    <description>Recent content in Framekit on Infinity Comming Soon Template By Themefisher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 13 Mar 2019 18:39:42 -0500</lastBuildDate>
+    
+	<atom:link href="https://www.example.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Search</title>
+      <link>https://www.example.com/search/index.json</link>
+      <pubDate>Wed, 13 Mar 2019 18:39:42 -0500</pubDate>
+      
+      <guid>https://www.example.com/search/index.json</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.example.com/about/brand/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.example.com/about/brand/</guid>
+      <description>THIS IS FROM MAILCHIMP
+Have a need for framekit&amp;rsquo;s brand resources? Great! We have only a few guidelines we follow, and in turn ask you to follow as well. These guidelines were inspired by MailChimp&amp;rsquo;s Brand Assets.
+Mark and logo Use either the framekit mark (a capital B) or the standard logo (just framekit). It should always appear in San Francisco Display Semibold. Do not use the Twitter bird in association with framekit.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.example.com/about/credits/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.example.com/about/credits/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.example.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.example.com/about/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.example.com/about/license/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.example.com/about/license/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CSS Coder Guidelines</title>
+      <link>https://www.example.com/about/css-guidelines/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.example.com/about/css-guidelines/</guid>
+      <description>Introduction CSS is not a pretty language. While it is simple to learn and get started with, it soon becomes problematic at any reasonable scale. There isn’t much we can do to change how CSS works, but we can make changes to the way we author and structure it.
+In working on large, long-running projects, with dozens of developers of differing specialities and abilities, it is important that we all work in a unified way in order to (among other things)</description>
+    </item>
+    
+    <item>
+      <title>Framekit Cheate Sheet</title>
+      <link>https://www.example.com/about/cheat-sheet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.example.com/about/cheat-sheet/</guid>
+      <description>.hightlight { margin: 2rem 0; }
+
+Global Variables $fk-separator-breakpoint:  @ The seperator for responsive classes Example: u-display-none@sm (hide on small breakpoint)  Typography Mixin fk-type($name)  Sets font-weight, font-size, line-height, letter spacing font-size: fk-type(&amp;#39;display1&amp;#39;) ### Available Options: display1, display2, headline1, headline2, headline3, headline4, headline5, category1, category2, category3, body1, body2, body3, micro Various Functions for type. Try not to use unless absolutly necessary text-size(&amp;#39;xxxl&amp;#39;) font-weight(&amp;#39;semibold&amp;#39;) line-height() $fk-type-default-letter-spacing</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -29,7 +29,6 @@
     "idxdb": "cd devsite && hugo-lunr  -i \"src/content/**/*\" -o src/content/search/site-index.json",
     "eslint": "cd devsite && eslint -c ./config/.eslintrc"
   },
-
   "devDependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",

@@ -1,0 +1,152 @@
+{
+  "tags": [
+    {
+      "label": "o-demo-bar-buttons",
+      "description": "",
+      "attributes": []
+    },
+    {
+      "label": "o-demo-bar-select",
+      "description": "",
+      "attributes": [
+        {
+          "label": "options",
+          "description": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "o-demo-bar-toolbar",
+      "description": "",
+      "attributes": [
+        {
+          "label": "name",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "options",
+          "description": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "o-demo-bar",
+      "description": "Component for bar",
+      "attributes": [
+        {
+          "label": "background-color",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "case-option-selected",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "device",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "device-emulate",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "device-size",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "events",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "name",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "pattern",
+          "description": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "o-demo-case",
+      "description": "",
+      "attributes": [
+        {
+          "label": "name",
+          "description": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "o-demo-devices",
+      "description": "",
+      "attributes": [
+        {
+          "label": "orientation",
+          "description": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "o-demo-fab",
+      "description": "",
+      "attributes": []
+    },
+    {
+      "label": "o-demo-modal",
+      "description": "",
+      "attributes": [
+        {
+          "label": "code",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "open",
+          "description": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "o-demo-resizer",
+      "description": "",
+      "attributes": [
+        {
+          "label": "size",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "viewport",
+          "description": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "o-demo-snackbar",
+      "description": "",
+      "attributes": [
+        {
+          "label": "events",
+          "description": "",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

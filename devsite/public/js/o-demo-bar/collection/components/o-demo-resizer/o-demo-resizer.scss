@@ -1,0 +1,47 @@
+:host{
+  .resize-toolbar-container {
+    margin-top : 4px;
+    color: #212121;
+    height: 16px;
+    white-space: nowrap;
+    font-weight: 500;
+    border-top: 1px solid #ddd;
+    background: #FFF;
+    position: relative;
+  }
+
+  .resize-toolbar{
+    position: absolute;
+    left: -100px;
+    right: -100px;
+  }
+
+  .item-resize-toolbar {
+    box-sizing: border-box;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding: 1px;
+    color: #212121;
+    cursor: pointer;
+    font-size: 7.5px;
+    font-weight: 400;
+    height: 16px;
+    left: 0;
+    line-height: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    right: 0;
+
+    .left {
+      float : left;
+    }
+    .rigth {
+      float : right;
+    }
+    }
+
+    .active {
+      background: rgba(0, 0, 0, 0.080);
+    }
+}

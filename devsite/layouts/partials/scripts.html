@@ -1,0 +1,234 @@
+{{ $assetBusting := not .Site.Params.disableAssetsBusting }}
+<!--<script type="text/javascript" src="{{"/js/clipboard.min.js" | relURL}}"></script>-->
+{{/*  {{ $plugins := resources.Get "/js/clipboard.min.js" }}
+{{ $global := resources.Get "/js/scripts.js" }}
+{{ $js := slice $plugins $global | resources.Concat "js/fk-web.js" }}  */}}
+<script type="text/javascript" src="{{"/js/clipboard.min.js" | relURL}}"></script>
+<script type="text/javascript" src="{{"/js/scripts.js" | relURL}}{{ if $assetBusting }}?{{ now.Unix }}{{ end }}"></script>
+{{/*  <script type="text/javascript" src="{{"/js/framekit.js" | relURL}}{{ if $assetBusting }}?{{ now.Unix }}{{ end }}"></script>  */}}
+<script type="text/javascript" src="{{"/js/framekit.js" | relURL}}"></script>
+
+<script>
+  jQuery(document).ready(function() {
+  
+    var btn = $('#btt');
+  
+    $(window).scroll(function() {
+      if ($(window).scrollTop() > 300) {
+        
+        btn.addClass('is-visible');
+      } else {
+        btn.removeClass('is-visible');
+      }
+    });
+  
+    btn.on('click', function(e) {
+      e.preventDefault();
+      $('html, body').animate({scrollTop:0}, '300');
+    });
+  
+  }); 
+
+  // center scroll demo
+    /* center scroll position for computer demo */
+    $(document).ready(() => {
+      var outerContent = $('.js-scroll-position');
+      var innerContent = $('.computer');
+      outerContent.scrollLeft((innerContent.width() - outerContent.width()) / 2);
+      
+    })
+  /* popover toggles */
+  $(document).ready(() => {
+    let togglepopover, togglescrim, thePopover, popTarget, bgHouses, logoBP, toggleHouse, toggleLogo, getBodyWidth, getBodyHeight,exampleScrim;
+      
+    // get viewport dimensions
+    getBodyWidth = () => {
+      return bodyWidth = $(window).width()
+    }
+    
+    getBodyHeight = () => {
+      return bodyHeight = $(window).height()
+    }
+    
+    $(".js-popover-toggle").click((e) => {
+      thePopover = $($(e.currentTarget).attr('data-toggleTarget'))
+      if (thePopover.hasClass('is-visible')) {
+
+        togglepopover = () => $(thePopover).toggleClass('is-visible').slideUp().fadeOut(500)
+        togglescrim = () => $('.c-scrim').toggleClass('is-visible').fadeOut(500)
+
+        setTimeout(() => { togglepopover() }, 0);
+        setTimeout(() => { togglescrim() }, 250);
+        } else {
+
+        togglescrim = () => $('.c-scrim').toggleClass('is-visible').fadeIn(500)
+        togglepopover = () => $(thePopover).toggleClass('is-visible').fadeIn(500)
+
+        setTimeout(() => { togglescrim() }, 10);
+        setTimeout(() => { togglepopover() }, 300);
+      }});
+
+    /* demonstation using the computer visual */
+    $(".js-popover-example").click((e) => {
+      thePopover = $($(e.currentTarget).attr('data-toggleTarget')) 
+      bgHouses = $('#bgHouses')
+      logoBP = $('#compLogo')
+      exampleScrim = $('#popover1Scrim')
+      
+      if (thePopover.hasClass('is-visible')) {
+        togglepopover = () => thePopover.toggleClass('is-visible')
+        togglescrim = () => exampleScrim.toggleClass('is-visible')
+        bgHouses.toggleClass('houses')
+        toggleLogo = () => logoBP.toggleClass('is-visible')
+
+        setTimeout(() => { togglepopover() }, 0);
+        setTimeout(() => { togglescrim() }, 250); 
+        setTimeout(() => { toggleLogo() }, 250); 
+        } else {
+        togglescrim = () => exampleScrim.toggleClass('is-visible')
+        togglepopover = () => thePopover.toggleClass('is-visible')
+        bgHouses.toggleClass('houses')
+        toggleLogo = () => logoBP.toggleClass('is-visible')
+
+        setTimeout(() => { togglescrim() }, 10);
+        setTimeout(() => { togglepopover() }, 300);
+        setTimeout(() => { toggleLogo() }, 500);
+      }
+    });
+    
+    // popslidebar
+    $(".js-popslidebar").click((e) => {
+      popTarget = $($(e.currentTarget).attr('data-toggleTarget'))
+      
+      if (popTarget.hasClass('is-visible')) {
+        popTarget.toggleClass('is-visible').blur()
+      } else {
+      /*  popTarget.toggleClass('is-visible slide-in-x slide-out-x').css({  */
+      popTarget.toggleClass('is-visible').css({
+        'width': '375px',
+        'height': getBodyHeight()
+      });
+      $('.c-panel-slideover__body').focus()
+      console.log('body height: '+getBodyHeight())
+    }
+    });
+    
+    // fullscreen popovert
+    $(".js-popoverfull-toggle").click((e) => {
+      
+      popTarget = $($(e.currentTarget).attr('data-toggleTarget'))
+      popTarget.toggleClass('is-fullscreen-visible').css({
+        'width': getBodyWidth(),
+        'height': getBodyHeight()
+      })
+      
+      $('.is-fullscreen-visible').find('.c-panel-popover__footer').css({
+        'position': 'absolute',
+        'top': getBodyHeight() - '100px'
+      })
+    });
+  });
+  
+  // resize the popover window to fit the viewport on window resize
+  window.onresize = () => {
+    if ($('.is-fullscreen-visible')) {
+      // getViewportSize(width, height)
+      $('.is-fullscreen-visible').css({
+        'width': getBodyWidth(),
+        'height': getBodyHeight()
+      })
+    }
+  }
+  
+  $(document).ready(function () {
+    $('#showTT').click(function () {
+      $('.c-button').toggleClass('showTips')
+    })
+    // counters for progress bars
+    $('.js-counter').each(function () {
+      var $this = $(this),
+        countTo = $this.attr('aria-valuemax'),
+        expandWidthTo = `${countTo}%`,
+        countType = 'Votes' // $this.attr('data-counttype');
+      $this.css({
+        'text-align': 'left',
+        'padding-left': '20px'
+      })
+      $({
+        countNum: $this.text()
+      }).animate({
+        countNum: countTo,
+        width: expandWidthTo
+      }, {
+        duration: 500,
+        easing: 'swing',
+        step: function () {
+          $this.text(Math.floor(this.countNum) + ' ' + countType);
+          $this.css('width', this.width + '%')
+        },
+        complete: function () {
+          $this.text(this.countNum + ' ' + countType);
+          //alert('finished');
+        }
+      });
+    });
+    $('.js-counter').each(function () {
+      let $this = $(this)
+      let countTo = $this.attr('aria-valuemax')
+      let countType = $this.attr('data-counttype');
+
+      $this.css({
+        'width': `${this.countTo}%`,
+        'font-weight': '700',
+        'transition': 'width .25s ease-in-out'
+      });
+
+      $({
+        countNum: $this.text()
+      }).animate({
+        countNum: countTo
+      }, {
+        duration: 250,
+        easing: 'swing',
+        step: function () {
+          $this.text(Math.floor(`${this.countTo} ${this.countTyoe}`));
+        },
+        complete: function () {
+          $this.text(`${this.countTo} ${$this.attr('data-counttype')}`);
+          //alert('finished');
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  // ====== COOLNAV ====== //
+  $(document).ready(function () {
+    $('.fk-toc-link').on('click', function () {
+      event.stopPropagation();
+      $(this).toggleClass('expand')
+      $(this).next('ul.collapse').toggleClass('expand');
+    })
+
+    $('#naviToggle').on('click', function () {
+      event.stopPropagation();
+      $('#navi').toggleClass('expand')
+    })
+  });
+
+</script>
+
+<script>
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    // auto-unregister service worker during dev mode
+    navigator.serviceWorker.getRegistration().then(function (registration) {
+      if (registration) {
+        registration.unregister().then(function () {
+          location.reload(true)
+        });
+      }
+    });
+  }
+
+</script>

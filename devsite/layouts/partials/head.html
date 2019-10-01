@@ -1,0 +1,35 @@
+
+    <script type="text/javascript" src="{{"/js/jquery-3.3.1-min.js" | relURL}}"></script>
+    <script src="{{"/js/loadingbars.js" | relURL}}"></script>
+    <script src="{{"/js/framekit-highlight-tabs/framekit-highlight-code.js" | relURL}}"></script>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="{{ if .Description }}{{ .Description }}{{else if .IsPage}}{{ .Summary | plainify}}{{ else }}{{.Site.Params.description}}{{ end }}">
+    <meta name="author" content="{{ with .Params.author }}{{ . }}{{else}}{{ with .Site.Params.author}}{{ . }}{{ end }}{{end}}">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{" | "}}{{ .Site.Params.Description }}{{ else if .IsPage}}{{ .Title }}{{" | "}}{{ .CurrentSection.Title }}{{else}}{{ .Title }}{{" | "}}{{ .Site.Title }}{{ end }}</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ "/img/favicon.ico" | relURL }}"/>
+
+    <!-- <link rel="stylesheet" href="{{"/css/framekit.css" | relURL}}"> -->
+    <link rel="stylesheet" href="{{"/css/hover-min.css" | relURL}}">
+    <link rel="stylesheet" href="{{"/css/framekit.min.css" | relURL}}">
+    {{/*  <link rel="stylesheet" href="{{"/css/custom2.css" | relURL}}">  */}}
+    <link rel="stylesheet" href="{{"/js/JavaScript-autoComplete/auto-complete.css" | relURL}}">
+
+   
+
+    {{ if .Site.Params.disableInlineCopyToClipBoard }}
+      :not(pre) > code + span.copy-to-clipboard {
+          display: inline-block;
+      }
+    {{ end }}
+
+    {{ $style := resources.Get "/scss/custom-styles.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}">
+    
+    {{ $style := resources.Get "/scss/framekit.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}">

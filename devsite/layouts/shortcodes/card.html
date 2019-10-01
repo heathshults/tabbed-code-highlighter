@@ -1,0 +1,10 @@
+<div class="c-card cards {{ .Get 0 }}">
+  <div class="c-card__header-image">
+    <img src="{{ .Get 3 }}" width="100%" alt="Card image cap">
+  </div>
+  <div class="c-card__body">
+    <h4 class="c-card__title">{{ .Get 0 }}</h4>
+    <div>{{ .Inner }}</div>
+    <div>{{ if len .Params | eq 2 }}<a href="{{ .Get 1 }}" class="c-button c-buttno-primary">{{ .Get 2 }}</a>{{ end }}</div>
+  </div>
+</div>

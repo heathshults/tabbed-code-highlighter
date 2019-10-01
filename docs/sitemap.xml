@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://www.example.com/scripts/</loc>
+    <lastmod>2019-02-23T14:33:26-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.example.com/assets/</loc>
+    <lastmod>2019-02-23T14:31:19-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.example.com/</loc>
+    <lastmod>2019-03-13T18:39:42-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.example.com/search/index.json</loc>
+    <lastmod>2019-03-13T18:39:42-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.example.com/about/brand/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.example.com/about/credits/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.example.com/about/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.example.com/about/license/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.example.com/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.example.com/about/css-guidelines/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.example.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.example.com/about/cheat-sheet/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.example.com/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

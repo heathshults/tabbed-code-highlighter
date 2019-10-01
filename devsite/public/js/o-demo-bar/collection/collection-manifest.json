@@ -1,0 +1,365 @@
+{
+  "components": [
+    {
+      "tag": "o-demo-bar",
+      "dependencies": [
+        "o-demo-bar-buttons",
+        "o-demo-bar-select",
+        "o-demo-bar-toolbar",
+        "o-demo-devices",
+        "o-demo-fab",
+        "o-demo-resizer",
+        "o-demo-snackbar"
+      ],
+      "componentClass": "DemoBarComponent",
+      "componentPath": "components/o-demo-bar/o-demo-bar.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/o-demo-bar/o-demo-bar.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "String",
+          "attr": "background-color"
+        },
+        {
+          "name": "caseOptionSelected",
+          "type": "Number",
+          "mutable": true,
+          "attr": "case-option-selected"
+        },
+        {
+          "name": "device",
+          "type": "String",
+          "mutable": true,
+          "attr": "device"
+        },
+        {
+          "name": "deviceEmulate",
+          "type": "Boolean",
+          "mutable": true,
+          "attr": "device-emulate"
+        },
+        {
+          "name": "deviceSize",
+          "type": "String",
+          "mutable": true,
+          "attr": "device-size"
+        },
+        {
+          "name": "events",
+          "type": "String",
+          "attr": "events"
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "attr": "name"
+        },
+        {
+          "name": "pattern",
+          "type": "Boolean",
+          "mutable": true,
+          "attr": "pattern"
+        }
+      ],
+      "listeners": [
+        {
+          "event": "code-editor-changed",
+          "method": "codeEditorChangedHandler",
+          "passive": false,
+          "capture": false
+        },
+        {
+          "event": "resizeButtonClicked",
+          "method": "resizeButtonClickedHandler",
+          "passive": false,
+          "capture": false
+        },
+        {
+          "event": "selectedCaseChanged",
+          "method": "selectedCaseChangedHandler",
+          "passive": false,
+          "capture": false
+        },
+        {
+          "event": "toolbarButtonClicked",
+          "method": "toolbarButtonClickedHandler",
+          "passive": false,
+          "capture": false
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "shadow": true
+    },
+    {
+      "tag": "o-demo-bar-buttons",
+      "dependencies": [],
+      "componentClass": "DemoButtonsComponent",
+      "componentPath": "components/o-demo-bar-buttons/o-demo-bar-buttons.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/o-demo-bar-buttons/o-demo-bar-buttons.scss"
+          ]
+        }
+      },
+      "events": [
+        {
+          "event": "toolbarButtonClicked"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "o-demo-bar-select",
+      "dependencies": [],
+      "componentClass": "DemoSelectComponent",
+      "componentPath": "components/o-demo-bar-select/o-demo-bar-select.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/o-demo-bar-select/o-demo-bar-select.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "options",
+          "type": "Any",
+          "attr": "options"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "events": [
+        {
+          "event": "selectedCaseChanged"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "o-demo-bar-toolbar",
+      "dependencies": [],
+      "componentClass": "DemoToolbarComponent",
+      "componentPath": "components/o-demo-bar-toolbar/o-demo-bar-toolbar.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/o-demo-bar-toolbar/o-demo-bar-toolbar.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "name",
+          "type": "String",
+          "attr": "name"
+        },
+        {
+          "name": "options",
+          "type": "Any",
+          "attr": "options"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "shadow": true
+    },
+    {
+      "tag": "o-demo-case",
+      "dependencies": [],
+      "componentClass": "DemoCaseComponent",
+      "componentPath": "components/o-demo-case/o-demo-case.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "name",
+          "type": "String",
+          "attr": "name"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "o-demo-devices",
+      "dependencies": [],
+      "componentClass": "DemoDevicesComponent",
+      "componentPath": "components/o-demo-devices/o-demo-devices.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/o-demo-devices/o-demo-devices.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "orientation",
+          "type": "String",
+          "attr": "orientation"
+        }
+      ],
+      "states": [
+        {
+          "name": "selectedDevice"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "shadow": true
+    },
+    {
+      "tag": "o-demo-fab",
+      "dependencies": [],
+      "componentClass": "DemoFabComponent",
+      "componentPath": "components/o-demo-fab/o-demo-fab.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/o-demo-fab/o-demo-fab.scss"
+          ]
+        }
+      },
+      "hostElement": {
+        "name": "el"
+      },
+      "events": [
+        {
+          "event": "change-device",
+          "method": "fabBtnChangeDevice"
+        },
+        {
+          "event": "rotate-device",
+          "method": "fabBtnRotate"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "o-demo-modal",
+      "dependencies": [],
+      "componentClass": "DemoModalComponent",
+      "componentPath": "components/o-demo-modal/o-demo-modal.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/o-demo-modal/o-demo-modal.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "code",
+          "type": "Any",
+          "attr": "code"
+        },
+        {
+          "name": "open",
+          "type": "Boolean",
+          "mutable": true,
+          "reflectToAttr": true,
+          "attr": "open"
+        }
+      ],
+      "methods": [
+        {
+          "name": "closeDialog"
+        },
+        {
+          "name": "openDialog"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "events": [
+        {
+          "event": "code-editor-changed",
+          "method": "codeEditorChanged"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "o-demo-resizer",
+      "dependencies": [],
+      "componentClass": "DemoResizerComponent",
+      "componentPath": "components/o-demo-resizer/o-demo-resizer.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/o-demo-resizer/o-demo-resizer.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "size",
+          "type": "String",
+          "attr": "size"
+        },
+        {
+          "name": "viewport",
+          "type": "String",
+          "attr": "viewport"
+        }
+      ],
+      "methods": [
+        {
+          "name": "setActiveViewPort"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "events": [
+        {
+          "event": "resizeButtonClicked"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "o-demo-snackbar",
+      "dependencies": [],
+      "componentClass": "DemoSnackbarComponent",
+      "componentPath": "components/o-demo-snackbar/o-demo-snackbar.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/o-demo-snackbar/o-demo-snackbar.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "events",
+          "type": "Any",
+          "attr": "events"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "shadow": true
+    }
+  ],
+  "collections": [],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "0.18.1",
+    "typescriptVersion": "3.3.3"
+  },
+  "bundles": []
+}

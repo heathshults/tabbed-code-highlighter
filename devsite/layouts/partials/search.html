@@ -1,0 +1,17 @@
+<div class="searchbox fk-searchBox" id="searchBox">
+  <label for="searchFramekit" class="fk-searchBox__sicon"><i name="search" class="c-ucon"></i></label>
+  <input data-search-input id="searchFramekit" type="search" class="fk-searchBox__input" placeholder="Search Framekit...">
+  <span data-search-clear class="fk-searchBox__clear"><i name="close" class="c-ucon"></i></span>
+  <div id="resultsPanel" class="fk-searchBox__searchPanel"></div>
+</div>
+{{ $assetBusting := not .Site.Params.disableAssetsBusting }}
+<script type="text/javascript" src="{{"/js/lunr.min.js" | relURL}}{{ if $assetBusting }}?{{ now.Unix }}{{ end }}"></script>
+<script type="text/javascript">
+    {{ if .Site.IsMultiLingual }}
+        var baseurl = "{{.Site.BaseURL}}{{.Site.LanguagePrefix}}";
+    {{ else }}
+        var baseurl = "{{.Site.BaseURL}}";
+    {{ end }}
+</script>
+<script type="text/javascript" src="{{"/js/search.js" | relURL}}{{ if $assetBusting }}?{{ now.Unix }}{{ end }}"></script>
+

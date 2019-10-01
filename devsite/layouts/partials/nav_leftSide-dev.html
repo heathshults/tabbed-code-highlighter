@@ -1,0 +1,48 @@
+<div class="side-wrapper u-mt-sm">
+  {{/*  <div class="fk-toggle-button__wrapper">
+            <a id="naviToggle" href="javascript:void(0);" class="fk-naviToggle" >
+                <i name="last-page" class="c-ucons"></i>
+            </a>
+        </div>  */}}
+  {{- partial "search" . -}}
+  <nav class="u-mt-sm t-light" id="fk-docs-nav">
+    {{/*  <div class="fk-toc-item">
+          {{/*  <a class="fk-toc-link" data-toggle="collapse"  href="#collapse00">  */}}
+    {{/*  <a class="fk-toc-link" data-toggle="collapse"  href="#">
+            Getting started
+          </a>  */}}
+
+    {{ $currentPage := . }}
+    {{ range $.Site.Menus.sidenav }}
+    {{ if .HasChildren }}
+    <ul class="fk-toc-section" id="">
+      <li class="fk-toc-item {{ if $currentPage.HasMenuCurrent "sidenav" . }}is-active{{ end }}">
+        {{ .Pre }}
+
+        <span class="fk-menu__label">{{ .Name }}</span>
+
+
+        <ul class="collapse" id="collapse00">
+          {{ range .Children }}
+          <li class="fk-sidenav-item {{ if $currentPage.IsMenuCurrent "sidenav" . }}is-active{{ end }}">
+            <a class="fk-nav-link fk-menu-list__item" href="{{ .URL }}">{{ .Name }}</a>
+          </li>
+          {{ end }}
+        </ul>
+      </li>
+      {{ else }}
+      <ul>
+        <li class="fk-toc-item">
+          <a class="fk-toc-link fk-menu-list__item" href="{{ .URL }}">
+            {{ .Pre }}
+            <span>{{ .Name }}</span>
+          </a>
+        </li>
+      </ul>
+      {{ end }}
+    </ul>
+    {{ end }}
+
+    {{/*  </div>  */}}
+  </nav>
+</div>

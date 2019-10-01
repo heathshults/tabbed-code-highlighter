@@ -1,0 +1,62 @@
+
+ <div class="snippet">
+<div class="tabs">
+  <ul class="tabnav" role="tablist">
+    <li role="presentation"><a href="#collapsible-id-1" id="collapsible-id-1-link" aria-controls="collapsible-id-1" role="tab" aria-selected="true" class="tab-active">{{ .Get 0 }}</a></li>
+    <li role="presentation"><a href="#collapsible-id-2" id="collapsible-id-2-link" aria-controls="collapsible-id-2" role="tab" aria-selected="false" class="" tabindex="-1">{{ .Get 1 }}</a></li>
+    <li role="presentation"><a href="#collapsible-id-3" id="collapsible-id-3-link" aria-controls="collapsible-id-3" role="tab" aria-selected="false" class="" tabindex="-1">{{ .Get 2 }}</a></li>
+    <li role="presentation"><a href="#collapsible-id-4" id="collapsible-id-4-link" aria-controls="collapsible-id-4" role="tab" aria-selected="false" class="" tabindex="-1">{{ .Get 3 }}</a></li>
+  </ul>
+  <div class="collapsible collapsible-enhanced collapsible-expanded" data-collapsible-set="tabs-example">
+    <h4 class="collapsible-header" role="button" tabindex="0" aria-expanded="true" style="display: none;">{{ .Get 0 }}</h4>
+    <div class="collapsible-content" id="collapsible-id-1" aria-labelledby="collapsible-id-1-link">
+      {{ .Inner }}
+    </div>
+  </div>
+  <div class="collapsible collapsible-enhanced collapsible-collapsed" data-collapsible-set="tabs-example">
+    <h4 class="collapsible-header" role="button" tabindex="0" aria-expanded="false" style="display: none;">{{ .Get 1 }}</h4>
+    <div class="collapsible-content" id="collapsible-id-2" aria-labelledby="collapsible-id-2-link">
+      {{ .Inner }}
+    </div>
+  </div>
+  <div class="collapsible collapsible-enhanced collapsible-collapsed" data-collapsible-set="tabs-example">
+    <h4 class="collapsible-header" role="button" tabindex="0" aria-expanded="false" style="display: none;">{{ .Get 2 }}</h4>
+    <div class="collapsible-content" id="collapsible-id-3" aria-labelledby="collapsible-id-3-link">
+      {{ .Inner }}
+    </div>
+  </div>
+  <div class="collapsible collapsible-enhanced collapsible-collapsed" data-collapsible-set="tabs-example">
+    <h4 class="collapsible-header" role="button" tabindex="0" aria-expanded="false" style="display: none;">{{ .Get 3 }}</h4>
+    <div class="collapsible-content" id="collapsible-id-4" aria-labelledby="collapsible-id-4-link">
+      {{ .Inner }}
+    </div>
+  </div>
+</div>
+</div>
+    <style>
+    .tabnav {
+      display: table;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+    .tabnav li {
+      display: table-cell;
+      border: 2px solid #fff;
+      border-bottom-width: 0;
+    }
+    .tabnav a {
+      display: block;
+      background-color: #aaa;
+      color: #fff;
+      padding: .4em 1em;
+      text-decoration: none;
+    }
+    .tabnav .tab-active {
+      border: 1px solid #aaa;
+      border-bottom-width: 0;
+      background-color: #fff;
+      color: #222;
+    }
+    </style>
+

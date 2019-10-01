@@ -1,0 +1,19 @@
+
+.st0{
+  fill: #FFFFFF;
+}
+.st1{
+  fill: #000000;
+}
+.st2{
+  fill: #FFFFFF;
+}
+.hero-area {
+  flex: 1 0 auto;
+  width:100%;
+  height: 100vh;
+}
+.l-hg-l nav, .l-hg-l aside {
+  padding: 0 !important;
+  height: 100%;
+}

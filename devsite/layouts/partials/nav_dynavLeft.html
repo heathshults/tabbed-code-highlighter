@@ -1,0 +1,56 @@
+<div class="side-wrapper u-p-lg u-mt-sm">
+    <!-- <div class="fk-toggle-button__wrapper">
+        <a id="naviToggle" href="javascript:void(0);" class="fk-naviToggle" >
+            <i name="last-page" class="c-ucons"></i>
+        </a>
+    </div> -->
+  <!-- <div class="fk-searchform">
+    <input type="search" class="fk-search-input" id="searchInput" placeholder="Search..." />
+    <button id="naviToggle" class="fk-form-control fk-search-btn" type="button"> 
+      <span class="c-ucons">
+        <i name="search" ></i>
+      </span>
+    </button>
+  </div> -->
+
+  <nav class="fk-nav-sidenav u-mt-sm t-light" id="fk-docs-nav">
+    {{/*  <div class="fk-toc-item">
+      {{/*  <a class="fk-toc-link" data-toggle="collapse"  href="#collapse00">  */}}
+      {{/*  <a class="fk-toc-link" data-toggle="collapse"  href="#">
+        Getting started
+      </a>  */}}
+  
+      {{ $currentPage := . }}
+      {{ range $.Site.Menus.guidelines }}
+      {{ if .HasChildren }}
+              <ul class="" id="">
+                <li class="fk-toc-item {{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
+                        {{ .Pre }}
+                        
+                        <span class="toc fk-menu__label">{{ .Name }}</span>
+                    </a>
+                
+                <ul class="collapse" id="collapse00">
+                    {{ range .Children }}
+                        <li class="fk-sidenav-item {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+                            <a class="fk-nav-link fk-menu-list__item" href="{{ .URL }}">{{ .Name }}</a>
+                        </li>
+                    {{ end }}
+                </ul>
+            </li>
+            {{ else }}
+            <ul>
+                <li class="fk-toc-item">
+                    <a class="fk-toc-link fk-menu-list__item" href="{{ .URL }}">
+                        {{ .Pre }}
+                        <span>{{ .Name }}</span>
+                    </a>
+                </li>
+                </ul>
+            {{ end }}
+            </ul>
+        {{ end }}
+      
+    {{/*  </div>  */}}
+  </nav>
+  </div>
