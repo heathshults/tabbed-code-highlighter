@@ -1,0 +1,277 @@
+/* TTI, Inc. CSS Document */
+
+/* <Utility Classes> */
+.Kill-Pad {
+	padding:0;
+}
+.Kill-Margin {
+	margin:0;
+}
+.PullUp25 {
+	margin-top: -25px;
+	z-index: -1;
+	
+}
+
+/* </Utility Classes> */
+
+/* <Main Styles> */
+.VidBannerWrapper {
+	position: relative;
+	width: 100%;
+	height: 450px;
+	display:block;
+	overflow: hidden;
+	background-color: #002e55;
+	font-size: .78vw;
+}
+.VidBannerWrapper .PartnerContainer {
+	
+	position: absolute;
+	top: 45%;
+	left:30px;
+	right:30px;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 1000;
+
+}
+
+.VidBannerWrapper .PartnerContainer .PartnerCard {
+	position:relative;
+	height: 80px;
+	padding: 10px;
+	background-color: rgba(255,255,255,0.75);
+	overflow: hidden;
+	-webkit-box-shadow: 0 0 20px 5px rgba(0,0,0,.30);
+	box-shadow: 0 0 20px 5px rgba(0,0,0,.30);
+	
+	
+	
+	-webkit-transition: all .3s ease-out;
+	-moz-transition: all .3s ease-out;
+	-ms-transition: all .3s ease-out;
+	-o-transition: all .3s ease-out;
+	transition: all .3s ease-out;
+	
+	-moz-transform: scale(1);
+	-webkit-transform: scale(1);
+	-o-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard:hover {
+	
+	height: 180px;
+	-webkit-transition: all .1s ease-in;
+	-moz-transition: all .1s ease-in;
+	-ms-transition: all .1s ease-in;
+	-o-transition: all .1s ease-in;
+	transition: all .1s ease-in;
+	
+	-moz-transform: scale(1);
+	-webkit-transform: scale(1);
+	-o-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+}
+
+.VidBannerWrapper .PartnerContainer .PartnerCard .PCSubContainer {
+	margin-left: 38px;
+	margin-right: 38px;
+	color:#333333;
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard .PCSubContainer a.btn.btn-primary {
+	font-size: .8vw;
+	background: #002e55;
+	margin:6px 0;
+	border: 0;
+	border-radius: 0;
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard .PCSubContainer a.btn.btn-primary:hover,
+.VidBannerWrapper .PartnerContainer .PartnerCard .PCSubContainer a.btn.btn-primary:active {
+	background: #209d3d;
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard h3.PartnerName {
+	font-size: 1.55vw;
+	font-weight:800;
+	margin: 6px;
+	padding: 0;
+	white-space: nowrap;
+	vertical-align: baseline;
+	color: #002e55;
+	
+	-webkit-text-shadow: 0 1px 0 #ffffff;
+	-moz-text-shadow: 0 1px 0 #ffffff;
+	-o-text-shadow: 0 1px 0 #ffffff;
+	-ms-text-shadow: 0 1px 0 #ffffff;
+	text-shadow: 0 1px 0 #ffffff;
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard h3.PartnerName span.icon-32 {
+	font-size: 42px; 
+	color:#9B0000;
+	padding:0 6px 0 0;
+	margin-top: -9px;
+	float: left;
+	vertical-align: baseline;
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard h3.PartnerName span.fa-fw {
+	width:auto;
+	-webkit-text-shadow: 0 1px 0 #ffffff;
+	-moz-text-shadow: 0 1px 0 #ffffff;
+	-o-text-shadow: 0 1px 0 #ffffff;
+	-ms-text-shadow: 0 1px 0 #ffffff;
+	text-shadow: 0 1px 0 #ffffff;
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard .PCContent {
+	visibility: hidden;
+	
+	-webkit-transition: all .3s ease-out;
+	-moz-transition: all .3s ease-out;
+	-ms-transition: all .3s ease-out;
+	-o-transition: all .3s ease-out;
+	transition: all .3s ease-out;
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard:hover .PCContent {
+	visibility: visible;
+	-webkit-transition: all .1s ease-in;
+	-moz-transition: all .1s ease-in;
+	-ms-transition: all .1s ease-in;
+	-o-transition: all .1s ease-in;
+	transition: all .1s ease-in;
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard .PCContent p {
+	white-space: nowrap;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+i.fa-fw {
+	color: #209D3D;
+}
+
+.VidBannerWrapper .PartnerContainer .PartnerCard h3.PartnerName span.h3SmallFont {
+	display: block;
+	font-size: .9vw;
+	font-weight: normal;
+	color:#444444;
+	margin:6px 0 10px 34px;
+	
+	-webkit-text-shadow: 0 0 0 Transparent;
+	-moz-text-shadow: 0 0 0 Transparent;
+	-o-text-shadow: 0 0 0 Transparent;
+	-ms-text-shadow: 0 0 0 Transparent;
+	text-shadow: 0 0 0 Transparent;
+}
+
+  /* <Countries> */
+.Americas {
+	background-image: url(../Content/Images/Countries/Americas-light-grey.png);
+	background-position: right top;
+	background-repeat: no-repeat; 
+}
+.Asia {
+	background-image: url(../Content/Images/Countries/Asia-light-grey.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+.Europe {
+	background-image: url(../Content/Images/Countries/Europe-light-grey.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+.Israel {
+	background-image: url(../Content/Images/Countries/Israel-light-grey.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+  /* </Countries> */
+/* </Main Styles> */
+
+/* <effects: transitions & transformations> */
+
+.Grow-Half-Size {
+	-webkit-transition: all .3s ease-in;
+	-moz-transition: all .3s ease-in;
+	-ms-transition: all .3s ease-in;
+	-o-transition: all .3s ease-in;
+	transition: all .3s ease-in;
+	
+	-moz-transform: scale(1.5);
+	-webkit-transform: scale(1.5);
+	-o-transform: scale(1.5);
+	-ms-transform: scale(1.5);
+	transform: scale(1.5);
+}
+.Shrink-Original-Size { 
+	-webkit-transition: all .3s ease-out;
+	-moz-transition: all .3s ease-out;
+	-ms-transition: all .3s ease-out;
+	-o-transition: all .3s ease-out;
+	transition: all .3s ease-out;
+	
+	-moz-transform: scale(1);
+	-webkit-transform: scale(1);
+	-o-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+}
+/* </effects: transitions & transformations> */
+/* <Media Queries> */
+
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops 
+@media only screen and (min-width : 992px) {
+.VidBannerWrapper {
+  font-size: .9vw;
+ }
+.VidBannerWrapper .PartnerContainer .PartnerCard {
+	height: 65px;
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard:hover {
+	height: 160px;
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard h3.PartnerName span.icon-32 {
+	font-size: 32px; 
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard h3.PartnerName span.h3SmallFont {
+	font-size:1vw;
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard h3.PartnerName span.icon-32 {
+	font-size: 32px; 
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard h3.PartnerName span.h3SmallFont {
+	font-size:1vw;
+	margin:6px 0 10px 28px;
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard .PCSubContainer {
+	margin-left: 34px;
+	margin-right: 34px;
+}
+.VidBannerWrapper .PartnerContainer .PartnerCard h3.PartnerName {
+	font-size: 1.50vw;
+}
+
+.VidBannerWrapper .PartnerContainer .PartnerCard .PCSubContainer a.btn.btn-primary {
+	font-size: .9vw;
+}
+}*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+/* </Media Queries> */

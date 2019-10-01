@@ -26,7 +26,7 @@
 
 ## Methods
 
-### `findNextAnchor(enter: boolean) => Promise<FramekitHighlightCodeAnchor>`
+### `findNextAnchor(enter: boolean) => Promise<HeathScriptHighlightCodeAnchor>`
 
 
 
@@ -38,7 +38,7 @@
 
 #### Returns
 
-Type: `Promise<FramekitHighlightCodeAnchor>`
+Type: `Promise<HeathScriptHighlightCodeAnchor>`
 
 
 

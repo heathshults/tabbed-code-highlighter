@@ -1,4 +1,4 @@
-export interface FramekitHighlightCodeAnchor {
+export interface HeathScriptHighlightCodeAnchor {
   offsetTop: number;
   hasLineZoom: boolean;
 }

@@ -2,7 +2,7 @@ import {Component, Prop, Watch, Element, Method, EventEmitter, Event, Listen} fr
 
 import Prism from 'prismjs';
 
-import {FramekitHighlightCodeAnchor} from '../declarations/fk-highlight-code-anchor';
+import {HeathScriptHighlightCodeAnchor} from '../declarations/fk-highlight-code-anchor';
 
 @Component({
   tag: 'fk-highlight-code',
@@ -71,12 +71,12 @@ export class FramekitHighlightCode {
       const script = document.createElement('script');
 
       script.onload = async () => {
-        script.setAttribute('framekit-prism-loaded', this.language);
+        script.setAttribute('heathscript-prism-loaded', this.language);
         this.prismLanguageLoaded.emit(this.language);
       };
 
       script.src = 'https://unpkg.com/prismjs@latest/components/prism-' + this.language + '.js';
-      script.setAttribute('framekit-prism', this.language);
+      script.setAttribute('heathscript-prism', this.language);
       script.defer = true;
 
       document.head.appendChild(script);
@@ -99,7 +99,7 @@ export class FramekitHighlightCode {
         return;
       }
 
-      if (document.querySelector('[framekit-prism-loaded=\'' + this.language + '\']')) {
+      if (document.querySelector('[heathscript-prism-loaded=\'' + this.language + '\']')) {
         await this.fetchOrParse();
       } else {
         await this.loadLanguage();
@@ -150,7 +150,7 @@ export class FramekitHighlightCode {
 
       if (container) {
         try {
-          const highlightedCode: string = Prism.highlight(code, Prism.languages[this.language]);
+          const highlightedCode: string = Prism.highlight(code, Prism.languages[this.language], '');
 
           container.children[0].innerHTML = highlightedCode;
 
@@ -283,8 +283,8 @@ export class FramekitHighlightCode {
   }
 
   @Method()
-  findNextAnchor(enter: boolean): Promise<FramekitHighlightCodeAnchor> {
-    return new Promise<FramekitHighlightCodeAnchor>(async (resolve) => {
+  findNextAnchor(enter: boolean): Promise<HeathScriptHighlightCodeAnchor> {
+    return new Promise<HeathScriptHighlightCodeAnchor>(async (resolve) => {
       const elements: NodeListOf<HTMLElement> = this.el.shadowRoot.querySelectorAll('span.fk-highlight-code-anchor');
 
       if (elements) {

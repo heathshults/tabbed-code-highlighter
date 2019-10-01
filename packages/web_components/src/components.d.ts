@@ -9,7 +9,7 @@ import '@stencil/core';
 
 
 import {
-  FramekitHighlightCodeAnchor,
+  HeathScriptHighlightCodeAnchor,
 } from './components/declarations/fk-highlight-code-anchor';
 
 
@@ -18,7 +18,7 @@ export namespace Components {
   interface FkHighlightCode {
     'anchor': string;
     'anchorZoom': string;
-    'findNextAnchor': (enter: boolean) => Promise<FramekitHighlightCodeAnchor>;
+    'findNextAnchor': (enter: boolean) => Promise<HeathScriptHighlightCodeAnchor>;
     'hideAnchor': boolean;
     'highlightLines': string;
     'language': string;
