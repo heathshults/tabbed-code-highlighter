@@ -1,0 +1,27 @@
+{
+  "namespace": "FramekitHighlightCode",
+  "fsNamespace": "framekit-highlight-code",
+  "loader": "../framekit-highlight-code.js",
+  "core": "framekit-highlight-code.3yki2xg9.js",
+  "corePolyfilled": "framekit-highlight-code.hwe02bst.js",
+  "components": {
+    "fk-highlight-code": {
+      "bundleIds": {
+        "$": "yna2qilc"
+      },
+      "encapsulation": "shadow"
+    },
+    "fk-tab": {
+      "bundleIds": {
+        "$": "axnh9rxt"
+      },
+      "encapsulation": "shadow"
+    },
+    "fk-tabs": {
+      "bundleIds": {
+        "$": "bcvnhbyx"
+      },
+      "encapsulation": "shadow"
+    }
+  }
+}

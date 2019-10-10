@@ -1,6 +1,7 @@
-baseURL = "https://heathshults.github.io/tabbed-code-highlighter"
+baseURL = "https://heathshults.github.io"
+# baseURL = "https://heathshults.github.io/tabbed-code-highlighter"
 languageCode = "en-us"
-title = "Infinity Comming Soon Template By Themefisher"
+title = "Heath Shults - Developer on Front"
 theme = "infinity-hugo"
 
 [params]
@@ -38,6 +39,22 @@ theme = "infinity-hugo"
             image   = "images/about/3.jpg"
         [[params.about.sliderItem]]
             image   = "images/about/2.jpg"
+
+    
+    # About feature component
+    [params.featureComponent]
+        enable      = true
+        heading     = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam ipsa recusandae consequatur veniam, reiciendis odit quia eaque vel eius a."
+        description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ulla-mco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, aspernatur."
+
+        # [[params.featureComponent.sliderItem]]
+        #     image   = "images/about/1.jpg"
+        # [[params.featureComponent.sliderItem]]
+        #     image   = "images/about/2.jpg"
+        # [[params.featureComponent.sliderItem]]
+        #     image   = "images/about/3.jpg"
+        # [[params.featureComponent.sliderItem]]
+        #     image   = "images/about/2.jpg"
 
     
     # Service Section
