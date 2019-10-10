@@ -1,0 +1,1 @@
+export * from '../esm/es5/framekit-highlight-code.define.js';

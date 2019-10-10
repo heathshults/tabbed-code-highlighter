@@ -3,65 +3,63 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://heathshults.github.io/tabbed-code-highlighter/scripts/</loc>
+    <loc>https://heathshults.github.io/scripts/</loc>
     <lastmod>2019-02-23T14:33:26-06:00</lastmod>
   </url>
   
   <url>
-    <loc>https://heathshults.github.io/tabbed-code-highlighter/assets/</loc>
+    <loc>https://heathshults.github.io/assets/</loc>
     <lastmod>2019-02-23T14:31:19-06:00</lastmod>
   </url>
   
   <url>
-    <loc>https://heathshults.github.io/tabbed-code-highlighter/</loc>
+    <loc>https://heathshults.github.io/</loc>
     <lastmod>2019-03-13T18:39:42-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://heathshults.github.io/tabbed-code-highlighter/search/index.json</loc>
+    <loc>https://heathshults.github.io/search/index.json</loc>
     <lastmod>2019-03-13T18:39:42-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://heathshults.github.io/tabbed-code-highlighter/about/brand/</loc>
+    <loc>https://heathshults.github.io/about/brand/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://heathshults.github.io/tabbed-code-highlighter/about/credits/</loc>
+    <loc>https://heathshults.github.io/about/credits/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://heathshults.github.io/tabbed-code-highlighter/about/</loc>
+    <loc>https://heathshults.github.io/about/license/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://heathshults.github.io/tabbed-code-highlighter/about/license/</loc>
+    <loc>https://heathshults.github.io/about/wasindex/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://heathshults.github.io/tabbed-code-highlighter/about/</loc>
+    <loc>https://heathshults.github.io/about/</loc>
   </url>
   
   <url>
-    <loc>https://heathshults.github.io/tabbed-code-highlighter/about/css-guidelines/</loc>
+    <loc>https://heathshults.github.io/categories/</loc>
   </url>
   
   <url>
-    <loc>https://heathshults.github.io/tabbed-code-highlighter/categories/</loc>
-    <priority>0</priority>
+    <loc>https://heathshults.github.io/about/css-guidelines/</loc>
   </url>
   
   <url>
-    <loc>https://heathshults.github.io/tabbed-code-highlighter/about/cheat-sheet/</loc>
+    <loc>https://heathshults.github.io/about/cheat-sheet/</loc>
   </url>
   
   <url>
-    <loc>https://heathshults.github.io/tabbed-code-highlighter/tags/</loc>
-    <priority>0</priority>
+    <loc>https://heathshults.github.io/tags/</loc>
   </url>
   
 </urlset>

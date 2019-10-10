@@ -1,0 +1,30 @@
+import '../../stencil.core';
+import { EventEmitter } from '../../stencil.core';
+import { FramekitHighlightCodeAnchor } from '../declarations/fk-highlight-code-anchor';
+export declare class FramekitHighlightCode {
+    el: HTMLElement;
+    prismLanguageLoaded: EventEmitter<string>;
+    src: string;
+    anchor: string;
+    anchorZoom: string;
+    hideAnchor: boolean;
+    language: string;
+    highlightLines: string;
+    private anchorOffsetTop;
+    componentDidLoad(): Promise<void>;
+    languageLoaded($event: CustomEvent): Promise<void>;
+    private fetchOrParse;
+    loadLanguage(): Promise<void>;
+    load(): Promise<void>;
+    private parseSlottedCode;
+    fetchCode(): Promise<void>;
+    private parseCode;
+    private addAnchors;
+    private hasLineAnchor;
+    private addHighlight;
+    private findRowsToHighlight;
+    findNextAnchor(enter: boolean): Promise<FramekitHighlightCodeAnchor>;
+    zoomCode(zoom: boolean): Promise<void>;
+    private hasLineZoom;
+    render(): JSX.Element;
+}

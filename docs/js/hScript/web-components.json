@@ -1,0 +1,66 @@
+{
+  "tags": [
+    {
+      "label": "fk-highlight-code",
+      "description": "",
+      "attributes": [
+        {
+          "label": "anchor",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "anchor-zoom",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "hide-anchor",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "highlight-lines",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "language",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "src",
+          "description": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "fk-tab",
+      "description": "",
+      "attributes": [
+        {
+          "label": "disabled",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "header",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "open",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "type",
+          "description": "",
+          "required": false
+        }
+      ]
+    }
+  ]
+}
