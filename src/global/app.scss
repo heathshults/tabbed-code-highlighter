@@ -52,6 +52,7 @@
   position: absolute;
   display: flex;
   width: 100%;
+  margin-bottom: 50px;
 }
 .c-tabs {
   position: relative;
@@ -529,11 +530,19 @@
     }
   }
   &:focus {
-    outline-color: var(--bp-color-core-blue-60, #7a7a7a);
+    background: var(--bp-color-core-blue-90, #064063);
+    border-color: var(--bp-color-core-blue-90, #064063) !important;
+    outline: 2px silid var(--bp-color-core-blue-90, #064063);
     box-shadow: none;
+    &::before {
+      cursor: pointer;
+      border-color: var(--bp-color-core-blue-90, #064063)  transparent transparent transparent;
+      box-shadow: none;
+    }
   }
 
 }
+
 
 /* highlighter code */
 
