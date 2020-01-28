@@ -15,6 +15,44 @@ import {
 
 export namespace Components {
 
+  interface BpdsAccordion {
+    'accordionContainerHeight': any;
+    'convToHTMLElement': any;
+    'cssClass'?: string;
+    'currentTab': () => Promise<number>;
+    'expand': (accordionPanelIndex: number) => void;
+    'getNewHeight': () => Promise<string>;
+    'height'?: string;
+    'idx': any;
+    'openAccordionPanel': (accordionPanelIndex: number) => void;
+    'removeFocus': (accordionPanelIndex: number) => void;
+    'value': string;
+    'width'?: string;
+  }
+  interface BpdsAccordionAttributes extends StencilHTMLAttributes {
+    'accordionContainerHeight'?: any;
+    'convToHTMLElement'?: any;
+    'cssClass'?: string;
+    'height'?: string;
+    'idx'?: any;
+    'onChange'?: (event: CustomEvent) => void;
+    'value'?: string;
+    'width'?: string;
+  }
+
+  interface BpdsAccordionPanel {
+    'disabled': boolean;
+    'header': string;
+    'open': boolean;
+    'type': string;
+  }
+  interface BpdsAccordionPanelAttributes extends StencilHTMLAttributes {
+    'disabled'?: boolean;
+    'header'?: string;
+    'open'?: boolean;
+    'type'?: string;
+  }
+
   interface FkHighlightCode {
     'anchor': string;
     'anchorZoom': string;
@@ -77,17 +115,33 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'BpdsAccordion': Components.BpdsAccordion;
+    'BpdsAccordionPanel': Components.BpdsAccordionPanel;
     'FkHighlightCode': Components.FkHighlightCode;
     'FkTab': Components.FkTab;
     'FkTabs': Components.FkTabs;
   }
 
   interface StencilIntrinsicElements {
+    'bpds-accordion': Components.BpdsAccordionAttributes;
+    'bpds-accordion-panel': Components.BpdsAccordionPanelAttributes;
     'fk-highlight-code': Components.FkHighlightCodeAttributes;
     'fk-tab': Components.FkTabAttributes;
     'fk-tabs': Components.FkTabsAttributes;
   }
 
+
+  interface HTMLBpdsAccordionElement extends Components.BpdsAccordion, HTMLStencilElement {}
+  var HTMLBpdsAccordionElement: {
+    prototype: HTMLBpdsAccordionElement;
+    new (): HTMLBpdsAccordionElement;
+  };
+
+  interface HTMLBpdsAccordionPanelElement extends Components.BpdsAccordionPanel, HTMLStencilElement {}
+  var HTMLBpdsAccordionPanelElement: {
+    prototype: HTMLBpdsAccordionPanelElement;
+    new (): HTMLBpdsAccordionPanelElement;
+  };
 
   interface HTMLFkHighlightCodeElement extends Components.FkHighlightCode, HTMLStencilElement {}
   var HTMLFkHighlightCodeElement: {
@@ -108,12 +162,16 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'bpds-accordion': HTMLBpdsAccordionElement
+    'bpds-accordion-panel': HTMLBpdsAccordionPanelElement
     'fk-highlight-code': HTMLFkHighlightCodeElement
     'fk-tab': HTMLFkTabElement
     'fk-tabs': HTMLFkTabsElement
   }
 
   interface ElementTagNameMap {
+    'bpds-accordion': HTMLBpdsAccordionElement;
+    'bpds-accordion-panel': HTMLBpdsAccordionPanelElement;
     'fk-highlight-code': HTMLFkHighlightCodeElement;
     'fk-tab': HTMLFkTabElement;
     'fk-tabs': HTMLFkTabsElement;
